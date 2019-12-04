@@ -1,0 +1,28 @@
+{
+  "name": "letters-sample",
+  "version": "0.0.1",
+  "dependencies": {
+    "@ckeditor/letters": "^16.0.0"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-dev-utils": "^12.0.5",
+    "@ckeditor/ckeditor5-dev-webpack-plugin": "^8.0.5",
+    "@ckeditor/ckeditor5-theme-lark": "^16.0.0",
+    "postcss-loader": "^3.0.0",
+    "raw-loader": "^1.0.0",
+    "style-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  },
+  "engines": {
+    "node": ">=6.9.0",
+    "npm": ">=3.0.0"
+  },
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com",
+  "scripts": {
+    "build": "webpack --mode production"
+  }
+}
