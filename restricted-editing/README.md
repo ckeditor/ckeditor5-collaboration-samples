@@ -41,7 +41,7 @@ See the [CKEditor 5 Installing plugins guide](https://ckeditor.com/docs/ckeditor
 
 If you are familiar with webpack, you can play with this file to achieve a custom build that would fit your needs. You can check the [CKEditor 5 Advanced setup guide](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/advanced-setup.html#webpack-configuration) for some ready-to-use advanced configurations.
 
-### Sample codes
+### Samples
 
 The sample pages available in `samples/*` contain all the necessary code to bootstrap editors. Most of this code is specific to collaborative features and not to the restricted editing feature.
 
