@@ -76,6 +76,44 @@ This file is licensed under the terms of the MIT License (see LICENSE.md).
 	<script>
 		/* globals DecoupledEditor */
 
+		/**
+		 * Temporary method that enables Restricted Editing mode integration with
+		 * - Comments
+		 * - Track Changes
+		 *
+		 * This method is run by the creator method passed to a watchdog.
+		 */
+		function enableRestrictedEditingWithTrackChangesAndComments( editor ) {
+			// Temporary switch: enable comments commands in restricted editing mode:
+			const restrictedEditingModeEditing = editor.plugins.get( 'RestrictedEditingModeEditing' );
+
+			// Make comments available for all editor content.
+			const alwaysEnabledCommands = [
+				// Comments:
+				'addCommentThread', 'removeCommentThread', 'addComment', 'updateComment', 'removeComment',
+				// Track changes:
+				'trackChanges', 'acceptSuggestion', 'discardSuggestion', 'acceptAllSuggestions', 'discardAllSuggestions',
+				'acceptSelectedSuggestions', 'discardSelectedSuggestions'
+			];
+
+			for ( const commandName of alwaysEnabledCommands ) {
+				restrictedEditingModeEditing._alwaysEnabled.add( commandName );
+
+				const command = editor.commands.get( commandName );
+				command.clearForceDisabled( 'RestrictedEditingMode' );
+			}
+
+			// Listen to track changes command execution to enable navigation commands in track changes mode.
+			editor.commands.get( 'trackChanges' ).on( 'execute', () => {
+				// Enable restricted editing commands in track changes mode.
+				const enabledInTrackChanges = [ 'goToPreviousRestrictedEditingException', 'goToNextRestrictedEditingException' ];
+
+				for ( const commandName of enabledInTrackChanges ) {
+					editor.commands.get( commandName ).clearForceDisabled( 'TrackChangesCommand' );
+				}
+			}, { priority: 'lowest' } );
+		}
+
 		const STORAGE_KEY = 'ckeditor-license-key';
 
 		// Save the provided license key in the local storage.
@@ -299,34 +337,8 @@ This file is licensed under the terms of the MIT License (see LICENSE.md).
 		watchdog.setCreator( ( el, config ) => {
 			return DecoupledEditorWithRestrictedEditingMode.create( el, config )
 				.then( editor => {
-					// Temporary switch: enable comments commands in restricted editing mode:
-					const restrictedEditingModeEditing = editor.plugins.get( 'RestrictedEditingModeEditing' );
-
-					// Make comments available for all editor content.
-					const alwaysEnabledCommands = [
-						// Comments:
-						'addCommentThread', 'removeCommentThread', 'addComment', 'updateComment', 'removeComment',
-						// Track changes:
-						'trackChanges', 'acceptSuggestion', 'discardSuggestion', 'acceptAllSuggestions', 'discardAllSuggestions',
-						'acceptSelectedSuggestions', 'discardSelectedSuggestions'
-					];
-
-					for ( const commandName of alwaysEnabledCommands ) {
-						restrictedEditingModeEditing._alwaysEnabled.add( commandName );
-
-						const command = editor.commands.get( commandName );
-						command.clearForceDisabled( 'RestrictedEditingMode' );
-					}
-
-					// Listen to track changes command execution to enable navigation commands in track changes mode.
-					editor.commands.get( 'trackChanges' ).on( 'execute', () => {
-						// Enable restricted editing commands in track changes mode.
-						const enabledInTrackChanges = [ 'goToPreviousRestrictedEditingException', 'goToNextRestrictedEditingException' ];
-
-						for ( const commandName of enabledInTrackChanges ) {
-							editor.commands.get( commandName ).clearForceDisabled( 'TrackChangesCommand' );
-						}
-					}, { priority: 'lowest' } );
+					// Enable restricted editing integration with track changes and comments.
+					enableRestrictedEditingWithTrackChangesAndComments( editor );
 
 					// Make the track changes mode the "default" state by turning it on just after the editor initializes.
 					editor.execute( 'trackChanges' );

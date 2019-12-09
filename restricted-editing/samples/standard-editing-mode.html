@@ -76,6 +76,75 @@ This file is licensed under the terms of the MIT License (see LICENSE.md).
 	<script>
 		/* globals DecoupledEditor */
 
+		/**
+		 * Temporary method that enables Standard Editing mode integration with Track Changes.
+		 *
+		 * This method is run by the creator method passed to a watchdog.
+		 */
+		function enableRestrictedEditingInTrackChanges( editor ) {
+			const plugin = editor.plugins.get( 'TrackChangesEditing' );
+
+			const commandName = 'restrictedEditingException';
+			const command = editor.commands.get( commandName );
+
+			plugin.enableCommand(
+				commandName,
+
+				( executeCommand, options = {} ) => {
+					const forceValue = typeof options.forceValue != 'undefined' ? options.forceValue : !command.value;
+					const range = editor.model.document.selection.getFirstRange();
+
+					if ( range.isCollapsed ) {
+						// If the range is collapsed, simply execute the command which will add the attribute to the selection.
+						executeCommand( options );
+
+						return;
+					}
+
+					function getRangesWithAttribute( attributeKey, range, model ) {
+						const ranges = [];
+
+						for ( const item of range.getItems() ) {
+							if ( item.hasAttribute( attributeKey ) ) {
+								ranges.push( model.createRangeOn( item ) );
+							}
+						}
+
+						return ranges;
+					}
+
+					editor.model.change( () => {
+						// If the attribute is being set, use the original selection range to make the suggestion.
+						// If the attribute is being unset, check an exact range on which the attribute is set and use it.
+						const ranges = forceValue ? [ range ] : getRangesWithAttribute( commandName, range, editor.model );
+
+						for ( const range of ranges ) {
+							plugin.markInlineFormat(
+								range,
+								{
+									commandName,
+									commandParams: [ { forceValue } ]
+								}
+							);
+						}
+					} );
+				}
+			);
+
+			plugin._descriptionFactory.registerDescriptionCallback( suggestion => {
+				const { data } = suggestion;
+
+				if ( data && data.commandName == commandName ) {
+					return [
+						{
+							label: 'Format',
+							description: ( data.commandParams[ 0 ].forceValue ? 'enable section in' : 'remove section from' ) + '  restricted editing mode'
+						}
+					];
+				}
+			} );
+		}
+
 		const STORAGE_KEY = 'ckeditor-license-key';
 
 		// Save the provided license key in the local storage.
@@ -372,70 +441,6 @@ This file is licensed under the terms of the MIT License (see LICENSE.md).
 				container: document.querySelector( '.sidebar' )
 			}
 		} );
-
-		function enableRestrictedEditingInTrackChanges( editor ) {
-			const plugin = editor.plugins.get( 'TrackChangesEditing' );
-
-			const commandName = 'restrictedEditingException';
-			const command = editor.commands.get( commandName );
-
-			plugin.enableCommand(
-				commandName,
-
-				( executeCommand, options = {} ) => {
-					const forceValue = typeof options.forceValue != 'undefined' ? options.forceValue : !command.value;
-					const range = editor.model.document.selection.getFirstRange();
-
-					if ( range.isCollapsed ) {
-						// If the range is collapsed, simply execute the command which will add the attribute to the selection.
-						executeCommand( options );
-
-						return;
-					}
-
-					function getRangesWithAttribute( attributeKey, range, model ) {
-						const ranges = [];
-
-						for ( const item of range.getItems() ) {
-							if ( item.hasAttribute( attributeKey ) ) {
-								ranges.push( model.createRangeOn( item ) );
-							}
-						}
-
-						return ranges;
-					}
-
-					editor.model.change( () => {
-						// If the attribute is being set, use the original selection range to make the suggestion.
-						// If the attribute is being unset, check an exact range on which the attribute is set and use it.
-						const ranges = forceValue ? [ range ] : getRangesWithAttribute( commandName, range, editor.model );
-
-						for ( const range of ranges ) {
-							plugin.markInlineFormat(
-								range,
-								{
-									commandName,
-									commandParams: [ { forceValue } ]
-								}
-							);
-						}
-					} );
-				}
-			);
-
-			plugin._descriptionFactory.registerDescriptionCallback( suggestion => {
-				const { data } = suggestion;
-
-				if ( data && data.commandName == commandName ) {
-					return [
-						{
-							label: 'Format',
-							description: ( data.commandParams[ 0 ].forceValue ? 'enable section in' : 'remove section from' ) + '  restricted editing mode'
-						}
-					];
-				}
-			} );
-		}
 	</script>
 </body>
 
