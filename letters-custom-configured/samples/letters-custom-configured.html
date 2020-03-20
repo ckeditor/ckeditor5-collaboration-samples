@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>Letters custom configuration sample</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="configuration-dialog/configuration-dialog.css" rel="stylesheet" type="text/css">
+	<link href="./style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/letters.png">
+</head>
+
+<body>
+	<header>
+		<div class="centered">
+			<h1>
+				<a href="https://ckeditor.com/collaborative-editing/letters/" target="_blank" rel="noopener">
+					<img src="https://c.cksource.com/a/1/logos/letters.svg" alt="Letters logo"> Letters
+				</a>
+			</h1>
+
+			<nav>
+				<ul>
+					<li><a href="https://ckeditor.com/collaborative-editing/letters/" target="_blank" rel="noopener">Website</a></li>
+					<li><a href="https://ckeditor.com/docs/letters/latest/guides/overview.html" target="_blank" rel="noopener">Documentation</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="message">
+			<div class="centered">
+				<h2>Letters custom configuration sample</h2>
+				<p>
+					Open this sample in another browser tab to start distraction-free real-time collaborative editing.
+				</p>
+			</div>
+		</div>
+
+		<div class="centered">
+			<div id="letters"></div>
+		</div>
+	</main>
+
+	<footer>
+		<div class="centered">
+			<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text editor of			tomorrow, available today</p>
+			<p>Copyright © 2003-2019, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> – Frederico
+				Knabben. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script src="configuration-dialog/configuration-dialog.js"></script>
+	<script src="../build/createcustomletters.js"></script>
+	<script>
+		'use strict';
+
+		// Configuration data needed to initialize the editor is available only after the configuration dialog
+		// is submitted, hence the editor is initialized inside a promise returned by `createDialog()`.
+		window.createDialog().then( cloudServicesConfig => {
+			window.createCustomLetters( {
+				cloudServicesConfig,
+				container: document.getElementById( 'letters' )
+			} );
+		} );
+	</script>
+</body>
+
+</html>

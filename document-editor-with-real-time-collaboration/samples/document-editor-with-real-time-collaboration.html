@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html lang="en">
+
+<head>
+	<title>CKEditor 5 document editor with real-time collaboration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+
+	<link href="styles.css" rel="stylesheet" type="text/css">
+	<link href="configuration-dialog/configuration-dialog.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,600,600i,700,700i&display=swap&subset=latin-ext" rel="stylesheet">
+	<script src="configuration-dialog/configuration-dialog.js"></script>
+	<script src="../build/document-editor-with-real-time-collaboration.js"></script>
+</head>
+
+<body>
+<header>
+	<div class="centered">
+		<h1>
+			<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+				<img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo" /> CKEditor 5
+			</a>
+		</h1>
+
+		<nav>
+			<ul>
+				<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html"
+					   target="_blank" rel="noopener noreferrer">Documentation</a></li>
+				<li><a href="https://ckeditor.com/collaboration/real-time/" target="_blank"
+					   rel="noopener noreferrer">Website</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<main>
+	<section>
+		<div class="collaboration-demo" id="collaboration">
+			<div class="loader loader--active">
+				<svg class="spinner" viewbox="25 25 50 50">
+					<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+				</svg>
+			</div>
+			<div class="collaboration-demo__container">
+				<div class="collaboration-demo__topbar">
+					<div class="collaboration-demo__presence"></div>
+					<div class="collaboration-demo__share">
+						<div class="collaboration-demo__share-description">
+							<p>Share link & collaborate:</p>
+						</div>
+						<div>
+							<input class="form-control" id="demo-collaboration-url" type="text" readonly="readonly" aria-label="Shared document link" />
+							<button class="btn btn--tiny">Copy URL</button>
+						</div>
+					</div>
+				</div>
+				<div class="collaboration-demo__editor">
+					<div class="collaboration-demo__toolbar"></div>
+					<div class="collaboration-demo__row">
+						<div class="collaboration-demo__editable"></div>
+						<div class="collaboration-demo__sidebar">
+							<button id="sidebar-display-toggle">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+									<path d="M7 17a1 1 0 0 1-.71-1.71L9.59 12l-3.3-3.29a1 1 0 0 1 1.42-1.42l4 4a1 1 0 0 1 0 1.41l-4 4A1 1 0 0 1 7 17z"/><path d="M13 17a1 1 0 0 1-.71-1.71l3.3-3.29-3.3-3.29A1 1 0 0 1 13.7 7.3l4 4a1 1 0 0 1 0 1.41l-4 4a1 1 0 0 1-.7.29z"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer>
+	<div class="centered">
+		<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">CKEditor 5</a> – Rich text
+			editor of tomorrow, available today</p>
+		<p>Copyright © 2003-2019, <a href="https://cksource.com/" target="_blank" rel="noopener noreferrer">CKSource</a> –
+			Frederico
+			Knabben. All rights reserved.</p>
+	</div>
+</footer>
+
+<script>
+	/* globals createDialog DocumentEditorWithRealTimeCollaboration */
+
+	const initialData = `
+		<h2 style="text-align:center;">The Flavorful Tuscany Meetup</h2>
+		<h3 style="text-align:center;">Welcome letter</h3>
+
+		<p>Dear Guest,</p>
+		<p>We are delighted to welcome you to the annual <em>Flavorful Tuscany Meetup</em> and hope you will enjoy the programme as well as your stay at the <a href="https://ckeditor.com">Bilancino Hotel</a>.</p>
+		<p>Please find below the full schedule of the event.</p>
+
+		<figure class="table">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2"><span>Saturday, July 14</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><span>9:30 AM - 11:30 AM</span></td>
+						<td>
+							<span><strong>Americano vs. Brewed</strong> - “know your coffee” with:</span>
+							<ul>
+								<li>Giulia Bianchi</li>
+								<li>Stefano Garau</li>
+								<li>Giuseppe Russo</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td><span>1:00 PM - 3:00 PM</span></td>
+						<td>
+							<p><strong>Pappardelle al pomodoro</strong> - live cooking</p>
+							<p>Incorporate the freshest ingredients <br> with Rita Fresco</p>
+						</td>
+					</tr>
+					<tr>
+						<td><span>5:00 PM - 8:00 PM</span></td>
+						<td>
+							<p><strong>Tuscan vineyards at a glance</strong> - wine-tasting <br> with Frederico Riscoli</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<blockquote>
+			<p>The annual Flavorful Tuscany meetups are always a culinary discovery. You get the best of Tuscan flavors during an intense one-day stay at one of the top hotels of the region. All the sessions are lead by top chefs passionate about their profession. I would certainly recommend to save the date in your calendar for this one!</p>
+
+			<p>Angelina Calvino, food journalist</p>
+		</blockquote>
+
+		<p>Please arrive at the <a href="https://ckeditor.com">Bilancino Hotel</a> reception desk at least half an hour earlier to make sure that the registration process goes as smoothly as possible.</p>
+
+		<p>We look forward to welcoming you to the event.</p>
+
+		<p><strong>Victoria Valc</strong> - Event Manager</p>
+	`;
+
+	const { DecoupledEditor, EditorWatchdog } = DocumentEditorWithRealTimeCollaboration;
+
+	const watchdog = new EditorWatchdog();
+	window.watchdog = watchdog;
+
+	const loaderElement = document.querySelector( '.loader' );
+
+	watchdog.setCreator( ( element, config ) => {
+		return DecoupledEditor.create( element, config )
+			.then( editor => {
+				// Switch between inline, narrow sidebar and wide sidebar according to the window size.
+				const annotations = editor.plugins.get( 'Annotations' );
+				const sidebarElement = document.querySelector( '.collaboration-demo__sidebar' );
+				const buttonElement = document.getElementById( 'sidebar-display-toggle' );
+
+				// Set a custom container for the toolbar.
+				document.querySelector( '.collaboration-demo__toolbar' ).appendChild( editor.ui.view.toolbar.element );
+				document.querySelector( '.ck-toolbar' ).classList.add( 'ck-reset_all' );
+
+				loaderElement.classList.add( 'fadeout' );
+				setTimeout( () => {
+					document.querySelector( '.collaboration-demo' ).classList.add( 'collaboration-demo--ready' );
+					loaderElement.parentNode.removeChild( loaderElement );
+				}, 200 );
+
+				handleCopyUrlButton();
+
+				// Prevent closing the tab when any action is pending.
+				editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
+					if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
+						domEvt.preventDefault();
+						domEvt.returnValue = true;
+					}
+				} );
+
+				editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
+				refreshDisplayMode();
+				switchDisplayMode();
+
+				function refreshDisplayMode() {
+					if ( window.innerWidth < 1000 ) {
+						sidebarElement.classList.remove( 'narrow' );
+						sidebarElement.classList.add( 'hidden' );
+						annotations.switchTo( 'inline' );
+					}
+					else if ( window.innerWidth < 1300 ) {
+						buttonElement.classList.add( 'narrow-display' );
+						sidebarElement.classList.remove( 'hidden' );
+						sidebarElement.classList.add( 'narrow' );
+						annotations.switchTo( 'narrowSidebar' );
+					}
+					else {
+						sidebarElement.classList.remove( 'hidden', 'narrow' );
+						annotations.switchTo( 'wideSidebar' );
+					}
+				}
+
+				function switchDisplayMode() {
+					buttonElement.addEventListener( 'click', () => {
+						// Fire events only while narrow or wide display mode is active. Do not fire on inline sidebar.
+						if ( annotations.uiType == 'narrowSidebar' ) {
+							annotations.switchTo( 'wideSidebar' );
+							sidebarElement.classList.remove( 'hidden' );
+							sidebarElement.classList.remove( 'narrow' );
+
+							buttonElement.classList.remove( 'narrow-display' );
+						}
+
+						else if ( annotations.uiType == 'wideSidebar' ) {
+							annotations.switchTo( 'narrowSidebar' );
+							sidebarElement.classList.remove( 'hidden' );
+							sidebarElement.classList.add( 'narrow' );
+
+							buttonElement.classList.add( 'narrow-display' );
+						}
+					} );
+				}
+				return editor;
+			} );
+	} );
+
+	watchdog.setDestructor( editor => editor.destroy() );
+
+	// Configuration data needed to initialize the editor is available only after the configuration dialog
+	// is submitted, hence the editor is initialized inside a promise returned by `createDialog()`.
+	createDialog().then( cloudServicesConfig => {
+		return watchdog.create( document.querySelector( '.collaboration-demo__editable' ), {
+			initialData,
+			cloudServices: {
+				tokenUrl: cloudServicesConfig.tokenUrl,
+				uploadUrl: cloudServicesConfig.uploadUrl,
+				webSocketUrl: cloudServicesConfig.webSocketUrl
+			},
+			collaboration: {
+				channelId: cloudServicesConfig.channelId
+			},
+			sidebar: {
+				container: document.querySelector( '.collaboration-demo__sidebar' )
+			},
+			presenceList: {
+				container: document.querySelector( '.collaboration-demo__presence' )
+			}
+		} );
+	} );
+
+	function handleCopyUrlButton() {
+		const triggerElement = document.querySelector( '.collaboration-demo__share .btn' );
+		const inputElement = document.getElementById( 'demo-collaboration-url' );
+
+		inputElement.value = window.location;
+		inputElement.addEventListener( 'click', () => inputElement.select() );
+		triggerElement.addEventListener( 'click', () => copyFromInput( inputElement, triggerElement ) );
+	}
+
+	function copyFromInput( inputElement, triggerElement ) {
+		let buttonTimeout;
+
+		inputElement.select();
+		document.execCommand( 'copy' );
+
+		triggerElement.textContent = 'Copied!';
+		clearTimeout( buttonTimeout );
+		buttonTimeout = setTimeout( () => {
+			triggerElement.textContent = 'Copy URL';
+		}, 1500 );
+	}
+</script>
+</body>
+
+</html>

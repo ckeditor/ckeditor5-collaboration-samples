@@ -1,0 +1,49 @@
+<div *ngIf="!configurationSet">
+	<div id="overlay" [class.warning]="isWarning">
+		<form class="body" #form="ngForm" (ngSubmit)="handleSubmit()">
+			<h2>Connect CKEditor Cloud Services</h2>
+			<p>
+				If you do not have Cloud Services URLs yet,&nbsp;
+				<a href="https://ckeditor.com/docs/cs/latest/guides/collaboration/quick-start.html" target="_blank"
+					rel="noopener noreferrer">
+					see the documentation
+				</a>.
+			</p>
+			<div>
+				<label for="upload-url">Upload URL</label>
+				<input id="upload-url" name="upload-url" [(ngModel)]="config.uploadUrl" />
+			</div>
+			<div>
+				<label for="web-socket-url">WebSocket URL</label>
+				<input id="web-socket-url" name="web-socket-url" [(ngModel)]="config.webSocketUrl" />
+			</div>
+			<div>
+				<label for="token-url">Token URL</label>
+				<input id="token-url" name="token-url" [(ngModel)]="config.tokenUrl" (input)="handleTokenUrlChange()" required />
+			</div>
+
+			<div id="additional" [class.visible]="isCloudServicesTokenEndpoint()">
+				<p>Use one of the following users to define the user data.</p>
+				<div id="user-container">
+					<div *ngFor="let data of users" (click)="selectUser( data )" class="{{ selectedUser == data.id ? 'active' : '' }}">
+						<img src="{{ data.avatar }}" *ngIf="data.avatar" />
+						<span class="pseudo-avatar"
+							*ngIf="!data.avatar && data.name">{{ getUserInitials( data.name ) }}</span>
+						<span class="pseudo-avatar anonymous" *ngIf="!data.avatar && !data.name"></span>
+						<span>{{ data.name || '(anonymous)' }}</span>
+						<span class="role">{{ data.role }}</span>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<label for="channel-id">Channel ID</label>
+				<input id="channel-id" name="channel-id" [(ngModel)]="channelId" required />
+			</div>
+
+			<button id="start" [disabled]="!form.valid">Start</button>
+		</form>
+	</div>
+</div>
+
+<app-editor *ngIf="configurationSet" [configuration]="config" [channelId]="channelId" (ready)="onEditorReady($event)"></app-editor>

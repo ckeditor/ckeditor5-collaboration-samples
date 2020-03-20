@@ -1,0 +1,52 @@
+{
+  "name": "@ckeditor/real-time-collaboration-for-vue",
+  "version": "0.1.0",
+  "private": true,
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-adapter-ckfinder": "^18.0.0",
+    "@ckeditor/ckeditor5-alignment": "^18.0.0",
+    "@ckeditor/ckeditor5-autoformat": "^18.0.0",
+    "@ckeditor/ckeditor5-basic-styles": "^18.0.0",
+    "@ckeditor/ckeditor5-block-quote": "^18.0.0",
+    "@ckeditor/ckeditor5-ckfinder": "^18.0.0",
+    "@ckeditor/ckeditor5-easy-image": "^18.0.0",
+    "@ckeditor/ckeditor5-editor-classic": "^18.0.0",
+    "@ckeditor/ckeditor5-essentials": "^18.0.0",
+    "@ckeditor/ckeditor5-font": "^18.0.0",
+    "@ckeditor/ckeditor5-heading": "^18.0.0",
+    "@ckeditor/ckeditor5-highlight": "^18.0.0",
+    "@ckeditor/ckeditor5-image": "^18.0.0",
+    "@ckeditor/ckeditor5-link": "^18.0.0",
+    "@ckeditor/ckeditor5-list": "^18.0.0",
+    "@ckeditor/ckeditor5-media-embed": "^18.0.0",
+    "@ckeditor/ckeditor5-paragraph": "^18.0.0",
+    "@ckeditor/ckeditor5-paste-from-office": "^18.0.0",
+    "@ckeditor/ckeditor5-real-time-collaboration": "^18.0.0",
+    "@ckeditor/ckeditor5-remove-format": "^18.0.0",
+    "@ckeditor/ckeditor5-table": "^18.0.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.1",
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-dev-utils": "^12.0.9",
+    "@ckeditor/ckeditor5-dev-webpack-plugin": "^8.0.9",
+    "@ckeditor/ckeditor5-theme-lark": "^18.0.0",
+    "@vue/cli-service": "^3.6.0",
+    "postcss-loader": "^3.0.0",
+    "raw-loader": "^2.0.0",
+    "style-loader": "^1.0.0",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "engines": {
+    "node": ">=6.9.0",
+    "npm": ">=3.0.0"
+  }
+}

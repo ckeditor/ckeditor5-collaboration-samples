@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>CKEditor 5 multi-root editor with collaboration features</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+	<link href="configuration-dialog/configuration-dialog.css" rel="stylesheet" type="text/css">
+	<link href="./style.css" rel="stylesheet" type="text/css">
+	<script src="../build/multirooteditor.js"></script>
+	<script src="configuration-dialog/configuration-dialog.js"></script>
+
+	<style>
+		.content-wrapper {
+			background: #fff;
+			position: relative;
+			display: flex;
+			width: 100%;
+		}
+
+		.root-wrapper {
+			width: 100%;
+			padding: 20px;
+			border: 1px solid hsl(0, 0%, 77%);
+			border-top: 0;
+		}
+
+		.root {
+			width: 100%;
+			margin: 0 0 30px;
+		}
+
+		.root.ck-content:not(.ck-focused) {
+			border: 1px solid rgba(0, 0, 0, 0.15);
+		}
+
+		.root-wrapper .root:last-child {
+			margin: 0;
+		}
+
+		#root-header.ck-content {
+			text-align: center;
+		}
+
+		#root-header.ck-content h2 {
+			margin-bottom: 0;
+			font-size: 1.9rem;
+			font-weight: normal;
+		}
+
+		#root-header.ck-content h3 {
+			color: rgba(5, 22, 42, 0.59);
+			font-weight: 600;
+			font-size: 1.4rem;
+		}
+
+		.toolbar-container {
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+		}
+
+		.toolbar-container .presence,
+		.toolbar-container #toolbar {
+			width: 100%;
+		}
+
+		.toolbar-container .presence {
+			max-width: 300px;
+			border-top: 1px solid hsl(0, 0%, 77%);
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="centered">
+			<h1>
+				<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+					<img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo" /> CKEditor 5
+				</a>
+			</h1>
+
+			<nav>
+				<ul>
+					<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/collaboration.html"
+							target="_blank" rel="noopener noreferrer">Collaboration documentation</a></li>
+					<li><a href="https://ckeditor.com/docs/ckeditor5/latest/framework/guides/deep-dive/ui/custom-editor-creator.html"
+							target="_blank" rel="noopener noreferrer">Multi-root editor documentation</a></li>
+					<li><a href="https://ckeditor.com/collaboration/" target="_blank"
+							rel="noopener noreferrer">Website</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="message">
+			<div class="centered">
+				<h2>CKEditor 5 multi-root editor with collaboration features</h2>
+				<p>
+					Open this sample in another browser tab to start real-time collaborative editing.
+				</p>
+			</div>
+		</div>
+
+		<div class="centered">
+			<div class="container">
+				<div class="row row-presence">
+					<div class="presence"></div>
+				</div>
+
+				<div class="toolbar-container">
+					<div id="toolbar"></div>
+				</div>
+
+				<div class="content-wrapper">
+					<div class="root-wrapper">
+						<div id="root-header" class="root">
+							<h2>Gone traveling</h2>
+							<h3>Monthly travel news and inspiration</h3>
+						</div>
+
+						<div id="root-content" class="root">
+							<h3>Destination of the Month</h3>
+
+							<h4>Valletta</h4>
+
+							<figure class="image image-style-side">
+								<img alt="Picture of a sunlit facade of a Maltan building." src="https://c.cksource.com/a/1/img/docs/sample-image-malta.jpg">
+								<figcaption>It's siesta time in Valletta.</figcaption>
+							</figure>
+
+							<p>The capital city of <a href="https://en.wikipedia.org/wiki/Malta" target="_blank" rel="external">Malta</a> is the top destination this summer. It’s home to a cutting-edge contemporary architecture, baroque masterpieces, delicious local cuisine and at least 8 months of sun. It’s also a top destination for filmmakers, so you can take a tour through locations familiar to you from Game of Thrones, Gladiator, Troy and many more.</p>
+						</div>
+
+						<div id="root-footer" class="root">
+							<h3>The three greatest things you learn from traveling</h3>
+							<p><a href="#">Find out more</a></p>
+						</div>
+					</div>
+
+					<div class="sidebar-container">
+						<div class="sidebar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class="centered">
+			<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text editor of			tomorrow, available today</p>
+			<p>Copyright © 2003-2019, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> – Frederico
+				Knabben. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+		/* globals MultiRootEditor */
+
+		const { EditorWatchdog, MultiRootEditor: Editor } = MultiRootEditor;
+
+		// Configuration data needed to initialize the editor is available only after the configuration dialog
+		// is submitted, hence the editor is initialized inside a promise returned by `createDialog()`.
+		window.createDialog().then( cloudServicesConfig => {
+			createEditor( cloudServicesConfig );
+		} );
+
+		const watchdog = new EditorWatchdog();
+
+		watchdog.setCreator( ( elements, config ) => {
+			return Editor.create( elements, config )
+				.then( editor => {
+					document.querySelector( '#toolbar' ).appendChild( editor.ui.view.toolbar.element );
+
+					// Switch between inline, narrow sidebar and wide sidebar according to the window size.
+					const annotations = editor.plugins.get( 'Annotations' );
+					const sidebarElement = document.querySelector( '.sidebar' );
+
+					// Prevent closing the tab when any action is pending.
+					editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
+						if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
+							domEvt.preventDefault();
+							domEvt.returnValue = true;
+						}
+					} );
+
+					editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
+					refreshDisplayMode();
+
+					function refreshDisplayMode() {
+						if ( window.innerWidth < 1000 ) {
+							sidebarElement.classList.remove( 'narrow' );
+							sidebarElement.classList.add( 'hidden' );
+							annotations.switchTo( 'inline' );
+						}
+						else if ( window.innerWidth < 1300 ) {
+							sidebarElement.classList.remove( 'hidden' );
+							sidebarElement.classList.add( 'narrow' );
+							annotations.switchTo( 'narrowSidebar' );
+						}
+						else {
+							sidebarElement.classList.remove( 'hidden', 'narrow' );
+							annotations.switchTo( 'wideSidebar' );
+						}
+					}
+
+					return editor;
+				} );
+		} );
+
+		watchdog.setDestructor( editor => {
+			document.querySelector( '#toolbar' ).removeChild( editor.ui.view.toolbar.element );
+
+			return editor.destroy();
+		} );
+
+		function createEditor( cloudServicesConfig ) {
+			return watchdog
+				// Note: All roots should be rendered in the DOM in the same order
+				// as they have been added to the editor and should be displayed
+				// in separate rows (this is a temporary limitation).
+				//
+				// Valid:
+				//
+				// \----------\
+				// |  ROOT 1  |
+				// \----------\
+				//
+				// \----------\
+				// |  ROOT 2  |
+				// \----------\
+				//
+				// \----------\
+				// |  ROOT 3  |
+				// \----------\
+				//
+				//
+				// Invalid:
+				//
+				// \----------\
+				// |  ROOT 3  |
+				// \----------\
+				//
+				// \----------\  \----------\
+				// |  ROOT 2  |  |  ROOT 1  |
+				// \----------\  \----------\
+				.create( {
+					header: document.querySelector( '#root-header' ),
+					content: document.querySelector( '#root-content' ),
+					footer: document.querySelector( '#root-footer' )
+				}, {
+					cloudServices: {
+						tokenUrl: cloudServicesConfig.tokenUrl,
+						uploadUrl: cloudServicesConfig.uploadUrl,
+						webSocketUrl: cloudServicesConfig.webSocketUrl
+					},
+					collaboration: {
+						channelId: cloudServicesConfig.channelId
+					},
+					sidebar: {
+						container: document.querySelector( '.sidebar' )
+					},
+					presenceList: {
+						container: document.querySelector( '.presence' )
+					}
+				} );
+		}
+	</script>
+</body>
+
+</html>

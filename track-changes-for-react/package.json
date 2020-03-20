@@ -1,0 +1,36 @@
+{
+  "name": "track-changes-for-react",
+  "version": "0.0.1",
+  "private": true,
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com",
+  "dependencies": {
+    "@ckeditor/ckeditor5-react": "^2.1.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "eslint-config-ckeditor5": "^1.0.13",
+    "eslint-plugin-ckeditor5-rules": "^0.0.3",
+    "eslint-plugin-react": "^7.12.4",
+    "raw-loader": "^2.0.0",
+    "style-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.2.3"
+  },
+  "engines": {
+    "node": ">=6.9.0",
+    "npm": ">=3.0.0"
+  },
+  "scripts": {
+    "build": "cd vendor/ckeditor5 && npm run build && cd ../.. && webpack --mode production"
+  }
+}

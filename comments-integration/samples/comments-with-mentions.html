@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>CKEditor 5 comments with mentions</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="./style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+</head>
+
+<style>
+	/* Add mention styling inside comments. */
+	.ck .ck-annotation .mention {
+		background: var(--ck-color-mention-background);
+		color: var(--ck-color-mention-text);
+	}
+</style>
+
+<body>
+
+<header>
+	<div class="centered">
+		<h1>
+			<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+				<img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo" /> CKEditor 5
+			</a>
+		</h1>
+
+		<nav>
+			<ul>
+				<li><a href="https://ckeditor.com/collaboration/comments/" target="_blank" rel="noopener">Website</a></li>
+				<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments.html#comment-editor-customization" target="_blank" rel="noopener">Documentation</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<main>
+	<div class="message">
+		<div class="centered">
+			<h2>CKEditor 5 comments with mentions</h2>
+		</div>
+	</div>
+
+	<div class="centered">
+		<div class="row">
+			<div id="editor"></div>
+			<div class="sidebar"></div>
+		</div>
+		<div class="row row-info">
+			Your license key is stored in the local storage.
+			<button class="remove-license-key">Reset license key</button>
+		</div>
+	</div>
+</main>
+
+<footer>
+	<div class="centered">
+		<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text editor of			tomorrow, available today</p>
+		<p>Copyright © 2003-2019, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> – Frederico
+			Knabben. All rights reserved.</p>
+	</div>
+</footer>
+
+<script src="../build/classic-editor-with-comments.js"></script>
+
+<script>
+	/* globals ClassicEditor */
+
+	const STORAGE_KEY = 'ckeditor-license-key';
+
+	// Save the provided license key in the local storage.
+	const licenseKey = window.localStorage.getItem( STORAGE_KEY ) || window.prompt( 'Your license key' );
+	window.localStorage.setItem( STORAGE_KEY, licenseKey );
+
+	// You can always remove the key using the button in the UI.
+	document.querySelector( '.remove-license-key' ).addEventListener( 'click', () => {
+		window.localStorage.removeItem( STORAGE_KEY );
+		window.location.reload();
+	} );
+
+	// Application data will be available under a global variable `appData`.
+	const appData = {};
+
+	// Users data.
+	appData.users = [
+		{
+			id: 'user-1',
+			name: 'Joe Doe',
+			avatar: 'https://randomuser.me/api/portraits/thumb/men/26.jpg'
+		},
+		{
+			id: 'user-2',
+			name: 'Ella Harper',
+			avatar: 'https://randomuser.me/api/portraits/thumb/women/65.jpg'
+		}
+	];
+
+	appData.userId = 'user-1';
+
+	appData.initialData =
+		`<h2>
+			<comment id="thread-1" type="start"></comment>
+			Bilingual Personality Disorder
+			<comment id="thread-1" type="end"></comment>
+		</h2>
+		<figure class="image image-style-side">
+			<img src="https://c.cksource.com/a/1/img/docs/sample-image-bilingual-personality-disorder.jpg">
+			<figcaption>
+				One language, one person.
+			</figcaption>
+		</figure>
+		<p>
+			This may be the first time you hear about this made-up disorder but it actually isn’t so far
+			from the truth.
+			Even the studies that were conducted almost half a century show that
+			<strong>the language you speak has more effects on you than you realise</strong>.
+		</p>
+		<p>
+			One of the very first experiments conducted on this topic dates back to 1964.
+			<a href="https://www.researchgate.net/publication/9440038_Language_and_TAT_content_in_bilinguals">In the experiment</a>
+			designed by linguist Ervin-Tripp who is an expert in psycholinguistic and sociolinguistic
+			studies, adults who are bilingual
+			in English in French were showed series of pictures and were asked to create 3-minute
+			stories. In the end participants emphasized
+			drastically different dynamics for stories in English and French.
+		</p>
+		<p>
+			Another ground-breaking experiment which included bilingual Japanese women married to
+			American men in San Francisco were asked
+			to complete sentences. The goal of the experiment was to investigate whether or not human
+			feelings and thoughts
+			are expressed differently in <strong>different language mindsets</strong>.
+		</p>
+		<p>
+			Here is a sample from the the experiment:
+		</p>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>English</th>
+					<th>Japanese</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Real friends should</td>
+					<td>Be very frank</td>
+					<td>Help each other</td>
+				</tr>
+				<tr>
+					<td>I will probably become</td>
+					<td>A teacher</td>
+					<td>A housewife</td>
+				</tr>
+				<tr>
+					<td>When there is a conflict with family</td>
+					<td>I do what I want</td>
+					<td>It's a time of great unhappiness</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			More recent <a href="https://books.google.pl/books?id=1LMhWGHGkRUC">studies</a> show,
+			the language a person speaks affects
+			their cognition, behaviour, emotions and hence <strong>their personality</strong>.
+			This shouldn’t come as a surprise
+			<a href="https://en.wikipedia.org/wiki/Lateralization_of_brain_function">since we already know</a>
+			that different regions of the brain become more active depending on the person’s activity at hand.
+			Since structure, information and especially <strong>the culture</strong> of languages varies
+			substantially and the language a person speaks is an essential element of daily life.
+		</p>`;
+
+	class CommentsAdapter {
+		constructor( editor ) {
+			this.editor = editor;
+		}
+
+		init() {
+			const usersPlugin = this.editor.plugins.get( 'Users' );
+			const commentsRepositoryPlugin = this.editor.plugins.get( 'CommentsRepository' );
+
+			// Load the users data.
+			for ( const user of appData.users ) {
+				usersPlugin.addUser( user );
+			}
+
+			// Set the current user.
+			usersPlugin.defineMe( 'user-1' );
+
+			// Set the adapter to the `Comments#adapter` property.
+			commentsRepositoryPlugin.adapter = {
+				addComment: () => {
+					return Promise.resolve( {
+						createdAt: new Date() // Should be set on the server side.
+					} );
+				},
+
+				updateComment: () => Promise.resolve(),
+				removeComment: () => Promise.resolve(),
+				removeCommentThread: () => Promise.resolve(),
+
+				getCommentThread: () => {
+					// Write a request to your database here. The returned `Promise`
+					// should resolve with comment thread data.
+					return Promise.resolve( {
+						threadId: 'thread-1',
+						comments: [
+							{
+								commentId: 'comment-1',
+								authorId: 'user-1',
+								content: '<p>Are we sure we want to use a made-up disorder name?</p>',
+								createdAt: new Date()
+							},
+							{
+								commentId: 'comment-2',
+								authorId: 'user-2',
+								content: '<p>I believe <span class="mention" data-mention="@Ted">@Ted</span> wants...</p>',
+								createdAt: new Date()
+							}
+						]
+					} );
+				}
+			};
+		}
+	}
+
+	const { ClassicEditor: Editor, EditorWatchdog } = ClassicEditor;
+
+	const watchdog = new EditorWatchdog();
+	window.watchdog = watchdog;
+
+	watchdog.setCreator( ( el, config ) => {
+		return Editor.create( el, config )
+			.then( editor => {
+				// Switch between inline, narrow sidebar and wide sidebar according to the window size.
+				const annotations = editor.plugins.get( 'Annotations' );
+				const sidebarElement = document.querySelector( '.sidebar' );
+
+				function refreshDisplayMode() {
+					if ( window.innerWidth < 1000 ) {
+						sidebarElement.classList.remove( 'narrow' );
+						sidebarElement.classList.add( 'hidden' );
+						annotations.switchTo( 'inline' );
+					}
+					else if ( window.innerWidth < 1300 ) {
+						sidebarElement.classList.remove( 'hidden' );
+						sidebarElement.classList.add( 'narrow' );
+						annotations.switchTo( 'narrowSidebar' );
+					}
+					else {
+						sidebarElement.classList.remove( 'hidden', 'narrow' );
+						annotations.switchTo( 'wideSidebar' );
+					}
+				}
+
+				// Prevent closing the tab when any action is pending.
+				editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
+					if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
+						domEvt.preventDefault();
+						domEvt.returnValue = true;
+					}
+				} );
+
+				editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
+				refreshDisplayMode();
+
+				return editor;
+			} );
+	} );
+
+	watchdog.setDestructor( editor => editor.destroy() );
+
+	const MentionPlugin = Editor.builtinPlugins.find( plugin => plugin.pluginName == 'Mention' );
+
+	watchdog
+		.create( document.querySelector( '#editor' ), {
+			initialData: appData.initialData,
+			extraPlugins: [ CommentsAdapter ],
+			sidebar: {
+				container: document.querySelector( '.sidebar' )
+			},
+			comments: {
+				editorConfig: {
+					extraPlugins: [ MentionPlugin ],
+					mention: {
+						feeds: [
+							{
+								marker: '@',
+								feed: [ '@Barney', '@Lily', '@Marshall', '@Robin', '@Ted' ],
+								minimumCharacters: 1
+							}
+						]
+					}
+				}
+			},
+			licenseKey
+		} );
+</script>
+</body>
+
+</html>

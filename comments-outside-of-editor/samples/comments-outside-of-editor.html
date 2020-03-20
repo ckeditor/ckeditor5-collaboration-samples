@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>CKEditor 5 classic editors with custom comment targets</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+
+	<link href="styles.css" rel="stylesheet" type="text/css">
+	<link href="configuration-dialog/configuration-dialog.css" rel="stylesheet" type="text/css">
+
+	<script src="configuration-dialog/configuration-dialog.js"></script>
+	<script src="../build/cksource.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="centered">
+			<h1>
+				<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+					<img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo" /> CKEditor 5
+				</a>
+			</h1>
+
+			<nav>
+				<ul>
+					<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html"
+							target="_blank" rel="noopener noreferrer">Documentation</a></li>
+					<li><a href="https://ckeditor.com/collaboration/real-time/" target="_blank"
+							rel="noopener noreferrer">Website</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="message">
+			<div class="centered">
+				<h2>CKEditor 5 collaborative editing with comments outside editor</h2>
+				<p>
+					Open this sample in another browser tab to start real-time collaborative editing.
+				</p>
+			</div>
+		</div>
+
+		<div class="sample-wrapper">
+			<div class="sample-content">
+				<h2>Form controls</h2>
+
+				<div class="custom-controls">
+					<p id="control-1">
+						<select>
+							<option>Select</option>
+						</select>
+						<button><svg viewBox="0 0 20 20">
+								<path
+									d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z">
+								</path>
+							</svg></button>
+					</p>
+					<p id="control-2">
+						<select>
+							<option>Select</option>
+						</select>
+						<button><svg viewBox="0 0 20 20">
+								<path
+									d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z">
+								</path>
+							</svg></button>
+					</p>
+					<p id="control-3">
+						<select>
+							<option>Select</option>
+						</select>
+						<button><svg viewBox="0 0 20 20">
+								<path
+									d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z">
+								</path>
+							</svg></button>
+					</p>
+					<p id="control-4">
+						<select>
+							<option>Select</option>
+						</select>
+						<button><svg viewBox="0 0 20 20">
+								<path
+									d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z">
+								</path>
+							</svg></button>
+					</p>
+					<p id="control-5">
+						<select>
+							<option>Select</option>
+						</select>
+						<button><svg viewBox="0 0 20 20">
+								<path
+									d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z">
+								</path>
+							</svg></button>
+					</p>
+				</div>
+
+				<h2>Editor 1</h2>
+
+				<div class="row row-editor">
+					<div class="editor" id="e1">
+						<p>
+							Getting used to an entirely different culture can be challenging. While it’s also nice to
+							learn about cultures online or from books, nothing comes close to experiencing cultural
+							diversity in person. You learn to appreciate each and every single one of the differences
+							while you become more culturally fluid.
+						</p>
+						<blockquote>
+							<p>
+								The real voyage of discovery consists not in seeking new landscapes, but having new
+								eyes.
+							</p>
+							<p>Marcel Proust</p>
+						</blockquote>
+						<p>Life doesn't allow us to execute every single plan perfectly. This really seems to be the
+							case when you travel. You plan it down to every minute with a big checklist; but when it
+							comes to executing it, something always comes up and you’re left with your improvising
+							skills. You learn to adapt as you go. Here’s how my travel checklist looks now:</p>
+						<ul>
+							<li>buy a ticket:
+								<ul>
+									<li>for a plane, or</li>
+									<li>for a train</li>
+								</ul>
+							</li>
+							<li>start your adventure</li>
+						</ul>
+					</div>
+				</div>
+
+				<h2>Editor 2</h2>
+
+				<div class="row row-editor">
+					<div class="editor" id="e2">
+						<p>
+							Going to a new place can be terrifying. While change and uncertainty makes us scared,
+							traveling teaches us how ridiculous it is to be afraid of something before it happens. The
+							moment you face your fear and see there was nothing to be afraid of, is the moment you
+							discover bliss.
+						</p>
+						<table>
+							<thead>
+								<tr>
+									<th>Europe</th>
+									<th>Africa</th>
+									<th>Asia</th>
+									<th>Australia</th>
+									<th>America</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>18%</td>
+									<td>32%</td>
+									<td>21%</td>
+									<td>15%</td>
+									<td>14%</td>
+								</tr>
+							</tbody>
+						</table>
+						<p>Africa seems to be the most popular traveling destination nowadays.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="sample-sidebar">
+				<div class="row row-presence">
+					<div class="presence"></div>
+				</div>
+
+				<div class="sidebar-holder">
+					<div class="sidebar"></div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class="centered">
+			<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text
+				editor of tomorrow, available today</p>
+			<p>Copyright © 2003-2019, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> –
+				Frederico
+				Knabben. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+		/* globals createDialog CKSource */
+		const { ClassicEditor, Context, ContextWatchdog } = CKSource;
+
+		const watchdog = new ContextWatchdog();
+
+		// Publishing watchdog instance to the global scope.
+		window.watchdog = watchdog;
+
+		// Similarly to `EditorWatchdog`, you can specify a creator function that will be used to create the `Context` instance.
+		// In this case, after the `Context` instance is created, we want to initialize the integration that uses context plugins.
+		watchdog.setCreator( async config => {
+			const context = await Context.create( config );
+
+			initIntegration( context );
+
+			return context;
+		} );
+
+		// As above. When context is destroyed (for example, due to error) we want to remove everything that was bound to DOM elements.
+		// If the destructing is due to error, the destructor will be called, then new `Context` will be created and the creator
+		// (defined above) will be called again.
+		watchdog.setDestructor( async context => {
+			destroyIntegration();
+
+			await context.destroy();
+		} );
+
+		// Configuration data needed to initialize the editor is available only after the configuration dialog
+		// is submitted, hence the editor is initialized inside a promise returned by `createDialog()`.
+		createDialog().then( async cloudServicesConfig => {
+			const contextConfig = {
+				presenceList: {
+					container: document.querySelector( '.presence' )
+				},
+				sidebar: {
+					container: document.querySelector( '.sidebar' )
+				},
+				// Fill in cloud services data here:
+				cloudServices: {
+					tokenUrl: cloudServicesConfig.tokenUrl,
+					uploadUrl: cloudServicesConfig.uploadUrl,
+					webSocketUrl: cloudServicesConfig.webSocketUrl
+				},
+				collaboration: {
+					channelId: cloudServicesConfig.channelId
+				}
+			};
+
+			await watchdog.create( contextConfig );
+
+			for ( const editorElement of document.querySelectorAll( '.editor' ) ) {
+				// Use `id` attribute as an identifier for everything related to given editor instance.
+				const editorId = editorElement.id;
+
+				const editorConfig = {
+					collaboration: {
+						// Unique `channelId` for every editor field.
+						channelId: `${ getChannelIdFromUrl() }-${ editorId }`
+					}
+				};
+
+				await watchdog.add( {
+					id: editorId,
+					type: 'editor',
+					config: editorConfig,
+					sourceElementOrData: editorElement,
+					creator: ( element, config ) => ClassicEditor.create( element, config )
+				} );
+			}
+		} );
+
+		function initIntegration( context ) {
+			const channelId = context.config.get( 'collaboration.channelId' );
+
+			// The new API is available through `ContextRepository` and `Annotations` plugins.
+			// These are context plugins which operate outside of editor instance.
+			//
+			// `CommentsRepository` is all about handling comments. It fires some useful events and
+			// contains methods to handle the comments. See the usage below.
+			//
+			// `Annotations` is about comments balloons and can be used, among others, to implement
+			// your own sidebar.
+			const repository = context.plugins.get( 'CommentsRepository' );
+			const annotations = context.plugins.get( 'Annotations' );
+
+			// Handle the click on a button next to non-editor field.
+			//
+			// If there's no comments thread for that field, create a new comment thread.
+			// If there's already a comments thread for that field, set is as active.
+			document.querySelectorAll( '.custom-controls button' ).forEach( btn => {
+				// DOM element that is a container for the button and the form field element.
+				const fieldHolder = btn.parentNode;
+
+				// Comments thread id can be set to an arbitrary value.
+				// We can use the field's unique id attribute as a thread id and link the field with the thread this way.
+				const threadId = fieldHolder.id;
+
+				btn.commentsClickListener = () => {
+					if ( !repository.hasCommentThread( threadId ) ) {
+						// Creates a new, empty, local comment thread.
+						// Creates annotation view (sidebar balloon) for the thread and attaches it to `fieldHolder`.
+						// Sets the comment thread and active and focuses selection in the comment input field.
+						repository.openNewCommentThread( { channelId, threadId, target: fieldHolder } );
+					} else {
+						// Sets the comment as active. Triggers events.
+						repository.setActiveCommentThread( threadId );
+					}
+				};
+
+				btn.addEventListener( 'click', btn.commentsClickListener );
+			} );
+
+			// Handle non-editor comments that were loaded when comments adapter (context plugin) was initialized.
+			//
+			// At this moment, the initial comments has been loaded by the Cloud Services comments adapter.
+			// Some of them were editor comments and those will be handled by the editor comments plugin.
+			// However, comments set on non-editor fields need to be handled separately.
+			for ( const thread of repository.getCommentThreads( { channelId } ) ) {
+				_handleCommentThread( thread );
+			}
+
+			// Handle non-editor comments that are being added to the comments repository.
+			//
+			// Editor comments are handled by the editor comments plugin.
+			// However, comments set on non-editor fields need to be handled separately.
+			// This handles both comments coming from other clients and the comments created locally.
+			//
+			// Note that the event name contains the context `channelId`. This way we are
+			// listening only to the comments added to the context channel (so, added on non-editor fields).
+			repository.on( 'addCommentThread:' + channelId, ( evt, { threadId } ) => {
+				_handleCommentThread( repository.getCommentThread( threadId ) );
+			}, { priority: 'low' } );
+
+			// As above. Listen to non-editor comments that are removed.
+			repository.on( 'removeCommentThread:' + channelId, ( evt, { threadId } ) => {
+				const fieldHolder = document.getElementById( threadId );
+
+				fieldHolder.classList.remove( 'has-comment', 'active' );
+
+				// See `_handleCommentThread`.
+				annotations.focusTracker.remove( fieldHolder );
+			}, { priority: 'low' } );
+
+			// Handle a situation when the active comment changes.
+			// If the active comment is a non-editor comment, there is a need to highlight that field.
+			repository.on( 'change:activeCommentThread', ( evt, name, thread ) => {
+				// Remove highlight from previously highlighted field.
+				document.querySelectorAll( '.custom-controls .active' ).forEach( fieldHolder => fieldHolder.classList.remove( 'active' ) );
+
+				// Highlight another field, if applicable.
+				if ( thread ) {
+					const fieldHolder = document.getElementById( thread.id );
+
+					if ( fieldHolder ) {
+						fieldHolder.classList.add( 'active' );
+					}
+				}
+			} );
+
+			// Handle new non-editor comment thread.
+			function _handleCommentThread( thread ) {
+				// DOM element connected with the thread & annotation.
+				const fieldHolder = document.getElementById( thread.id );
+
+				// If the thread is not attached to a DOM element (target) yet, attach it.
+				// `openNewCommentThread` takes `target` parameter and attaches the thread to the target when the thread is being created.
+				// However, comment threads coming from remote clients need to be handled.
+				// Since this function (`_handleCommentThread`) is applied both for remote and local comments thread, we need
+				// to check if the thread was already attached to something.
+				if ( !thread.isAttached ) {
+					thread.attachTo( fieldHolder );
+				}
+
+				// Add highlight to the holder element to show that the field has a comment.
+				fieldHolder.classList.add( 'has-comment' );
+
+				// Add `fieldHolder` to appropriate focus trackers.
+				// Annotations use focus trackers to reset active view when annotations becomes focused or blurred.
+				// However, we don't want to unset active annotation when something in `fieldHolder` is clicked.
+				// For that reason, we add `fieldHolder` to those focus trackers.
+				// Thanks to that, whenever `fieldHolder` is focused, given annotation will behave like it is focused too.
+				//
+				// This is too difficult to figure out when creating an integration so it might be changed (simplified) in future.
+				const threadView = repository._threadToController.get( thread ).view;
+				const annotationView = annotations.getAnnotationView( threadView );
+
+				annotationView.focusTracker.add( fieldHolder );
+				annotations.focusTracker.add( fieldHolder );
+			}
+		}
+
+		function destroyIntegration() {
+			document.querySelectorAll( '.custom-controls p' ).forEach( fieldHolder => {
+				fieldHolder.classList.remove( 'has-comment', 'active' );
+			} );
+
+			document.querySelectorAll( '.custom-controls btn' ).forEach( btn => {
+				btn.removeEventListener( 'click', btn.commentsClickListener );
+
+				delete btn.commentsClickListener;
+			} );
+		}
+
+		function getChannelIdFromUrl() {
+			const channelIdMatch = location.search.match( /channelId=(.+)$/ );
+
+			return channelIdMatch ? decodeURIComponent( channelIdMatch[ 1 ] ) : null;
+		}
+	</script>
+</body>
+
+</html>

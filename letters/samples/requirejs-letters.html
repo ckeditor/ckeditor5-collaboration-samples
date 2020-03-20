@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>Basic Letters sample using RequireJS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="configuration-dialog/configuration-dialog.css" rel="stylesheet" type="text/css">
+	<link href="./style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/letters.png">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.js"></script>
+	<script src="configuration-dialog/configuration-dialog.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="centered">
+			<h1>
+				<a href="https://ckeditor.com/collaborative-editing/letters/" target="_blank" rel="noopener">
+					<img src="https://c.cksource.com/a/1/logos/letters.svg" alt="Letters logo"> Letters
+				</a>
+			</h1>
+
+			<nav>
+				<ul>
+					<li><a href="https://ckeditor.com/collaborative-editing/letters/" target="_blank" rel="noopener">Website</a></li>
+					<li><a href="https://ckeditor.com/docs/letters/latest/guides/overview.html" target="_blank" rel="noopener">Documentation</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="message">
+			<div class="centered">
+				<h2>Basic Letters sample using RequireJS</h2>
+				<p>
+					Open this sample in another browser tab to start distraction-free real-time collaborative editing.
+				</p>
+			</div>
+		</div>
+
+		<div class="centered">
+			<div id="letters"></div>
+		</div>
+	</main>
+
+	<footer>
+		<div class="centered">
+			<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text editor of			tomorrow, available today</p>
+			<p>Copyright © 2003-2019, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> – Frederico
+				Knabben. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+		/* globals require */
+
+		'use strict';
+
+		const initialTitle = 'The great world of open Web standards';
+		const initialBody = `
+			<p>Some old and grumpy web development veterans remember the good, old days of Internet Explorer 6 hegemony. Fortunately this dark era is over and now we live in the shiny world of open web standards, right?</p>
+
+			<blockquote><p>Without any doubt you had to hear about that super hot trendy HTML5 thing. It’s probably the biggest buzzword in the history of the web development and means everything. And that’s the source of nearly all problems. Let’s just think what HTML5 really means.</p></blockquote>
+
+			<h3>The two standards</h3>
+
+			<p>Long time ago the situation in web standards was clear: if something wasn’t recommended by W3C, then it wasn’t a standard. But then W3C started to believe in XHTML 2 fiction and WHATWG was born. Now we have two standards:</p>
+
+			<ul>
+				<li>HTML Living Standard, being constantly improved by WHATWG,</li>
+				<li>HTML 5.x, described by MDN as “HTML Living Standard snapshots”, created by W3C; the current version is HTML 5.1.</li>
+			</ul>
+
+			<p>What’s the difference between these two standards? The specifications themselves try to explain it shortly (and it’s funny to see that <a href="https://html.spec.whatwg.org/multipage/introduction.html#history-2">history from WHATWG’s perspective</a> is slightly different than the same history from <a href="https://www.w3.org/TR/html51/introduction.html#introduction-history">the same history from W3C’s perspective</a>). To keep it short: two organisations have “different goals” and that’s the source of all abomination that arose in web standards…</p>
+
+			<p>But that’s only the ideological difference, the more practical one is more trivial: HTML Living Standard implements more features than HTML 5.x and is constantly updated to be synchronised with implementations in browsers. On the other hand HTML 5.x includes only “stable” features, with more than one implementation and a “frozen” API. This is clearly visible when we start looking for a definition of the <dialog> element in HTML 5.1 specification — it’s just not there. Meanwhile finding it in WHATWG specification <a href="https://html.spec.whatwg.org/multipage/forms.html#the-dialog-element">shouldn’t be especially difficult</a>. However the <a href="https://www.w3.org/TR/html52/interactive-elements.html#the-dialog-element"><dialog></a> element is present in HTML 5.2 (which is currently in Working Draft state) — probably because it’s still a standard being developed and before freezing it, new implementations (in Firefox and/or Edge) could be created.</p>
+		`;
+
+		require( [ '../build/letters' ], Letters => {
+			// Configuration data needed to initialize the editor is available only after the configuration dialog
+			// is submitted, hence the editor is initialized inside a promise returned by `createDialog()`.
+			window.createDialog().then( cloudServicesConfig => {
+				const letters = new Letters( {
+					cloudServices: {
+						tokenUrl: cloudServicesConfig.tokenUrl,
+						uploadUrl: cloudServicesConfig.uploadUrl,
+						webSocketUrl: cloudServicesConfig.webSocketUrl
+					},
+					collaboration: {
+						channelId: cloudServicesConfig.channelId
+					},
+					title: initialTitle,
+					body: initialBody
+				} );
+
+				return Promise.resolve()
+					.then( () => letters.bootstrap( document.getElementById( 'letters' ) ) )
+					.then( () => letters.load() )
+					.catch( err => console.error( err ) );
+			} );
+		} );
+	</script>
+</body>
+
+</html>

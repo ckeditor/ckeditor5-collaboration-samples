@@ -1,0 +1,299 @@
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * This file is licensed under the terms of the MIT License (see LICENSE.md).
+ */
+
+:root {
+	--ck-sample-base-spacing: 2em;
+	--ck-sample-color-white: #fff;
+	--ck-sample-color-green: #279863;
+	--ck-sample-container-width: 1285px;
+	--ck-sample-sidebar-width: 290px;
+	--ck-sample-editor-min-height: 400px;
+}
+
+body, html {
+	padding: 0;
+	margin: 0;
+
+	font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+body {
+	height: 100%;
+	color: #2D3A4A;
+}
+
+body * {
+	box-sizing: border-box;
+}
+
+a {
+	color: #38A5EE;
+}
+
+.ck-heading-dropdown {
+	width: 105px !important;
+}
+
+/* --------- STYLES TO DISPLAY THE EDITOR BEFORE LOAD ---------------------------------------------------------------------------- */
+
+.editor {
+	background: #fff;
+	border: 1px solid hsl(0, 0%, 70%);
+	width: 100%;
+}
+
+/* We need to use an extra `<main>` because of bigger `ck-reset` specificity. */
+main .ck.ck-editor {
+	/* Because of sidebar `position: relative`, Edge is overriding the outline of a focused editor. */
+	position: relative;
+	z-index: 10;
+	width: 100%;
+}
+
+.centered {
+	/* Hide overlapping comments. */
+	overflow: hidden;
+
+	max-width: var(--ck-sample-container-width);
+	margin: 0 auto;
+	padding: 0 var(--ck-sample-base-spacing);
+}
+
+.row {
+	display: flex;
+	position: relative;
+}
+
+.sample-wrapper {
+	display: flex;
+    justify-content: space-between;
+    position: relative;
+	width: 100%;
+}
+
+.sample-sidebar {
+    min-height: 100vh;
+    width: 400px;
+    padding: 0 20px 20px;
+    border-left: 1px solid var(--ck-color-base-border);
+	border-bottom: 1px solid var(--ck-color-base-border);
+    background: hsl(0, 0%, 98%);
+}
+
+.sidebar {
+	padding: 0 10px;
+    position: relative;
+	width: 100%;
+	min-height: 100%;
+	font-size: 20px;
+	overflow: hidden;
+	min-width: var(--ck-sample-sidebar-width);
+}
+
+.sample-content {
+	max-width: 960px;
+	margin: 30px auto 0px auto;
+}
+
+.sidebar.narrow {
+	min-width: 60px;
+}
+
+.sidebar.hidden {
+	display: none;
+}
+
+.row-presence {
+	--ck-color-base-text: #000;
+
+    max-width:  var(--ck-sample-container-width);
+    position: relative;
+    padding: 10px 0px;
+	background: hsl(0, 0%, 98%);
+
+	/* Make `z-index` bigger than `.editor` to properly display tooltips. */
+	z-index: 20;
+}
+
+.presence .ck.ck-presence-list__counter {
+	order: 2;
+	margin-left: var(--ck-spacing-large)
+}
+
+.editor,
+/* Classic demo. */
+main .ck-editor[role='application'] .ck.ck-content,
+
+/* Document demo. */
+.ck.editor__editable[role='textbox'],
+
+/* Inline & Balloon demo. */
+.ck.editor[role='textbox'] {
+	background: #fff;
+	font-size: 1em;
+	line-height: 1.6em;
+	min-height: var(--ck-sample-editor-min-height);
+	padding: 1.5em 2em;
+}
+
+/* --------- SAMPLE GENERIC STYLES ---------------------------------------------------------------------------- */
+header .centered {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 8em;
+}
+
+header h1 a {
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	color: #2D3A4A;
+	text-decoration: none;
+}
+
+header h1 img {
+	display: block;
+	height: 64px;
+}
+
+header nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+header nav ul li {
+	display: inline-block;
+}
+
+header nav ul li + li {
+	margin-left: 1em;
+}
+
+header nav ul li a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #2D3A4A;
+}
+
+header nav ul li a:hover {
+	text-decoration: underline;
+}
+
+main .message {
+	padding: 0 0 var(--ck-sample-base-spacing);
+	background: var(--ck-sample-color-green);
+	color: var(--ck-sample-color-white);
+}
+
+main .message h2 {
+	position: relative;
+	padding-top: 1em;
+	font-size: 2em;
+}
+
+footer {
+	margin: calc(2*var(--ck-sample-base-spacing)) var(--ck-sample-base-spacing);
+	font-size: .8em;
+	text-align: center;
+	color: rgba(0,0,0,.4);
+}
+
+/* Custom controls */
+
+
+/* Custom controls */
+.custom-controls {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.has-comment {
+    border: 2px solid var(--ck-color-comment-marker);
+    background: var(--ck-color-comment-marker);
+}
+
+.has-comment.active {
+    border: 2px solid var(--ck-color-comment-marker-active);
+    background: var(--ck-color-comment-marker-active);
+}
+
+.custom-controls select::-ms-expand {
+    display: none;
+}
+
+.custom-controls select {
+    border: 1px solid hsl( 0, 0%, 70% );
+    padding: 5px 10px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+    height: 34px;
+    border-radius: 2px;
+    width: 200px;
+}
+
+.custom-controls p {
+    display: flex;
+    width: 255px;
+    padding: 5px;
+    border: 2px solid transparent;
+    margin: 0 0 5px;
+    outline: none;
+}
+
+.custom-controls button {
+    border-radius: 2px;
+    cursor: pointer;
+    margin-left: 10px;
+    height: 34px;
+    width: 34px;
+    transition: 200ms ease background;
+    background: #fff;
+}
+
+.custom-controls button:hover {
+    background: hsl(0, 0%, 90%);
+}
+
+.custom-controls button svg {
+    margin-top: 5px;
+}
+
+
+/* --------- RWD ---------- */
+@media screen and ( max-width: 800px ) {
+	:root {
+		--ck-sample-base-spacing: 1em;
+	}
+
+	header h1 {
+		width: 100%;
+	}
+
+	header h1 img {
+		height: 40px;
+	}
+
+	header nav ul {
+		text-align: right;
+	}
+
+	main .message h2 {
+		font-size: 1.5em;
+	}
+
+	main .row .ck.ck-editor__editable[ role='textbox' ] {
+		padding: 0.5em 1em 1em;
+	}
+}

@@ -1,0 +1,162 @@
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * This file is licensed under the terms of the MIT License (see LICENSE.md).
+ */
+
+:root {
+	--ck-sample-base-spacing: 2em;
+	--ck-sample-color-white: #fff;
+	--ck-sample-color-letters: #f85c4c;
+	--ck-sample-container-width: 1285px;
+	--ck-sample-sidebar-width: 300px;
+}
+
+body, html {
+	padding: 0;
+	margin: 0;
+
+	font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+body {
+	height: 100%;
+	color: #2D3A4A;
+}
+
+body * {
+	box-sizing: border-box;
+}
+
+#letters {
+	border: 1px solid hsl(0, 0%, 93%);
+}
+
+a {
+	color: #38A5EE;
+}
+
+.centered {
+	max-width: var(--ck-sample-container-width);
+	margin: 0 auto;
+	padding: 0 var(--ck-sample-base-spacing);
+	overflow: hidden;
+}
+
+.row {
+	display: flex;
+	position: relative;
+}
+
+/* --------- SAMPLE GENERIC STYLES ---------------------------------------------------------------------------- */
+header .centered {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 8em;
+}
+
+header h1 a {
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	color: #2D3A4A;
+	text-decoration: none;
+}
+
+header h1 img {
+	display: block;
+	height: 64px;
+}
+
+header nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+header nav ul li {
+	display: inline-block;
+}
+
+header nav ul li + li {
+	margin-left: 1em;
+}
+
+header nav ul li a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #2D3A4A;
+}
+
+header nav ul li a:hover {
+	text-decoration: underline;
+}
+
+main .message {
+	padding: 0 0 var(--ck-sample-base-spacing);
+	background: var(--ck-sample-color-letters);
+	color: var(--ck-sample-color-white);
+}
+
+main .message::after {
+	content: "";
+	z-index: -1;
+	display: block;
+	height: 10em;
+	width: 100%;
+	background: var(--ck-sample-color-letters);
+	position: absolute;
+	left: 0;
+}
+
+main .message h2 {
+	position: relative;
+	padding-top: 1em;
+	font-size: 2em;
+}
+
+footer {
+	margin: calc(2*var(--ck-sample-base-spacing)) var(--ck-sample-base-spacing);
+	font-size: .8em;
+	text-align: center;
+	color: rgba(0,0,0,.4);
+}
+
+/* --------- RWD ---------- */
+@media screen and ( max-width: 800px ) {
+	:root {
+		--ck-sample-base-spacing: 1em;
+	}
+
+	header h1 {
+		width: 100%;
+	}
+
+	header h1 img {
+		height: 40px;
+	}
+
+	header nav ul {
+		text-align: right;
+	}
+
+	/* To see the block toolbar button. */
+	main .centered {
+		padding: 0 30px;
+	}
+
+	main .message h2 {
+		font-size: 1.5em;
+	}
+
+	main .ltrs-main__content--main .ck.ck-editor__editable {
+		padding: 0 1em;
+	}
+
+	main .ltrs-main__content {
+		padding: 50px 0 100px;
+	}
+}
