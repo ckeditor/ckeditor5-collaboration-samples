@@ -94,7 +94,7 @@ export class LoadSaveIntegrationComponent implements AfterViewInit, OnDestroy {
 				data: {
 					commandName: 'heading',
 					commandParams: [ { value: 'heading2' } ],
-					ormatGroupId: 'blockName',
+					formatGroupId: 'blockName',
 					multipleBlocks: false
 				}
 			}
