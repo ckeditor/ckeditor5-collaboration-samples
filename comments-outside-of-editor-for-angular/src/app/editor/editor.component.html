@@ -1,0 +1,92 @@
+<header>
+	<div class="centered">
+		<h1>
+			<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+				<img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo" /> CKEditor 5
+			</a>
+		</h1>
+
+		<nav>
+			<ul>
+				<li>
+					<a href="https://ckeditor.com/collaboration/" target="_blank" rel="noopener noreferrer">Website</a>
+				</li>
+				<li>
+					<a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html"
+						target="_blank" rel="noopener noreferrer">Documentation</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<main>
+	<div class="message">
+		<div class="centered">
+			<h1>CKEditor 5 collaborative editing with comments outside editor for Angular</h1>
+			<p>
+				Open this sample in another browser tab to start real-time collaborative editing.
+			</p>
+		</div>
+	</div>
+	<div class="sample-wrapper">
+		<div class="sample-content">
+			<h2>Form controls</h2>
+
+			<div class="custom-controls">
+				<p id="control-1" #customControl>
+					<select><option>Select</option></select>
+					<button (click)="onClick($event, 'control-1')"><svg viewBox="0 0 20 20"><path d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z"></path></svg></button>
+				</p>
+				<p id="control-2" #customControl>
+					<select><option>Select</option></select>
+					<button (click)="onClick($event, 'control-2')"><svg viewBox="0 0 20 20"><path d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z"></path></svg></button>
+				</p>
+				<p id="control-3" #customControl>
+					<select><option>Select</option></select>
+					<button (click)="onClick($event, 'control-3')"><svg viewBox="0 0 20 20"><path d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z"></path></svg></button>
+				</p>
+				<p id="control-4" #customControl>
+					<select><option>Select</option></select>
+					<button (click)="onClick($event, 'control-4')"><svg viewBox="0 0 20 20"><path d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z"></path></svg></button>
+				</p>
+				<p id="control-5" #customControl>
+					<select><option>Select</option></select>
+					<button (click)="onClick($event, 'control-5')"><svg viewBox="0 0 20 20"><path d="M2.5 9.41c0 3.54 3.24 6.42 7.23 6.42 1.03 0 2.02-.19 2.95-.56 1.65.93 1.79.98 3.62 1.63.3.11.57.13.61.05.04-.08.02-.43-.08-.75-.48-1.63-.87-1.77-1.01-3.32a5.87 5.87 0 0 0 1.15-3.47C16.97 5.88 13.72 3 9.73 3S2.5 5.88 2.5 9.41zm9.64 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95zm-3.37 0c0-.52.43-.95.96-.95.54 0 .97.43.97.95 0 .53-.43.95-.97.95a.96.96 0 0 1-.96-.95zm-3.38 0c0-.52.44-.95.97-.95s.96.43.96.95c0 .53-.43.95-.96.95a.96.96 0 0 1-.97-.95z"></path></svg></button>
+				</p>
+			</div>
+
+			<h2>Editor 1</h2>
+
+			<div class='row row-editor'>
+				<ckeditor [editor]="Editor" [config]="editorConfig1" [data]="data" [watchdog]="watchdog"></ckeditor>
+			</div>
+
+			<h2>Editor 2</h2>
+
+			<div class='row row-editor'>
+				<ckeditor [editor]="Editor" [config]="editorConfig2" [data]="data" [watchdog]="watchdog"></ckeditor>
+			</div>
+		</div>
+
+		<div class="sample-sidebar">
+			<div class="row row-presence">
+				<div #presenceList class='presence'></div>
+			</div>
+			<div class="sidebar-holder">
+				<div #sidebar class="sidebar"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<footer>
+	<div class="centered">
+		<p>
+			<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">CKEditor 5</a> – Rich text editor of tomorrow, available today
+		</p>
+		<p>
+			Copyright © 2003-2019, <a href="https://cksource.com/" target="_blank" rel="noopener noreferrer">CKSource</a> – Frederico Knabben. All rights reserved.
+		</p>
+	</div>
+</footer>
