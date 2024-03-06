@@ -1,0 +1,1 @@
+{"ast":null,"code":"import overArg from './_overArg.js';\n\n/** Built-in value references. */\nvar getPrototype = overArg(Object.getPrototypeOf, Object);\nexport default getPrototype;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import clamp from './clamp.js';\nimport inRange from './inRange.js';\nimport random from './random.js';\nexport default {\n  clamp,\n  inRange,\n  random\n};","map":null,"metadata":{},"sourceType":"module"}

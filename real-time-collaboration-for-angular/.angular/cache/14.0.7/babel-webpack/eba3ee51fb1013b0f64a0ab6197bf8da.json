@@ -1,0 +1,1 @@
+{"ast":null,"code":"/** Used to match template delimiters. */\nvar reEscape = /<%-([\\s\\S]+?)%>/g;\nexport default reEscape;","map":null,"metadata":{},"sourceType":"module"}

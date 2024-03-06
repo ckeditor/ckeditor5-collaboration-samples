@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\n * This method returns `true`.\n *\n * @static\n * @memberOf _\n * @since 4.13.0\n * @category Util\n * @returns {boolean} Returns `true`.\n * @example\n *\n * _.times(2, _.stubTrue);\n * // => [true, true]\n */\nfunction stubTrue() {\n  return true;\n}\nexport default stubTrue;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as now } from './now.js';\nexport { default } from './date.default.js';","map":null,"metadata":{},"sourceType":"module"}

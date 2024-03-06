@@ -1,0 +1,1 @@
+{"ast":null,"code":"import now from './now.js';\nexport default {\n  now\n};","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\n * The function whose prototype chain sequence wrappers inherit from.\n *\n * @private\n */\nfunction baseLodash() {\n  // No operation performed.\n}\nexport default baseLodash;","map":null,"metadata":{},"sourceType":"module"}

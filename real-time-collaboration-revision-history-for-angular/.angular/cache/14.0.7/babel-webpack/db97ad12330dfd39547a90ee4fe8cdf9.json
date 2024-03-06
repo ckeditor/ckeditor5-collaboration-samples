@@ -1,0 +1,1 @@
+{"ast":null,"code":"import root from './_root.js';\n\n/** Used to detect overreaching core-js shims. */\nvar coreJsData = root['__core-js_shared__'];\nexport default coreJsData;","map":null,"metadata":{},"sourceType":"module"}

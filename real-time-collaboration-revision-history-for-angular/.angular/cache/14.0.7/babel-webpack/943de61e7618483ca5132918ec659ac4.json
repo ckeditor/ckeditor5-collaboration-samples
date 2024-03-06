@@ -1,0 +1,1 @@
+{"ast":null,"code":"/** Used to match template delimiters. */\nvar reInterpolate = /<%=([\\s\\S]+?)%>/g;\nexport default reInterpolate;","map":null,"metadata":{},"sourceType":"module"}
