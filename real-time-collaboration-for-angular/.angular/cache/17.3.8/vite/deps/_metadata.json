@@ -1,0 +1,58 @@
+{
+  "hash": "a12def4e",
+  "configHash": "51df844d",
+  "lockfileHash": "e67e0c43",
+  "browserHash": "5883a90d",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "c6c2d112",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "55382f24",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "6bd4d66a",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "3397d75c",
+      "needsInterop": false
+    },
+    "@ckeditor/ckeditor5-angular": {
+      "src": "../../../../../node_modules/@ckeditor/ckeditor5-angular/fesm2020/ckeditor-ckeditor5-angular.mjs",
+      "file": "@ckeditor_ckeditor5-angular.js",
+      "fileHash": "04ba2f95",
+      "needsInterop": false
+    },
+    "ckeditor5-custom-build": {
+      "src": "../../../../../node_modules/ckeditor5-custom-build/build/ckeditor.js",
+      "file": "ckeditor5-custom-build.js",
+      "fileHash": "5b06797d",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-7QJBTGU2": {
+      "file": "chunk-7QJBTGU2.js"
+    },
+    "chunk-GJFA7C7X": {
+      "file": "chunk-GJFA7C7X.js"
+    },
+    "chunk-PRJMUXQW": {
+      "file": "chunk-PRJMUXQW.js"
+    },
+    "chunk-G2CFKYE4": {
+      "file": "chunk-G2CFKYE4.js"
+    }
+  }
+}

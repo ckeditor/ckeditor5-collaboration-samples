@@ -1,0 +1,15 @@
+{
+    "name": "ckeditor/comments-backend-example",
+    "license": "MIT",
+    "require" : {
+        "php" : "^7.0",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "slim/slim": "^3.0"
+	},
+    "autoload": {
+        "psr-4": {
+            "Example\\": "./src"
+        }
+    }
+}

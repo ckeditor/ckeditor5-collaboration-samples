@@ -1,0 +1,35 @@
+/**
+ * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Oswald&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+
+ .editor-container {
+   --ckeditor5-preview-sidebar-width: 270px;
+ }
+
+ .editor-container .ck.ck-content {
+   word-break: break-word;
+ }
+
+ .editor-container__editor-wrapper {
+   display: flex;
+   width: fit-content;
+ }
+
+ .editor-container__sidebar {
+   padding: 0 10px;
+   position: relative;
+   min-width: var(--ck-sample-sidebar-width);
+   font-size: 20px;
+   background: hsl(0, 0%, 98%);
+   border: 1px solid hsl(0, 0%, 77%);
+   border-left: 0;
+   border-top: 0;
+   overflow: hidden;
+   min-height: 100%;
+
+   /* #2733. Do not overlap the left border if the sidebar is longer than content. */
+   box-shadow: -1px 0 0 0 hsl(0, 0%, 77%);
+ }

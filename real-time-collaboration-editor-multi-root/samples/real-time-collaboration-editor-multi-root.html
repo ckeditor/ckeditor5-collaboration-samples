@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>CKEditor 5 multi-root editor with collaboration features</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+	<link href="configuration-dialog/configuration-dialog.css" rel="stylesheet" type="text/css">
+	<link href="./styles.css" rel="stylesheet" type="text/css">
+	<script src="../build/real-time-collaboration-editor-multi-root.js"></script>
+	<script src="configuration-dialog/configuration-dialog.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="centered">
+			<h1>
+				<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+					<img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo" /> CKEditor 5
+				</a>
+			</h1>
+
+			<nav>
+				<ul>
+					<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/collaboration.html"
+							target="_blank" rel="noopener noreferrer">Collaboration documentation</a></li>
+					<li><a href="https://ckeditor.com/docs/ckeditor5/latest/framework/guides/deep-dive/ui/custom-editor-creator.html"
+							target="_blank" rel="noopener noreferrer">Multi-root editor documentation</a></li>
+					<li><a href="https://ckeditor.com/collaboration/" target="_blank"
+							rel="noopener noreferrer">Website</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="message">
+			<div class="centered">
+				<h2>CKEditor 5 multi-root editor with collaboration features</h2>
+				<p>
+					Open this sample in another browser tab to start real-time collaborative editing.
+				</p>
+			</div>
+		</div>
+
+		<div class="centered">
+			<div class="container">
+				<div class="row row-presence">
+					<div class="presence"></div>
+				</div>
+
+				<div class="toolbar-container">
+					<div id="toolbar"></div>
+				</div>
+
+				<div id="editor-container" class="content-wrapper row">
+					<div id="document-outline-container" class="document-outline-container"></div>
+					<div class="editor"></div>
+					<div class="sidebar" id="sidebar-container"></div>
+				</div>
+
+				<div id="revision-viewer-container">
+					<div class="document-outline-container"></div>
+					<div class="editor"></div>
+					<div class="sidebar" id="revision-viewer-sidebar"></div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class="centered">
+			<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text editor of			tomorrow, available today</p>
+			<p>Copyright © 2003-2024, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> – Holding
+				sp. z o.o. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+		/* globals MultiRootEditorWithRealTimeCollaboration, createDialog */
+
+		const multiRootDefaultDataAll = {
+			a: '<p>A</p>',
+			b: '<p>B</p>',
+			c: '<p>C</p>'
+		};
+
+		const multiRootDefaultRootsAttributesAll = {
+			a: { order: 10000 },
+			b: { order: 20000 },
+			c: { order: 30000 }
+		};
+
+		const { EditorWatchdog, MultiRootEditor: Editor } = MultiRootEditorWithRealTimeCollaboration;
+
+		const watchdog = new EditorWatchdog();
+
+		window.watchdog = watchdog;
+
+		watchdog.setCreator( ( el, config ) => {
+			return Editor.create( el, config )
+				.then( editor => {
+					// Switch between inline, narrow sidebar and wide sidebar according to the window size.
+					const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
+					const sidebarElement = document.querySelector( '.sidebar' );
+
+					// Prevent closing the tab when any action is pending.
+					editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
+						if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
+							domEvt.preventDefault();
+							domEvt.returnValue = true;
+						}
+					} );
+
+					editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
+					refreshDisplayMode();
+
+					function refreshDisplayMode() {
+						if ( window.innerWidth < 1000 ) {
+							sidebarElement.classList.remove( 'narrow' );
+							sidebarElement.classList.add( 'hidden' );
+							annotationsUIs.switchTo( 'inline' );
+						}
+						else if ( window.innerWidth < 1300 ) {
+							sidebarElement.classList.remove( 'hidden' );
+							sidebarElement.classList.add( 'narrow' );
+							annotationsUIs.switchTo( 'narrowSidebar' );
+						}
+						else {
+							sidebarElement.classList.remove( 'hidden', 'narrow' );
+							annotationsUIs.switchTo( 'wideSidebar' );
+						}
+					}
+
+					return editor;
+				} );
+		} );
+
+		watchdog.setDestructor( editor => editor.destroy() );
+
+		createDialog().then( cloudServicesConfig => {
+			const channelId = cloudServicesConfig.channelId;
+			const content = JSON.parse( localStorage.getItem( 'documentData:' + channelId ) ) || multiRootDefaultDataAll;
+			const attributes = JSON.parse( localStorage.getItem( 'documentRootsAttributes:' + channelId ) ) || multiRootDefaultRootsAttributesAll;
+
+			const elements = {};
+
+			for ( const rootName of Object.keys( content ) ) {
+				const domElement = document.createElement( 'div' );
+				domElement.innerHTML = content[ rootName ];
+
+				const container = document.createElement( 'div' );
+				container.className = 'editor-instance';
+				container.appendChild( domElement );
+
+				elements[ rootName ] = domElement;
+
+				document.querySelector( '#editor-container .editor' ).appendChild( container );
+			}
+
+			return watchdog.create( elements, {
+				cloudServices: {
+					tokenUrl: cloudServicesConfig.tokenUrl,
+					uploadUrl: cloudServicesConfig.uploadUrl,
+					webSocketUrl: cloudServicesConfig.webSocketUrl
+				},
+				collaboration: {
+					channelId: cloudServicesConfig.channelId
+				},
+				editableParentSelector: '#editor-container .editor',
+				sidebar: {
+					container: document.querySelector( '#sidebar-container' )
+				},
+				revisionHistory: {
+					showRevisionViewerCallback: config => {
+						config.editableParentSelector = '#revision-viewer-container .editor';
+						config.revisionHistory.viewerSidebarContainer = document.querySelector( '#revision-viewer-sidebar' );
+
+						const editorContainer = document.querySelector( '#editor-container' );
+						const viewerContainer = document.querySelector( '#revision-viewer-container' );
+
+						return Editor.create( {}, config ).then( viewerEditor => {
+							viewerContainer.style.display = 'flex';
+							editorContainer.style.display = 'none';
+
+							const toolbarContainer = document.querySelector( '#toolbar' );
+							toolbarContainer.innerHTML = '';
+							toolbarContainer.appendChild( viewerEditor.ui.view.toolbar.element );
+
+							return viewerEditor;
+						} );
+					},
+					closeRevisionViewerCallback: viewerEditor => {
+						const editorContainer = document.querySelector( '#editor-container' );
+						const viewerContainer = document.querySelector( '#revision-viewer-container' );
+
+						viewerContainer.style.display = 'none';
+						editorContainer.style.display = '';
+
+						return viewerEditor.destroy().then( () => {
+							const toolbarContainer = document.querySelector( '#toolbar' );
+							toolbarContainer.innerHTML = '';
+							toolbarContainer.appendChild( window.editor.ui.view.toolbar.element );
+						} );
+					}
+				},
+				autosave: {
+					save: async editor => {
+						const channelId = this.editor.config.get( 'collaboration.channelId' );
+
+						const revisionTracker = editor.plugins.get( 'RevisionTracker' );
+						const currentRevision = revisionTracker.currentRevision;
+						const oldRevisionVersion = currentRevision.toVersion;
+
+						// Update the current revision with the newest document changes.
+						await revisionTracker.update();
+
+						// Check if the revision was updated.
+						// If not, do not make an unnecessary call.
+						if ( oldRevisionVersion === currentRevision.toVersion ) {
+							return true;
+						}
+
+						// Use the document data and attributes saved with the revision instead of the editor data.
+						// Revision data may slightly differ from the editor data when
+						// real-time collaboration is involved.
+						const documentData = await revisionTracker.getRevisionDocumentData( revisionTracker.currentRevision );
+						const documentAttributes = await revisionTracker.getRevisionRootsAttributes( revisionTracker.currentRevision );
+
+						// Use revision version instead of `cloudDocumentVersion`.
+						const documentVersion = currentRevision.toVersion;
+
+						console.log( 'Saving...' );
+						console.log( 'Document data: ', documentData );
+						console.log( 'Document attributes: ', documentAttributes );
+						console.log( 'Document version: ', documentVersion );
+
+						try {
+							localStorage.setItem( 'documentData:' + channelId, JSON.stringify( documentData ) );
+							localStorage.setItem( 'documentRootsAttributes:' + channelId, JSON.stringify( documentAttributes ) );
+
+							// Asynchronous call which should save the document in your database.
+							return Promise.resolve();
+						} catch ( e ) {
+							throw 'data save failed';
+						}
+					},
+					waitingTime: 2000
+				},
+				presenceList: {
+					container: document.querySelector( '.presence' )
+				},
+				rootsAttributes: attributes
+			} )
+				.then( () => {
+					const editor = watchdog.editor;
+
+					window.editor = editor;
+
+					const toolbarContainer = document.querySelector( '#toolbar' );
+					toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+				} );
+		} );
+	</script>
+</body>
+
+</html>

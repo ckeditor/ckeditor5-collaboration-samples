@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>CKEditor 5 comments outside of editor non-RTC integration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="./style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+</head>
+
+<body>
+	<header>
+		<div class="centered">
+			<h1>
+				<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+					<img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo" /> CKEditor 5
+				</a>
+			</h1>
+
+			<nav>
+				<ul>
+					<li><a href="https://ckeditor.com/collaboration/comments/" target="_blank"
+							rel="noopener">Website</a></li>
+					<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments-outside-editor.html"
+							target="_blank" rel="noopener">Documentation</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<div class="message">
+			<div class="centered">
+				<h2>CKEditor 5 comments outside of editor non-RTC integration</h2>
+			</div>
+		</div>
+		<div class="centered">
+			<div class="row">
+				<div class="main">
+					<div class="custom-targets-wrapper">
+						<p class="custom-target" id="comment-1" tabindex="-1"><button>Add comment</button></p>
+						<p class="custom-target" id="comment-2" tabindex="-1"><button>Add comment</button></p>
+						<p class="custom-target" id="comment-3" tabindex="-1"><button>Add comment</button></p>
+						<p class="custom-target" id="comment-4" tabindex="-1"><button>Add comment</button></p>
+						<p class="custom-target" id="comment-5" tabindex="-1"><button>Add comment</button></p>
+						<p class="custom-target" id="comment-6" tabindex="-1"><button>Add comment</button></p>
+					</div>
+					<div class="editor-wrapper">
+						<div class="editor">
+						</div>
+					</div>
+				</div>
+				<div class="sidebar"></div>
+			</div>
+
+			<div class="row row-info">
+				See the editor data in the console -&nbsp;
+				<button class="get-data">Get editor data</button>
+			</div>
+
+			<div class="row row-info">
+				Your license key is stored in the local storage -&nbsp;
+				<button class="remove-license-key">Reset license key</button>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="centered">
+			<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text
+				editor of tomorrow, available today</p>
+			<p>Copyright © 2003-2024, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> –
+				Holding
+				sp. z o.o. All rights reserved.</p>
+		</div>
+	</footer>
+	<script src="../build/ckeditor.js"></script>
+	<script>
+		/* globals ClassicEditor */
+
+		const { ClassicEditor: Editor, Context, CKBox } = ClassicEditor;
+
+		window.CKBox = CKBox;
+
+		( async () => {
+			const STORAGE_KEY = 'ckeditor-license-key';
+			const initialData =
+				`<h2>Comments outside of editor</h2><p>This feature enables adding comments on non-editor form fields. <comment-start name="thread-1"></comment-start>This particular sample<comment-end name="thread-1"></comment-end> implements <a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments-outside-editor.html">comments outside of editor</a> without real-time collaboration, however you can use it as a part of real-time collaborative solutions as well (as in the linked documentation).</p><p>If you would like to learn more about CKEditor's 5 collaboration features, go ahead and check the docs on:</p><ul><li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments.html">Comments</a></li><li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/track-changes/track-changes.html">Track Changes</a></li><li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html">Real-time Collaboration</a></li><li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/revision-history/revision-history.html">Revision History</a></li></ul><p>If you are new to CKEditor 5 and just starting, you can check the guides on <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/index.html">installation</a>. We also provide an extensive <a href="https://ckeditor.com/docs/ckeditor5/latest/api/index.html">API documentation</a> for the <a href="https://ckeditor.com/docs/ckeditor5/latest/framework/index.html">CKEditor 5 framework</a>.</p><blockquote><p>For the latest news on all of our products, don't forget to <a href="https://ckeditor.com/blog/">check our blog</a>!</p></blockquote>
+				`;
+
+			// Save the provided license key in the local storage.
+			const licenseKey = window.localStorage.getItem( STORAGE_KEY ) || window.prompt( 'Your license key' );
+			window.localStorage.setItem( STORAGE_KEY, licenseKey );
+
+			// You can always remove the key using the button in the UI.
+			document.querySelector( '.remove-license-key' ).addEventListener( 'click', () => {
+				window.localStorage.removeItem( STORAGE_KEY );
+				window.location.reload();
+			} );
+
+			// Create the context.
+			const context = await Context.create( {
+				licenseKey
+			} );
+
+			window.context = context;
+
+			// Initialize the editor
+			window.editor = await createEditor( 'editor', document.querySelector( '.editor' ), {
+				context,
+				initialData
+			} );
+
+			document.querySelector( '.get-data' ).addEventListener( 'click', () => {
+				console.log( window.editor.getData() );
+			} );
+		} )();
+
+		async function createEditor( name, element, config ) {
+			const editor = await Editor.create( element, config );
+
+			return editor;
+		}
+
+	</script>
+</body>
+
+</html>
