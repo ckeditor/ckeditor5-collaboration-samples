@@ -1,0 +1,21 @@
+<div>
+	<div class="main-container">
+		<div class="presence" #editorPresenceElement></div>
+		<div class="editor-container editor-container_classic-editor editor-container_include-annotations" #editorContainerElement>
+			<div class="editor-container__editor-wrapper">
+				<div class="editor-container__editor">
+					<div #editorElement>
+						<ckeditor [editor]="Editor" [config]="config" (ready)="onReady($event)" *ngIf="isLayoutReady" />
+					</div>
+				</div>
+				<div class="editor-container__sidebar"><div #editorAnnotationsElement></div></div>
+			</div>
+		</div>
+		<div class="revision-history" #editorRevisionHistoryElement>
+			<div class="revision-history__wrapper">
+				<div class="revision-history__editor" #editorRevisionHistoryEditorElement></div>
+				<div class="revision-history__sidebar" #editorRevisionHistorySidebarElement></div>
+			</div>
+		</div>
+	</div>
+</div>

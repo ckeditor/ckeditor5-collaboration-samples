@@ -1,0 +1,14 @@
+**/node_modules
+**/.pnp
+.pnp.js
+.yarn/install-state.gz
+**/.angular/cache
+**/.next
+**/out
+**/build
+**/dist
+.DS_Store
+.idea
+*.pem
+yarn.lock
+package-lock.json

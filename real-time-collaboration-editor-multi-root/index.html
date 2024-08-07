@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>CKEditor 5 multi-root editor with real-time collaboration features</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/96x96.png" sizes="96x96">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/120x120.png" sizes="120x120">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/152x152.png" sizes="152x152">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/167x167.png" sizes="167x167">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/180x180.png" sizes="180x180">
+
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header>
+	<div class="centered">
+		<h1>
+			<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+				<img src="https://ckeditor.com/ckeditor-5/builder/assets/LogoCKEditor5-BZXDBQA7.svg" alt="CKEditor 5 logo" />
+			</a>
+		</h1>
+
+		<nav>
+			<ul>
+				<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/collaboration.html"
+					target="_blank" rel="noopener noreferrer">Collaboration documentation</a></li>
+				<li><a href="https://ckeditor.com/docs/ckeditor5/latest/framework/guides/deep-dive/ui/custom-editor-creator.html"
+						target="_blank" rel="noopener noreferrer">Multi-root editor documentation</a></li>
+				<li><a href="https://ckeditor.com/collaboration/" target="_blank"
+						rel="noopener noreferrer">Website</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<main>
+	<div class="message">
+		<div class="centered">
+			<h2>CKEditor 5 multi-root editor with real-time collaboration features</h2>
+			<p>
+				Open this sample in another browser tab to start real-time collaborative editing.
+			</p>
+		</div>
+	</div>
+
+	<div class="main-container">
+		<div class="presence" id="editor-presence"></div>
+		<div class="menubar" id="editor-menubar"></div>
+		<div class="toolbar" id="editor-toolbar"></div>
+		<div
+			class="editor-container editor-container_classic-editor editor-container_include-annotations"
+			id="editor-container"
+		>
+			<div class="editor-container__editor-wrapper">
+				<div class="editor-container__editor"></div>
+				<div class="editor-container__sidebar"><div id="editor-annotations"></div></div>
+			</div>
+		</div>
+		<div class="revision-history" id="editor-revision-history">
+			<div class="revision-history__wrapper">
+				<div class="revision-history__editor" id="editor-revision-history-editor"></div>
+				<div class="revision-history__sidebar" id="editor-revision-history-sidebar"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<footer>
+	<div class="centered">
+		<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text
+			editor of tomorrow, available today</p>
+		<p>Copyright © 2003-2024, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> –
+			Holding
+			sp. z o.o. All rights reserved.</p>
+	</div>
+</footer>
+
+<script type="module" src="init-editor.js"></script>
+</body>
+
+</html>

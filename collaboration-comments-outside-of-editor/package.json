@@ -1,0 +1,26 @@
+{
+  "name": "@ckeditor/comments-outside-of-editor",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "ckeditor5": "42.0.2",
+    "ckeditor5-premium-features": "42.0.2",
+    "ckbox": "^2.4.0",
+    "ckeditor5-collaboration-samples-integrations": "file:../integrations"
+  },
+  "devDependencies": {
+    "vite": "^5.3.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir=build"
+  }
+}

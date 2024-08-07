@@ -1,0 +1,94 @@
+version: 2.1
+
+parameters:
+  isNightly:
+    type: boolean
+    default: false
+
+commands:
+  bootstrap_repository_command:
+    description: "Bootstrap the repository"
+    steps:
+      - install_ssh_keys_command
+      - run:
+          name: Install dependencies
+          command: yarn install
+
+  install_ssh_keys_command:
+    description: "Install SSH keys"
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a0:41:a2:56:c8:7d:3f:29:41:d1:87:92:fd:50:2b:6b"
+
+jobs:
+  notify_ci_failure:
+    machine: true
+    parameters:
+      hideAuthor:
+        type: string
+        default: "false"
+    steps:
+      - checkout
+      - bootstrap_repository_command
+      - run:
+          environment:
+            CKE5_SLACK_NOTIFY_HIDE_AUTHOR: << parameters.hideAuthor >>
+            CKE5_PIPELINE_NUMBER: << pipeline.number >>
+          name: Waiting for other jobs to finish and sending notification on failure
+          command: yarn ckeditor5-dev-ci-circle-workflow-notifier
+          no_output_timeout: 1h
+
+  lint:
+    machine: true
+    steps:
+      - checkout
+      - bootstrap_repository_command
+      - run:
+          name: Execute ESLint
+          command: yarn run lint
+
+  build_local:
+    machine: true
+    steps:
+      - checkout
+      - bootstrap_repository_command
+      - run:
+          name: Build local
+          command: yarn samples:build-local
+
+  build:
+    machine: true
+    steps:
+      - checkout
+      - bootstrap_repository_command
+      - run:
+          name: Build
+          command: yarn samples:build
+
+workflows:
+  version: 2
+  main:
+    unless: << pipeline.parameters.isNightly >>
+    jobs:
+      - lint
+      - build_local
+      - build
+      - notify_ci_failure:
+          filters:
+            branches:
+              only:
+                - master
+
+  nightly:
+    when: << pipeline.parameters.isNightly >>
+    jobs:
+      - lint
+      - build_local
+      - build
+      - notify_ci_failure:
+          hideAuthor: "true"
+          filters:
+            branches:
+              only:
+                - master

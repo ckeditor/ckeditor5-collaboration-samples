@@ -1,0 +1,16 @@
+{
+  "name": "ckeditor5-collaboration-samples-integrations",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "peerDependencies": {
+		"ckeditor5": "42.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com"
+}

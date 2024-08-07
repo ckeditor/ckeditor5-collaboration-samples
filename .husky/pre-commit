@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# @license Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
+# For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+if git diff --cached --name-only | grep -q "credentials.js"; then
+	printf "\nIMPORTANT: You are trying to commit changes to 'credentials.js' file which may contain secrets."
+	printf "\nPlease unstage the file and try again (git reset -- credentials.js)."
+	printf "\nYou can also use commit '-n' option to skip this check if this is intended.\n\n"
+	exit 1
+fi
+
+yarn lint-staged

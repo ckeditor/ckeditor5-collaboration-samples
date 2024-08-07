@@ -1,0 +1,58 @@
+{
+  "name": "@cksource/ckeditor5-collaboration-samples",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "postinstall": "node ./_scripts/postinstall.js",
+    "lint": "eslint --quiet \"**/*.+(js|jsx|ts|tsx|html|vue)\"",
+    "samples:build": "node --max_old_space_size=4096 _scripts/build",
+    "samples:build-local": "node --max_old_space_size=4096 _scripts/build-local",
+    "samples:check-dependencies": "node --max_old_space_size=4096 _scripts/check-dependencies",
+    "samples:update-dependencies": "node --max_old_space_size=4096 _scripts/update-dependencies",
+    "samples:release": "node --max_old_space_size=4096 _scripts/release"
+  },
+  "dependencies": {
+    "byline": "^5.0.0",
+    "chalk": "^4.1.2",
+    "depcheck": "^1.4.7",
+    "fs-extra": "^10.0.0",
+    "glob": "^7.2.0",
+    "minimist": "^1.2.5",
+    "npm-check-updates": "^16.14.20"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-dev-ci": "^38.0.0",
+    "eslint": "^7.11.0",
+    "eslint-config-ckeditor5": "5.3.0",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-react": "^7.12.5",
+    "eslint-plugin-vue": "^7.1.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^8.1.5"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --quiet"
+    ],
+    "**/*.jsx": [
+      "eslint --quiet"
+    ],
+    "**/*.ts": [
+      "eslint --quiet"
+    ],
+    "**/*.tsx": [
+      "eslint --quiet"
+    ],
+    "**/*.html": [
+      "eslint --quiet"
+    ],
+    "**/*.vue": [
+      "eslint --quiet"
+    ]
+  },
+  "eslintIgnore": [
+    "**/node_modules/**",
+    "**/build/**",
+    "**/.eslintrc.js"
+  ]
+}
