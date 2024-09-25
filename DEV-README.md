@@ -160,7 +160,7 @@ After that you can proceed with the release using `release` script as described 
 
 As a post-release actions, make sure to:
 
-1. Notify on `#cke5-release` that the release has been done: "Collaboration samples were released 🎉"
+1. Notify on `#cke5-release` that the release has been done: "Collaboration samples have been released 🎉".
 
 ### release
 
