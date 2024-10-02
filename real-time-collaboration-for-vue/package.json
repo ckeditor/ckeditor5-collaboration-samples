@@ -4,10 +4,10 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-vue": "7.1.0",
+    "@ckeditor/ckeditor5-vue": "7.2.0",
     "ckbox": "^2.4.0",
-    "ckeditor5": "43.1.1",
-    "ckeditor5-premium-features": "43.1.1",
+    "ckeditor5": "43.2.0",
+    "ckeditor5-premium-features": "43.2.0",
     "vue": "^3.4.35"
   },
   "devDependencies": {
