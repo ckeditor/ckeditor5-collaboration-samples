@@ -6,8 +6,8 @@
   "dependencies": {
     "@ckeditor/ckeditor5-react": "9.3.1",
     "ckbox": "^2.4.0",
-    "ckeditor5": "43.3.0",
-    "ckeditor5-premium-features": "43.3.0",
+    "ckeditor5": "43.3.1",
+    "ckeditor5-premium-features": "43.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
