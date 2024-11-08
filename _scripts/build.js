@@ -180,8 +180,8 @@ async function createTemporaryPackageJson( samplesToBuild ) {
  */
 async function useNightlyVersions( ckeditor5path ) {
 	const packageJson = await fs.readJson( `${ DESTINATION_DIRECTORY }/package.json` );
-	const isCKEditor5PackageFactory = require( path.join( ckeditor5path, 'scripts', 'release', 'utils', 'isckeditor5packagefactory' ) );
-	const isCKEditor5Package = await isCKEditor5PackageFactory();
+	const isCKEditor5PackageFactory = await import( path.join( ckeditor5path, 'scripts', 'release', 'utils', 'isckeditor5packagefactory.mjs' ) );
+	const isCKEditor5Package = await isCKEditor5PackageFactory.default();
 
 	const samplePackageJsonPaths = packageJson.workspaces
 		.map( workspace => `${ DESTINATION_DIRECTORY }/${ workspace }` )
