@@ -4,10 +4,10 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-react": "9.4.0",
+    "@ckeditor/ckeditor5-react": "9.5.0",
     "ckbox": "^2.4.0",
-    "ckeditor5": "44.2.0",
-    "ckeditor5-premium-features": "44.2.0",
+    "ckeditor5": "44.2.1",
+    "ckeditor5-premium-features": "44.2.1",
     "ckeditor5-collaboration-samples-integrations": "file:../integrations",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
