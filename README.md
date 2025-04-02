@@ -47,4 +47,4 @@ Refer to [DEV-README.md](DEV-README.md) file for development related documentati
 
 ## License
 
-For license details see: [LICENSE.md](https://github.com/cksource/ckeditor5-collaboration-samples/blob/master/LICENSE.md).
+For license details see: [LICENSE.md](https://github.com/ckeditor/ckeditor5-collaboration-samples/blob/master/LICENSE.md).
