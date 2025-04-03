@@ -54,6 +54,7 @@ import {
 	RevisionHistory,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 	// Premium features
 	CaseChange,
 	ExportPdf,
@@ -221,6 +222,7 @@ export default function App() {
 			RevisionHistory,
 			TrackChanges,
 			TrackChangesData,
+			TrackChangesPreview,
 
 			CaseChange,
 			ExportPdf,
@@ -277,6 +279,17 @@ export default function App() {
 				'|',
 				'accessibilityHelp'
 			]
+		},
+		trackChanges: {
+			preview: {
+				renderFunction: ( container, elements ) => {
+					container.classList.add( 'formatted' );
+
+					for ( const element of elements ) {
+						container.appendChild( element );
+					}
+				}
+			}
 		},
 		comments: {
 			editorConfig: {

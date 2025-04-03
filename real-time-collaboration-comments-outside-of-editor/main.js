@@ -58,6 +58,7 @@ import {
 	RealTimeCollaborativeTrackChanges,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 	// Premium features
 	CaseChange,
 	ExportPdf,
@@ -129,6 +130,7 @@ ClassicEditor.builtinPlugins = [
 	RealTimeCollaborativeTrackChanges,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 
 	CaseChange,
 	ExportPdf,
@@ -181,6 +183,17 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'accessibilityHelp'
 		]
+	},
+	trackChanges: {
+		preview: {
+			renderFunction: ( container, elements ) => {
+				container.classList.add( 'formatted' );
+
+				for ( const element of elements ) {
+					container.appendChild( element );
+				}
+			}
+		}
 	},
 	comments: {
 		editorConfig: {

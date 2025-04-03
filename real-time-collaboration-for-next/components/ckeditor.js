@@ -61,6 +61,7 @@ import {
 	RevisionHistory,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 	// Premium features
 	CaseChange,
 	ExportPdf,
@@ -278,6 +279,7 @@ export default function CKEditorComponent() {
 			RevisionHistory,
 			TrackChanges,
 			TrackChangesData,
+			TrackChangesPreview,
 
 			CaseChange,
 			ExportPdf,
@@ -329,6 +331,17 @@ export default function CKEditorComponent() {
 				'|',
 				'accessibilityHelp'
 			]
+		},
+		trackChanges: {
+			preview: {
+				renderFunction: ( container, elements ) => {
+					container.classList.add( 'formatted' );
+
+					for ( const element of elements ) {
+						container.appendChild( element );
+					}
+				}
+			}
 		},
 		comments: {
 			editorConfig: {

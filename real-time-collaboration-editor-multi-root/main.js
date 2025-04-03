@@ -58,6 +58,7 @@ import {
 	RevisionHistory,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 	// Premium features
 	CaseChange,
 	ExportPdf,
@@ -133,6 +134,7 @@ MultiRootEditor.builtinPlugins = [
 	RevisionHistory,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 
 	CaseChange,
 	ExportPdf,
@@ -188,6 +190,17 @@ MultiRootEditor.defaultConfig = {
 			'|',
 			'accessibilityHelp'
 		]
+	},
+	trackChanges: {
+		preview: {
+			renderFunction: ( container, elements ) => {
+				container.classList.add( 'formatted' );
+
+				for ( const element of elements ) {
+					container.appendChild( element );
+				}
+			}
+		}
 	},
 	blockToolbar: [ 'moveUp', '|', 'moveDown', '|', 'addRootBelow', '|', 'removeRoot' ],
 	comments: {
