@@ -281,6 +281,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	width: fit-content;
 }
 
+.editor-container__toolbar {
+	z-index: 1;
+}
+
 .editor-container_document-editor {
 	border: 1px solid var(--ck-color-base-border);
 }

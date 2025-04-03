@@ -227,6 +227,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	width: fit-content;
 }
 
+.editor-container__toolbar {
+	z-index: 1;
+}
+
 .editor-container_include-annotations .editor-container__editor .ck.ck-editor__editable {
 	margin-right: 0;
 }

@@ -150,6 +150,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	background: none;
 }
 
+main .editor-container__toolbar {
+	z-index: 1;
+}
+
 /* --------- SAMPLE GENERIC STYLES ---------------------------------------------------------------------------- */
 header .centered {
 	display: flex;
@@ -214,9 +218,6 @@ footer {
 	text-align: center;
 	color: rgba(0,0,0,.4);
 }
-
-/* Custom controls */
-
 
 /* Custom controls */
 .custom-controls {
