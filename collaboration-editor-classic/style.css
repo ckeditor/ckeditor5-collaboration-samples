@@ -5,7 +5,7 @@
 
 /* --------- GENERIC STYLES ---------------------------------------------------------------------------- */
 
- :root {
+:root {
 	--ck-sample-base-spacing: 2em;
 	--ck-sample-color-white: #fff;
 	--ck-sample-color-green: rgb(116, 60, 205);
@@ -131,7 +131,7 @@ footer {
 
 /* --------- RWD ---------- */
 
-@media screen and ( max-width: 800px ) {
+@media screen and (max-width: 800px) {
 	:root {
 		--ck-sample-base-spacing: 1em;
 	}
@@ -213,11 +213,15 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 /* --------- DEDICATED EDITOR STYLES ---------------------------------------------------------------------------- */
 
 .main-container {
+	--ck-border-radius: 0;
 	font-family: var(--ck-sample-font-family);
 	width: fit-content;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: var(--ck-sample-container-width);
+	padding: 10px;
+	background-color: var(--ck-color-base-background);
+	box-sizing: content-box;
 }
 
 .ck-content {
@@ -229,6 +233,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 .editor-container__editor-wrapper {
 	display: flex;
 	width: fit-content;
+}
+
+.editor-container__toolbar {
+	z-index: 1;
 }
 
 .editor-container_include-annotations .editor-container__editor .ck.ck-editor__editable {
