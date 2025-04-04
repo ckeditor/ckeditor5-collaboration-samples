@@ -3,9 +3,9 @@
  * This file is licensed under the terms of the MIT License (see LICENSE.md).
  */
 
- /* --------- GENERIC STYLES ---------------------------------------------------------------------------- */
+/* --------- GENERIC STYLES ---------------------------------------------------------------------------- */
 
- :root {
+:root {
 	--ck-sample-base-spacing: 2em;
 	--ck-sample-color-white: #fff;
 	--ck-sample-color-green: rgb(116, 60, 205);
@@ -71,7 +71,7 @@ header nav ul li {
 	display: inline-block;
 }
 
-header nav ul li + li {
+header nav ul li+li {
 	margin-left: 1em;
 }
 
@@ -112,7 +112,7 @@ footer {
 	margin: calc(2*var(--ck-sample-base-spacing)) var(--ck-sample-base-spacing);
 	font-size: .8em;
 	text-align: center;
-	color: rgba(0,0,0,.4);
+	color: rgba(0, 0, 0, .4);
 }
 
 /* --------- EDITOR STYLES ---------------------------------------------------------------------------- */
@@ -138,7 +138,7 @@ main .ck.ck-editor {
 	position: relative;
 	font-size: 20px;
 	background: hsl(0, 0%, 98%);
-	border: 1px solid hsl(0, 0%, 77%);
+	border: 1px solid var(--ck-color-base-border);
 	border-left: 0;
 	overflow: hidden;
 	min-height: 100%;
@@ -157,9 +157,9 @@ main .ck.ck-editor {
 
 .presence {
 	width: 100%;
-	border: 1px solid hsl(0, 0%, 77%);
+	border: 1px solid var(--ck-color-base-border);
 	border-bottom: 0;
-	background: hsl(0, 0%, 98%);
+	background: var(--ck-color-base-background);
 	padding: var(--ck-spacing-small);
 
 	/* Make `border-bottom` as `box-shadow` to not overlap with the editor border. */
@@ -229,7 +229,7 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 
 /* --------- RWD ---------- */
 
-@media screen and ( max-width: 800px ) {
+@media screen and (max-width: 800px) {
 	:root {
 		--ck-sample-base-spacing: 1em;
 	}
@@ -258,12 +258,16 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 /* --------- SAMPLE SPECIFIC STYLES ---------- */
 
 .main-container {
+	--ck-border-radius: 0;
 	--ckeditor5-preview-height: 700px;
 	font-family: var(--ck-sample-font-family);
-	width: fit-content;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: var(--ck-sample-container-width);
+	padding: 10px;
+	background-color: var(--ck-color-base-background);
+	width: fit-content;
+	box-sizing: content-box;
 }
 
 .ck-content {
@@ -277,6 +281,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	width: fit-content;
 }
 
+.editor-container__toolbar {
+	z-index: 1;
+}
+
 .editor-container_document-editor {
 	border: 1px solid var(--ck-color-base-border);
 }
@@ -287,7 +295,7 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.078);
 }
 
-.editor-container_document-editor .editor-container__toolbar > .ck.ck-toolbar {
+.editor-container_document-editor .editor-container__toolbar>.ck.ck-toolbar {
 	flex-grow: 1;
 	width: 0;
 	border-bottom-right-radius: 0;
@@ -297,7 +305,7 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	border-right: 0;
 }
 
-.editor-container_document-editor .editor-container__menu-bar > .ck.ck-menu-bar {
+.editor-container_document-editor .editor-container__menu-bar>.ck.ck-menu-bar {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 	border-top: 0;
@@ -326,7 +334,7 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	min-height: 297mm;
 	height: fit-content;
 	padding: 20mm 12mm;
-	border: 1px hsl(0, 0%, 82.7%) solid;
+	border: 1px solid var(--ck-color-base-border);
 	background: hsl(0, 0%, 100%);
 	box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.078);
 	flex: 1 1 auto;
@@ -365,4 +373,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	.editor-container_include-annotations .editor-container__editor .ck.ck-editor__editable {
 		margin-right: 72px;
 	}
+}
+
+.toolbar .ck.ck-toolbar {
+	border-bottom: 0;
+	border-top: 0;
+	border-radius: var(--ck-border-radius);
 }

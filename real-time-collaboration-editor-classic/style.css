@@ -3,9 +3,9 @@
  * This file is licensed under the terms of the MIT License (see LICENSE.md).
  */
 
- /* --------- GENERIC STYLES ---------------------------------------------------------------------------- */
+/* --------- GENERIC STYLES ---------------------------------------------------------------------------- */
 
- :root {
+:root {
 	--ck-sample-base-spacing: 2em;
 	--ck-sample-color-white: #fff;
 	--ck-sample-color-green: rgb(116, 60, 205);
@@ -131,7 +131,7 @@ footer {
 
 /* --------- RWD ---------- */
 
-@media screen and ( max-width: 800px ) {
+@media screen and (max-width: 800px) {
 	:root {
 		--ck-sample-base-spacing: 1em;
 	}
@@ -189,7 +189,7 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	min-width: var(--ck-sample-sidebar-width);
 	font-size: 20px;
 	background: hsl(0, 0%, 98%);
-	border: 1px solid hsl(0, 0%, 77%);
+	border: 1px solid var(--ck-color-base-border);
 	border-left: 0;
 	overflow: hidden;
 	min-height: 100%;
@@ -208,9 +208,9 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 
 .presence {
 	width: 100%;
-	border: 1px solid hsl(0, 0%, 77%);
+	border: 1px solid var(--ck-color-base-border);
 	border-bottom: 0;
-	background: hsl(0, 0%, 98%);
+	background: var(--ck-color-base-background);
 	padding: var(--ck-spacing-small);
 
 	/* Make `border-bottom` as `box-shadow` to not overlap with the editor border. */
@@ -232,11 +232,15 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 /* --------- DEDICATED EDITOR STYLES ---------------------------------------------------------------------------- */
 
 .main-container {
+	--ck-border-radius: 0;
 	font-family: var(--ck-sample-font-family);
 	width: fit-content;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: var(--ck-sample-container-width);
+	padding: 10px;
+	background-color: var(--ck-color-base-background);
+	box-sizing: content-box;
 }
 
 .ck-content {
@@ -248,6 +252,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 .editor-container__editor-wrapper {
 	display: flex;
 	width: fit-content;
+}
+
+.editor-container__toolbar {
+	z-index: 1;
 }
 
 .editor-container_include-annotations .editor-container__editor .ck.ck-editor__editable {
@@ -285,4 +293,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 
 .revision-history__wrapper .revision-history__sidebar .ck-revision-history-sidebar {
 	height: 100%;
+}
+
+.toolbar .ck.ck-toolbar {
+	border-bottom: 0;
+	border-top: 0;
+	border-radius: var(--ck-border-radius);
 }
