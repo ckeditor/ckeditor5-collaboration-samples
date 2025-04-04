@@ -20,6 +20,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -243,6 +244,7 @@ export default function App() {
 			Essentials,
 			FontSize,
 			FontFamily,
+			Fullscreen,
 			Heading,
 			Highlight,
 			Image,
@@ -328,6 +330,8 @@ export default function App() {
 				'bulletedList',
 				'numberedList',
 				'multiLevelList',
+				'|',
+				'fullscreen',
 				'|',
 				'accessibilityHelp'
 			]

@@ -18,6 +18,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -95,6 +96,7 @@ ClassicEditor.builtinPlugins = [
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -182,6 +184,8 @@ ClassicEditor.defaultConfig = {
 			'bulletedList',
 			'numberedList',
 			'multiLevelList',
+			'|',
+			'fullscreen',
 			'|',
 			'accessibilityHelp'
 		]

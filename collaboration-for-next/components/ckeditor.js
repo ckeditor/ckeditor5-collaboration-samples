@@ -24,6 +24,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -193,6 +194,7 @@ function CKEditorComponent() {
 			Essentials,
 			FontSize,
 			FontFamily,
+			Fullscreen,
 			Heading,
 			Highlight,
 			Image,
@@ -278,6 +280,8 @@ function CKEditorComponent() {
 				'bulletedList',
 				'numberedList',
 				'multiLevelList',
+				'|',
+				'fullscreen',
 				'|',
 				'accessibilityHelp'
 			]

@@ -20,6 +20,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -95,6 +96,7 @@ ClassicEditor.builtinPlugins = [
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -151,6 +153,7 @@ InlineEditor.builtinPlugins = [
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Italic,
@@ -212,6 +215,8 @@ ClassicEditor.defaultConfig = {
 			'bulletedList',
 			'numberedList',
 			'multiLevelList',
+			'|',
+			'fullscreen',
 			'|',
 			'accessibilityHelp'
 		]
@@ -359,6 +364,8 @@ InlineEditor.defaultConfig = {
 			'blockQuote',
 			'|',
 			'alignment',
+			'|',
+			'fullscreen',
 			'|',
 			'accessibilityHelp'
 		]

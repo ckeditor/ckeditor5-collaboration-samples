@@ -65,6 +65,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -231,6 +232,7 @@ export default {
 				Essentials,
 				FontSize,
 				FontFamily,
+				Fullscreen,
 				Heading,
 				Highlight,
 				Image,
@@ -316,6 +318,8 @@ export default {
 					'bulletedList',
 					'numberedList',
 					'multiLevelList',
+					'|',
+					'fullscreen',
 					'|',
 					'accessibilityHelp'
 				]

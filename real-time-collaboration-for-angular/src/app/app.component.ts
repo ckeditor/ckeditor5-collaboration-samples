@@ -22,6 +22,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -214,6 +215,7 @@ export class AppComponent {
 				Essentials,
 				FontSize,
 				FontFamily,
+				Fullscreen,
 				Heading,
 				Highlight,
 				Image,
@@ -299,6 +301,8 @@ export class AppComponent {
 					'bulletedList',
 					'numberedList',
 					'multiLevelList',
+					'|',
+					'fullscreen',
 					'|',
 					'accessibilityHelp'
 				]

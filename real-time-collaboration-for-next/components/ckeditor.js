@@ -22,6 +22,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -243,6 +244,7 @@ export default function CKEditorComponent() {
 			Essentials,
 			FontSize,
 			FontFamily,
+			Fullscreen,
 			Heading,
 			Highlight,
 			Image,
@@ -328,6 +330,8 @@ export default function CKEditorComponent() {
 				'bulletedList',
 				'numberedList',
 				'multiLevelList',
+				'|',
+				'fullscreen',
 				'|',
 				'accessibilityHelp'
 			]

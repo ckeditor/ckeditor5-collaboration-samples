@@ -18,6 +18,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -95,6 +96,7 @@ DecoupledEditor.builtinPlugins = [
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -187,6 +189,8 @@ DecoupledEditor.defaultConfig = {
 			'bulletedList',
 			'numberedList',
 			'multiLevelList',
+			'|',
+			'fullscreen',
 			'|',
 			'accessibilityHelp'
 		]
