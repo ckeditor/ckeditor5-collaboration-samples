@@ -153,7 +153,6 @@ InlineEditor.builtinPlugins = [
 	Essentials,
 	FontSize,
 	FontFamily,
-	Fullscreen,
 	Heading,
 	Highlight,
 	Italic,
@@ -364,8 +363,6 @@ InlineEditor.defaultConfig = {
 			'blockQuote',
 			'|',
 			'alignment',
-			'|',
-			'fullscreen',
 			'|',
 			'accessibilityHelp'
 		]
