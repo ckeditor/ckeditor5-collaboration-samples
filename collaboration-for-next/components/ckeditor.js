@@ -24,6 +24,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -58,6 +59,7 @@ import {
 	RevisionHistory,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 	// Premium features
 	CaseChange,
 	ExportPdf,
@@ -192,6 +194,7 @@ function CKEditorComponent() {
 			Essentials,
 			FontSize,
 			FontFamily,
+			Fullscreen,
 			Heading,
 			Highlight,
 			Image,
@@ -223,6 +226,7 @@ function CKEditorComponent() {
 			RevisionHistory,
 			TrackChanges,
 			TrackChangesData,
+			TrackChangesPreview,
 
 			CaseChange,
 			ExportPdf,
@@ -277,8 +281,21 @@ function CKEditorComponent() {
 				'numberedList',
 				'multiLevelList',
 				'|',
+				'fullscreen',
+				'|',
 				'accessibilityHelp'
 			]
+		},
+		trackChanges: {
+			preview: {
+				renderFunction: ( container, elements ) => {
+					container.classList.add( 'formatted' );
+
+					for ( const element of elements ) {
+						container.appendChild( element );
+					}
+				}
+			}
 		},
 		comments: {
 			editorConfig: {

@@ -20,6 +20,7 @@ import {
 	Essentials,
 	FontSize,
 	FontFamily,
+	Fullscreen,
 	Heading,
 	Highlight,
 	Image,
@@ -54,6 +55,7 @@ import {
 	RevisionHistory,
 	TrackChanges,
 	TrackChangesData,
+	TrackChangesPreview,
 	// Premium features
 	CaseChange,
 	ExportPdf,
@@ -190,6 +192,7 @@ export default function App() {
 			Essentials,
 			FontSize,
 			FontFamily,
+			Fullscreen,
 			Heading,
 			Highlight,
 			Image,
@@ -221,6 +224,7 @@ export default function App() {
 			RevisionHistory,
 			TrackChanges,
 			TrackChangesData,
+			TrackChangesPreview,
 
 			CaseChange,
 			ExportPdf,
@@ -275,8 +279,21 @@ export default function App() {
 				'numberedList',
 				'multiLevelList',
 				'|',
+				'fullscreen',
+				'|',
 				'accessibilityHelp'
 			]
+		},
+		trackChanges: {
+			preview: {
+				renderFunction: ( container, elements ) => {
+					container.classList.add( 'formatted' );
+
+					for ( const element of elements ) {
+						container.appendChild( element );
+					}
+				}
+			}
 		},
 		comments: {
 			editorConfig: {
