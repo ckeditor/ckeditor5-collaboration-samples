@@ -178,7 +178,7 @@ watchdog.create( elements, {
 
 				// Asynchronous call which should save the document in your database.
 				return Promise.resolve();
-			} catch ( e ) {
+			} catch {
 				throw 'data save failed';
 			}
 		},

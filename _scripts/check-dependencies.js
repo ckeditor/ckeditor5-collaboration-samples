@@ -5,8 +5,6 @@
  * For licensing, see LICENSE.md.
  */
 
-/* eslint-env node */
-
 const minimist = require( 'minimist' );
 const { getPathsToSampleSourceDirectories, runCommandAsync, toArray } = require( './utils' );
 

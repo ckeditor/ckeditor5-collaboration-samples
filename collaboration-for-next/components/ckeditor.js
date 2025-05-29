@@ -3,11 +3,9 @@
  * For licensing, see LICENSE.md.
  */
 
-/* eslint-disable no-unused-vars */
-
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 import {

@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.md.
  */
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 import {

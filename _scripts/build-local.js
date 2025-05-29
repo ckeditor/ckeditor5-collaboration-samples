@@ -5,8 +5,6 @@
  * For licensing, see LICENSE.md.
  */
 
-/* eslint-env node */
-
 const minimist = require( 'minimist' );
 const chalk = require( 'chalk' );
 const { installDependencies, runBuildCommand, getPathsToSampleSourceDirectories, toArray } = require( './utils' );

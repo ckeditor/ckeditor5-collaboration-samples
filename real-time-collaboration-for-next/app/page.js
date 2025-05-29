@@ -3,7 +3,6 @@
  * For licensing, see LICENSE.md.
  */
 
-import React from 'react';
 import dynamic from 'next/dynamic';
 
 const CKEditorComponent = dynamic( () => import( '@/components/ckeditor' ), { ssr: false } );

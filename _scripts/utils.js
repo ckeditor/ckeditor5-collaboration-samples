@@ -5,8 +5,6 @@
  * For licensing, see LICENSE.md.
  */
 
-/* eslint-env node */
-
 const { join } = require( 'path' );
 const { readFileSync } = require( 'fs' );
 const { spawn } = require( 'child_process' );

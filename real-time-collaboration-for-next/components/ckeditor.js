@@ -5,7 +5,7 @@
 
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 import {

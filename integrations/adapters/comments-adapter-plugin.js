@@ -27,7 +27,7 @@ export class CommentsIntegration extends Plugin {
 				// Write a request to your database here. The returned `Promise`
 				// should be resolved when the request has finished.
 				return Promise.resolve( {
-					createdAt: new Date()		// Should be set server-side.
+					createdAt: new Date() // Should be set server-side.
 				} );
 			},
 

@@ -5,8 +5,6 @@
  * For licensing, see LICENSE.md.
  */
 
-/* eslint-env node */
-
 const fs = require( 'fs-extra' );
 const path = require( 'path' );
 const glob = require( 'glob' );
