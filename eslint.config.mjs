@@ -21,6 +21,11 @@ export default defineConfig( [
 		]
 	},
 	{
+		settings: {
+			react: {
+				version: 'detect'
+			}
+		},
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module'
