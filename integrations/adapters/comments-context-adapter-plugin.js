@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -27,7 +27,7 @@ export class CommentsContextIntegration extends ContextPlugin {
 				// Write a request to your database here. The returned `Promise`
 				// should be resolved when the request has finished.
 				return Promise.resolve( {
-					createdAt: new Date()		// Should be set server-side.
+					createdAt: new Date() // Should be set server-side.
 				} );
 			},
 

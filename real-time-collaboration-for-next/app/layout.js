@@ -1,9 +1,8 @@
 /**
- * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
-import React from 'react';
 import './globals.css';
 
 export default function RootLayout( { children } ) {
@@ -49,9 +48,7 @@ export default function RootLayout( { children } ) {
 					<div className="message">
 						<div className="centered">
 							<h2>CKEditor 5 real-time collaborative editing for Next.js</h2>
-							<p>
-							Open this sample in another browser tab to start real-time collaborative editing.
-							</p>
+							<p>Open this sample in another browser tab to start real-time collaborative editing.</p>
 						</div>
 					</div>
 
@@ -60,11 +57,12 @@ export default function RootLayout( { children } ) {
 
 				<footer>
 					<div className="centered">
-						<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">CKEditor 5</a> – Rich text
-						editor of tomorrow, available today</p>
-						<p>Copyright © 2003-2024, <a href="https://cksource.com/" target="_blank" rel="noopener noreferrer">CKSource</a> –
-						Holding
-						sp. z o.o. All rights reserved.</p>
+						<p>
+							<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">CKEditor 5</a> – Rich text editor of tomorrow, available today
+						</p>
+						<p>
+							Copyright © 2003-2024, <a href="https://cksource.com/" target="_blank" rel="noopener noreferrer">CKSource</a> – Holding sp. z o.o. All rights reserved.
+						</p>
 					</div>
 				</footer>
 			</body>

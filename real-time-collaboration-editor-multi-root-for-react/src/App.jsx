@@ -1,9 +1,9 @@
 /**
- * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useMultiRootEditor } from '@ckeditor/ckeditor5-react';
 
 import {
@@ -514,7 +514,7 @@ export default function App() {
 
 					// Asynchronous call which should save the document in your database.
 					return Promise.resolve();
-				} catch ( e ) {
+				} catch {
 					throw 'data save failed';
 				}
 			},
