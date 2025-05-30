@@ -78,7 +78,6 @@ export default defineConfig( [
 	{
 		files: [ '**/*.jsx', '**/*-react*/**/*.js', '**/*-next*/**/*.js' ],
 		rules: {
-			'max-len': 'off',
 			'react/prop-types': 'off'
 		}
 	},
