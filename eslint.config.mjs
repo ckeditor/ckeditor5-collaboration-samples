@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -43,7 +43,7 @@ export default defineConfig( [
 			'@stylistic/no-trailing-spaces': 'error',
 			'ckeditor5Rules/license-header': [ 'error', { headerLines: [
 				'/**',
-				' * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.',
+				' * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.',
 				' * For licensing, see LICENSE.md.',
 				' */'
 			] } ]
