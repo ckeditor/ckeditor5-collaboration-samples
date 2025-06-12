@@ -6,7 +6,7 @@
   "dependencies": {
     "ckeditor5": "45.2.0",
     "ckeditor5-premium-features": "45.2.0",
-    "ckbox": "^2.4.0"
+    "ckbox": "^2.8.0"
   },
   "devDependencies": {
     "vite": "^5.3.5"
