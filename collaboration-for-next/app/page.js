@@ -6,8 +6,6 @@
 import dynamic from 'next/dynamic';
 const CKEditorComponent = dynamic( () => import( '@/components/ckeditor' ), { ssr: false } );
 
-// import { default as CKEditorComponent } from '@/components/ckeditor';
-
 export default function App() {
 	return (
 		<div>
