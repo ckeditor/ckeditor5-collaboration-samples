@@ -16,7 +16,7 @@
     "@angular/core": "^18.1.2",
     "@angular/forms": "^18.1.2",
     "@angular/platform-browser": "^18.1.2",
-    "ckbox": "^2.4.0",
+    "ckbox": "^2.8.0",
     "@ckeditor/ckeditor5-angular": "9.1.0",
     "ckeditor5": "45.2.0",
     "ckeditor5-premium-features": "45.2.0",
