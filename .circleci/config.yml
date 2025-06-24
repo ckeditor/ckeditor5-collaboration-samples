@@ -23,7 +23,8 @@ commands:
 
 jobs:
   notify_ci_failure:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     parameters:
       hideAuthor:
         type: string
@@ -40,7 +41,8 @@ jobs:
           no_output_timeout: 1h
 
   lint:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - bootstrap_repository_command
@@ -49,22 +51,24 @@ jobs:
           command: yarn run lint
 
   build_local:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - bootstrap_repository_command
       - run:
           name: Build local
-          command: yarn samples:build-local
+          command: yarn samples:build-local -c 1
 
   build:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - bootstrap_repository_command
       - run:
           name: Build
-          command: yarn samples:build
+          command: yarn samples:build -c 1
 
 workflows:
   version: 2
