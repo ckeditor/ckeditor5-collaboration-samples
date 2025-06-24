@@ -49,7 +49,8 @@ jobs:
           command: yarn run lint
 
   build_local:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - bootstrap_repository_command
@@ -58,7 +59,8 @@ jobs:
           command: yarn samples:build-local
 
   build:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - bootstrap_repository_command
