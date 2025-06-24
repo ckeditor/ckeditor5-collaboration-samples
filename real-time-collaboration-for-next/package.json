@@ -11,8 +11,8 @@
   "dependencies": {
     "@ckeditor/ckeditor5-react": "9.5.0",
     "ckbox": "^2.8.0",
-    "ckeditor5": "45.2.0",
-    "ckeditor5-premium-features": "45.2.0",
+    "ckeditor5": "45.2.1",
+    "ckeditor5-premium-features": "45.2.1",
     "next": "14.2.30",
     "react": "^19"
   },
