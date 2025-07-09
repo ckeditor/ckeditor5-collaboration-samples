@@ -17,9 +17,9 @@
     "@angular/forms": "^18.1.2",
     "@angular/platform-browser": "^18.1.2",
     "ckbox": "^2.8.0",
-    "@ckeditor/ckeditor5-angular": "9.1.0",
-    "ckeditor5": "45.2.1",
-    "ckeditor5-premium-features": "45.2.1",
+    "@ckeditor/ckeditor5-angular": "10.0.0",
+    "ckeditor5": "46.0.0",
+    "ckeditor5-premium-features": "46.0.0",
     "zone.js": "~0.14.8"
   },
   "devDependencies": {
