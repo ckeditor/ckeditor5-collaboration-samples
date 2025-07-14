@@ -24,7 +24,7 @@ commands:
 jobs:
   notify_ci_failure:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:22.12.0
     parameters:
       hideAuthor:
         type: string
@@ -42,7 +42,7 @@ jobs:
 
   lint:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:22.12.0
     steps:
       - checkout
       - bootstrap_repository_command
@@ -52,7 +52,7 @@ jobs:
 
   build_local:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:22.12.0
     steps:
       - checkout
       - bootstrap_repository_command
@@ -62,7 +62,7 @@ jobs:
 
   build:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:22.12.0
     steps:
       - checkout
       - bootstrap_repository_command
