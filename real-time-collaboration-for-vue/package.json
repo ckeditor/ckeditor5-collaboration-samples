@@ -6,8 +6,8 @@
   "dependencies": {
     "@ckeditor/ckeditor5-vue": "7.3.0",
     "ckbox": "^2.8.0",
-    "ckeditor5": "46.0.1",
-    "ckeditor5-premium-features": "46.0.1",
+    "ckeditor5": "46.0.2",
+    "ckeditor5-premium-features": "46.0.2",
     "vue": "^3.4.35"
   },
   "devDependencies": {
