@@ -14,7 +14,7 @@
     "ckeditor5": "46.0.3",
     "ckeditor5-collaboration-samples-integrations": "file:../integrations",
     "ckeditor5-premium-features": "46.0.3",
-    "next": "14.2.30",
+    "next": "14.2.32",
     "react": "^19"
   },
   "engines": {
