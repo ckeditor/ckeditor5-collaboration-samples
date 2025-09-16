@@ -18,7 +18,7 @@
     "fs-extra": "^10.0.0",
     "glob": "^11.0.3",
     "minimist": "^1.2.5",
-    "npm-check-updates": "^16.14.20"
+    "npm-check-updates": "^18.0.0"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-ci": "^44.0.0",
