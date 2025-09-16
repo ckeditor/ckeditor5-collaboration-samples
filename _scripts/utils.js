@@ -11,7 +11,7 @@ const { spawn } = require( 'child_process' );
 const byline = require( 'byline' );
 const fs = require( 'fs-extra' );
 const chalk = require( 'chalk' );
-const glob = require( 'glob' );
+const { globSync } = require( 'glob' );
 
 module.exports = {
 	installDependencies,
@@ -139,7 +139,7 @@ function runCommandAsync( command, args, directoryPath, verbose = false, rejectO
  * @returns {Array.<String>}
  */
 function getPathsToSampleSourceDirectories( sampleNames = [] ) {
-	return glob.sync( join( '.', '*' ) )
+	return globSync( join( '.', '*' ) )
 		.filter( isSampleSourceDirectory )
 		.filter( sampleNames.length === 0 ? () => true : sample => sampleNames.includes( sample ) );
 }
