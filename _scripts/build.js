@@ -7,7 +7,7 @@
 
 const fs = require( 'fs-extra' );
 const path = require( 'path' );
-const glob = require( 'glob' );
+const { globSync } = require( 'glob' );
 const minimist = require( 'minimist' );
 const chalk = require( 'chalk' );
 const { installDependencies, runBuildCommand, getPathsToSampleSourceDirectories, toArray } = require( './utils' );
@@ -183,7 +183,7 @@ async function useNightlyVersions( ckeditor5path ) {
 
 	const samplePackageJsonPaths = packageJson.workspaces
 		.map( workspace => `${ DESTINATION_DIRECTORY }/${ workspace }` )
-		.flatMap( workspace => glob.sync( `${ workspace }/package.json` ) );
+		.flatMap( workspace => globSync( `${ workspace }/package.json` ) );
 
 	for ( const samplePackageJsonPath of samplePackageJsonPaths ) {
 		const samplePackageJson = await fs.readJson( samplePackageJsonPath );
@@ -224,7 +224,7 @@ function updateVersion( version, callback, dependencies ) {
 async function copySample( sample ) {
 	await fs.emptyDir( `${ RELEASE_DIRECTORY }/${ sample.name }` );
 
-	const filesToCopy = glob.sync( `${ sample.name }/**`, {
+	const filesToCopy = globSync( `${ sample.name }/**`, {
 		ignore: [
 			sample.name,
 			'**/node_modules/**',
@@ -314,7 +314,7 @@ async function keepBuildOnly( sample ) {
  * @returns {Boolean}
  */
 function areLocalPackagesAvailable( ckeditor5Path ) {
-	const pathsToLocalPackages = glob.sync( '{packages/*,external/*/packages/*}', {
+	const pathsToLocalPackages = globSync( '{packages/*,external/*/packages/*}', {
 		cwd: ckeditor5Path
 	} );
 
