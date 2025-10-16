@@ -300,8 +300,8 @@ export default function App() {
 		},
 		exportPdf: {
 			stylesheets: [
-				'https://cdn.ckeditor.com/ckeditor5/47.0.0/ckeditor5.css',
-				'https://cdn.ckeditor.com/ckeditor5-premium-features/47.0.0/ckeditor5-premium-features.css'
+				'https://cdn.ckeditor.com/ckeditor5/47.1.0/ckeditor5.css',
+				'https://cdn.ckeditor.com/ckeditor5-premium-features/47.1.0/ckeditor5-premium-features.css'
 			],
 			fileName: 'export-pdf-demo.pdf',
 			appID: 'cke5-demos',
@@ -328,8 +328,8 @@ export default function App() {
 		},
 		exportWord: {
 			stylesheets: [
-				'https://cdn.ckeditor.com/ckeditor5/47.0.0/ckeditor5.css',
-				'https://cdn.ckeditor.com/ckeditor5-premium-features/47.0.0/ckeditor5-premium-features.css'
+				'https://cdn.ckeditor.com/ckeditor5/47.1.0/ckeditor5.css',
+				'https://cdn.ckeditor.com/ckeditor5-premium-features/47.1.0/ckeditor5-premium-features.css'
 			],
 			fileName: 'export-word-demo.docx',
 			converterOptions: {
