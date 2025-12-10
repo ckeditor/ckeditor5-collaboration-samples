@@ -142,7 +142,7 @@ And accepts following flags:
 ## Releasing
 
 > [!WARNING]
-> Make sure to use `yarn` when installing the dependencies. `npm` or `pnpm` could creade a lock file that would cause the script to fail.
+> Make sure to use `yarn` when installing the dependencies. `npm` or `pnpm` could create a lock file that would cause the script to fail.
  
 The release process involves mostly updating `ckeditor5*` dependencies in all samples and pushing it to the remote. No build artifacts should be published as a part of it (as it was in the past).
 
