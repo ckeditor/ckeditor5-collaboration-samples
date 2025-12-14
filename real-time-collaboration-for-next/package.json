@@ -13,7 +13,7 @@
     "ckbox": "2.9.2",
     "ckeditor5": "47.3.0",
     "ckeditor5-premium-features": "47.3.0",
-    "next": "14.2.32",
+    "next": "14.2.35",
     "react": "^19"
   },
   "engines": {
