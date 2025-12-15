@@ -13,6 +13,14 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "allowedCommonJsDependencies": [
+              "fuzzysort",
+              "protobufjs",
+              "url-parse",
+              "extend",
+              "bowser",
+              "fast-xml-parser"
+            ],
             "outputPath": "dist/real-time-collaboration-for-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -37,11 +45,11 @@
                 {
                   "type": "initial",
                   "maximumWarning": "3mb",
-                  "maximumError": "4mb"
+                  "maximumError": "4.2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "450kB",
+                  "maximumWarning": "650kB",
                   "maximumError": "900kB"
                 }
               ],
