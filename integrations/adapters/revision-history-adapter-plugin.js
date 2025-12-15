@@ -3,8 +3,6 @@
  * For licensing, see LICENSE.md.
  */
 
-/* eslint-disable no-unused-vars */
-
 import { Plugin } from 'ckeditor5';
 import { revisionsMock as revisions } from '../mock-data.js';
 
