@@ -6,18 +6,18 @@
 import globals from 'globals';
 import { defineConfig } from 'eslint/config';
 import ckeditor5Rules from 'eslint-plugin-ckeditor5-rules';
-import ckeditor5Config from 'eslint-config-ckeditor5';
 import react from 'eslint-plugin-react';
 import vue from 'eslint-plugin-vue';
+import ts from 'typescript-eslint';
 
 export default defineConfig( [
 	react.configs.flat.recommended,
 	react.configs.flat[ 'jsx-runtime' ],
 	vue.configs[ 'flat/recommended' ],
-	ckeditor5Config,
 	{
 		ignores: [
-			'**/build/**'
+			'**/build/**',
+			'**/*.d.ts'
 		]
 	},
 	{
@@ -39,8 +39,6 @@ export default defineConfig( [
 		},
 		rules: {
 			'no-alert': 'off',
-			'@stylistic/max-len': 'off',
-			'@stylistic/no-trailing-spaces': 'error',
 			'ckeditor5Rules/license-header': [ 'error', { headerLines: [
 				'/**',
 				' * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.',
@@ -83,6 +81,9 @@ export default defineConfig( [
 	},
 	{
 		files: [ '**/*.ts', '**/*.tsx' ],
+		languageOptions: {
+			parser: ts.parser
+		},
 		rules: {
 			'new-cap': 'off',
 			'@typescript-eslint/consistent-type-imports': 'off',
