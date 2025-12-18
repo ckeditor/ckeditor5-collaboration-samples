@@ -86,7 +86,7 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 			params.push( '*ckeditor5*' );
 		}
 
-		const exitCode = await runCommandAsync( 'npx', params, sample, verbose );
+		const exitCode = await runCommandAsync( 'pnpm', params, sample, verbose );
 
 		if ( exitCode !== 0 ) {
 			updatedPackages++;
