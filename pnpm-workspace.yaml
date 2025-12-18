@@ -1,0 +1,30 @@
+packages:
+  - collaboration-comments-outside-of-editor
+  - collaboration-editor-classic
+  - collaboration-for-angular
+  - collaboration-for-next
+  - collaboration-for-react
+  - collaboration-for-vue
+  - integrations
+  - real-time-collaboration-comments-outside-of-editor
+  - real-time-collaboration-editor-classic
+  - real-time-collaboration-editor-document
+  - real-time-collaboration-editor-multi-root
+  - real-time-collaboration-editor-multi-root-for-react
+  - real-time-collaboration-for-angular
+  - real-time-collaboration-for-next
+  - real-time-collaboration-for-react
+  - real-time-collaboration-for-vue
+  - real-time-collaboration-with-context
+
+minimumReleaseAge: 4320 # 3 days
+minimumReleaseAgeExclude:
+  - '@ckeditor/*'
+  - '@cksource/*'
+  - '*ckeditor5*'
+
+shellEmulator: true
+shamefullyHoist: true
+preferFrozenLockfile: true
+linkWorkspacePackages: true
+ignoreWorkspaceCycles: true

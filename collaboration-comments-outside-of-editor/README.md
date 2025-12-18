@@ -24,7 +24,7 @@ The basic usage of `Context` is shown in a dedicated [`Context`](../real-time-co
 4. Install dependencies and start the demo:
 
    ```shell
-   yarn && yarn dev
+   pnpm i && pnpm run dev
    ```
 
 ## Overview

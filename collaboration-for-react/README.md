@@ -25,7 +25,7 @@ The integration supports React from version 16.3.0. The `package.json` file stor
 4. Install dependencies and start the demo:
 
    ```shell
-   yarn && yarn dev
+   pnpm i && pnpm run dev
    ```
 
 ## Overview

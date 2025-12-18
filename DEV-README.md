@@ -37,7 +37,7 @@ If there are any unused or outdated dependencies, the script will output a list 
 It can be run with:
 
 ```bash
-yarn samples:check-dependencies
+pnpm run samples:check-dependencies
 ```
 
 And accepts following flags:
@@ -49,7 +49,7 @@ And accepts following flags:
 
 **IMPORTANT**: The `depcheck` library does not work perfectly with Angular and so it may complain about unused deps which are in fact needed. This false positive usually looks as below:
 ```
-Executed command: npx depcheck
+Executed command: pnpm dlx depcheck
 
 Unused dependencies
 * @angular/compiler
@@ -72,7 +72,7 @@ This script updates samples dependencies. It allows for:
 It can be run with:
 
 ```bash
-yarn samples:update-dependencies
+pnpm run samples:update-dependencies
 ```
 
 And accepts following flags:
@@ -97,13 +97,13 @@ This scripts builds all samples in a separate directory. The end result is a dir
 It requires `ckeditor5` package, so one should follow suggested directory structure mentioned on the beginning of this document, or use `--ckeditor5-path` CLI argument to pass the custom localization.
 
 ```bash
-yarn samples:build --ckeditor5-path /home/user/workspace/ckeditor/ckeditor5
+pnpm run samples:build --ckeditor5-path /home/user/workspace/ckeditor/ckeditor5
 ```
 
 This script can be run with:
 
 ```bash
-yarn samples:build
+pnpm run samples:build
 ```
 
 And accepts following flags:
@@ -115,7 +115,7 @@ And accepts following flags:
 - `--keep` (`-k`) - indicates whether the release directory should not be removed before starting the build,
 - `--ckeditor5-path` - defines a path to the `ckeditor/ckeditor5` repository.
 
-The building script always call the `yarn install` command. Passing the `--dev` option uses latest nightly versions of CKEditor 5 packages.
+The building script always call the `pnpm install` command. Passing the `--dev` option uses latest nightly versions of CKEditor 5 packages.
 
 It generates build in the `build/release-collaboration-samples/` directory. After that, one can easily run all samples at once with:
 
@@ -125,12 +125,12 @@ cd build/release-collaboration-samples/ && http-server
 
 ### build-local
 
-This scripts runs build process for each sample separately. It is like doing `cd sample_dir && yarn && yarn build` for all samples at once.
+This scripts runs build process for each sample separately. It is like doing `cd sample_dir && pnpm install && pnpm run build` for all samples at once.
 
 It can be run with:
 
 ```bash
-yarn samples:build-local
+pnpm run samples:build-local
 ```
 
 And accepts following flags:
@@ -140,9 +140,6 @@ And accepts following flags:
 - `--concurrency` (`-c`) - defines how many samples will be build concurrently.
 
 ## Releasing
-
-> [!WARNING]
-> Make sure to use `yarn` when installing the dependencies. `npm` or `pnpm` could create a lock file that would cause the script to fail.
  
 The release process involves mostly updating `ckeditor5*` dependencies in all samples and pushing it to the remote. No build artifacts should be published as a part of it (as it was in the past).
 
@@ -172,7 +169,7 @@ This script helps with the release process, doing most of the work.
 It can be run with:
 
 ```bash
-yarn samples:release
+pnpm run samples:release
 ```
 
 And accepts following flags:

@@ -30,7 +30,7 @@ module.exports = {
  * @returns {Promise}
  */
 function installDependencies( dir, verbose = false ) {
-	return runCommandAsync( 'yarnpkg', [ 'install' ], dir, verbose, true );
+	return runCommandAsync( 'pnpm', [ 'install' ], dir, verbose, true );
 }
 
 /**
@@ -41,7 +41,7 @@ function installDependencies( dir, verbose = false ) {
  * @returns {Promise.<void>}
  */
 function runBuildCommand( dir, verbose = false ) {
-	return runCommandAsync( 'yarnpkg', [ 'run', 'build' ], dir, verbose, true );
+	return runCommandAsync( 'pnpm', [ 'run', 'build' ], dir, verbose, true );
 }
 
 /**

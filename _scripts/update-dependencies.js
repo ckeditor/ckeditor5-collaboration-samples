@@ -44,7 +44,7 @@ async function main() {
 		if ( options.commit ) {
 			await commitChanges( options );
 
-			console.log( chalk.green( '✨ All changes are commited.' ) );
+			console.log( chalk.green( '✨ All changes are committed.' ) );
 		}
 	} else {
 		console.log( '✨ All packages are up to date.' );
@@ -80,7 +80,8 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 	for ( const sample of pathsToSampleSourceDirectories ) {
 		console.log( `Updating dependencies for the "${ sample }" sample...` );
 
-		const params = [ 'ncu', '-u', '-e', 2 ];
+		const params = [ 'dlx', 'npm-check-updates', '-u', '-e', 2 ];
+
 		if ( ckeditorOnly ) {
 			params.push( '*ckeditor5*' );
 		}

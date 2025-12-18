@@ -17,7 +17,8 @@
   },
   "engines": {
     "node": ">=24.11.0",
-    "npm": ">=9.0.0"
+    "pnpm": ">=10.14.0",
+    "yarn": "\n\n┌─────────────────────────┐\n│  Hey, we use pnpm now!  │\n└─────────────────────────┘\n\n"
   },
   "author": "CKSource (https://cksource.com/)",
   "license": "SEE LICENSE IN ../LICENSE.md",

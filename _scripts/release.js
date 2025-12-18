@@ -85,7 +85,7 @@ async function tagVersion( version, verbose ) {
  * @returns {Promise.<void>}
  */
 async function bumpCKEditor5Packages( verbose ) {
-	return runCommandAsync( 'yarnpkg', [ 'samples:update-dependencies', '--ckeditor-only', '-c' ], process.cwd(), verbose, true );
+	return runCommandAsync( 'pnpm', [ 'run', 'samples:update-dependencies', '--ckeditor-only', '-c' ], process.cwd(), verbose, true );
 }
 
 /**
