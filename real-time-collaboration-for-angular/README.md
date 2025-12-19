@@ -24,7 +24,7 @@ The integration supports Angular from version 5.0.0. The `package.json` file sto
 4. Install dependencies and start the demo:
 
    ```shell
-   yarn && yarn dev
+   pnpm i && pnpm run dev
    ```
 
 5. Copy the URL and share it or paste in another tab to enjoy real-time collaborative editing.

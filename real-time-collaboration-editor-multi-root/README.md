@@ -27,7 +27,7 @@ The [Multi-root editor](../real-time-collaboration-editor-multi-root/) allows cr
 4. Install dependencies and start the demo:
 
    ```shell
-   yarn && yarn dev
+   pnpm i && pnpm run dev
    ```
 
 5. Copy the URL and share it or paste in another tab to enjoy real-time collaborative editing.

@@ -1,0 +1,18 @@
+packages:
+  - "*/"
+  - "!_*/"
+  - "!.*/"
+  - "!build/"
+  - "!node_modules/"
+
+minimumReleaseAge: 4320 # 3 days
+minimumReleaseAgeExclude:
+  - '@ckeditor/*'
+  - '@cksource/*'
+  - '*ckeditor5*'
+
+shellEmulator: true
+shamefullyHoist: true
+preferFrozenLockfile: true
+linkWorkspacePackages: true
+ignoreWorkspaceCycles: true

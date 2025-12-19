@@ -25,7 +25,7 @@ The integration supports React from version 16.3.0, which means it should work w
 4. Install dependencies and start the demo:
 
    ```shell
-   yarn && yarn dev
+   pnpm i && pnpm run dev
    ```
 
 ## Overview

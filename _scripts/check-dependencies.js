@@ -39,8 +39,8 @@ async function checkDependencies( pathsToSampleSourceDirectories, verbose ) {
 	for ( const sample of pathsToSampleSourceDirectories ) {
 		console.log( `Checking dependencies for the "${ sample }" sample...` );
 
-		await runCommandAsync( 'npx', [ 'depcheck' ], sample, verbose );
-		await runCommandAsync( 'npx', [ 'ncu', '-e', 2 ], sample, verbose );
+		await runCommandAsync( 'pnpm', [ 'dlx', 'depcheck' ], sample, verbose );
+		await runCommandAsync( 'pnpm', [ 'dlx', 'npm-check-updates', '-e', 2 ], sample, verbose );
 	}
 }
 
