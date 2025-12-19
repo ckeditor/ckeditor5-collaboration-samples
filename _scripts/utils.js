@@ -30,7 +30,7 @@ module.exports = {
  * @returns {Promise}
  */
 function installDependencies( dir, verbose = false ) {
-	return runCommandAsync( 'pnpm', [ 'install' ], dir, verbose, true );
+	return runCommandAsync( 'pnpm', [ 'install', '--frozen-lockfile' ], dir, verbose, true );
 }
 
 /**
