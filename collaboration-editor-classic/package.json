@@ -10,7 +10,7 @@
     "ckeditor5-collaboration-samples-integrations": "file:../integrations"
   },
   "devDependencies": {
-    "vite": "^5.3.5"
+    "vite": "^7.0.0"
   },
   "engines": {
     "node": ">=24.11.0",
