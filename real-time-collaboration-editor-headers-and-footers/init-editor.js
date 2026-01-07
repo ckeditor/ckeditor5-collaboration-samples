@@ -57,7 +57,7 @@ watchdog.setDestructor( editor => editor.destroy() );
 configUpdateAlert( MultiRootEditor.defaultConfig );
 
 const multiRootDefaultDataAll = {
-	content: '<p>Back when I was still in elementary school, there was this guy named Paweł. I was riding my bike, ran into him, then I went to Biedronka to buy some ice cream, and on the way back I rode home.</p>',
+	content: '<h2>Collaborative editing</h2><p><strong>Collaborative editing</strong> is the practice of a group of people producing a written work together.</p><p>It is a technique that allows multiple people to edit the same document simultaneously, often using software tools.</p>',
 	'header:default': '',
 	'header:first': '',
 	'header:odd': '',
