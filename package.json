@@ -21,6 +21,7 @@
     "npm-check-updates": "^18.0.0"
   },
   "devDependencies": {
+    "@ckeditor/ckeditor5-dev-bump-year": "^54.0.0",
     "@ckeditor/ckeditor5-dev-ci": "^54.0.0",
     "eslint": "^9.34.0",
     "eslint-config-ckeditor5": "^13.0.0",
