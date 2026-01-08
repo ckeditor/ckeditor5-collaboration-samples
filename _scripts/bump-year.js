@@ -8,7 +8,7 @@
 /*
 
 Usage:
-node scripts/bump-year.js
+node _scripts/bump-year.js
 
 And after reviewing the changes:
 git commit -am "Internal: Bumped the year." && git push
