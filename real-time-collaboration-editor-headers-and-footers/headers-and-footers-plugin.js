@@ -46,6 +46,10 @@ export class HeadersAndFootersPlugin extends Plugin {
 		const { model, data } = this.editor;
 
 		for ( const [ variant, content ] of Object.entries( definitions ) ) {
+			if ( !content.html ) {
+				return;
+			}
+
 			const rootName = `${ type }:${ variant }`;
 
 			model.enqueueChange( batchType, writer => {
@@ -72,9 +76,13 @@ export class HeadersAndFootersPlugin extends Plugin {
 			const root = this.editor.model.document.getRoot( rootName );
 
 			if ( root?.isAttached() ) {
-				exportData[ variant ] = {
-					html: this.editor.getData( { rootName } )
-				};
+				const html = this.editor.getData( { rootName } )?.trim();
+
+				if ( html ) {
+					exportData[ variant ] = {
+						html
+					};
+				}
 			}
 		}
 
