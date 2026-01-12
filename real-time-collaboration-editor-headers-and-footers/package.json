@@ -1,0 +1,27 @@
+{
+  "name": "@ckeditor/real-time-collaboration-editor-headers-and-footers",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "ckeditor5": "47.3.0",
+    "ckeditor5-premium-features": "47.3.0",
+    "ckbox": "2.9.2",
+    "ckeditor5-collaboration-samples-integrations": "file:../integrations"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=24.11.0",
+    "pnpm": ">=10.14.0",
+    "yarn": "\n\n┌─────────────────────────┐\n│  Hey, we use pnpm now!  │\n└─────────────────────────┘\n\n"
+  },
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir=build"
+  }
+}
