@@ -46,10 +46,6 @@ export class HeadersAndFootersPlugin extends Plugin {
 		const { model, data } = this.editor;
 
 		for ( const [ variant, content ] of Object.entries( definitions ) ) {
-			if ( !content.html ) {
-				return;
-			}
-
 			const rootName = `${ type }:${ variant }`;
 
 			model.enqueueChange( batchType, writer => {
