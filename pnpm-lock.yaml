@@ -112,22 +112,22 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^19.2.17
-        version: 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+        version: 19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
       '@angular/compiler':
         specifier: ^19.2.17
         version: 19.2.17
       '@angular/core':
-        specifier: ^19.2.17
-        version: 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+        specifier: ^19.2.18
+        version: 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       '@angular/forms':
         specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
+        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
       '@angular/platform-browser':
         specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))
+        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))
       '@ckeditor/ckeditor5-angular':
         specifier: 11.0.0
-        version: 11.0.0(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.3.0)(rxjs@7.8.1)
+        version: 11.0.0(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.3.0)(rxjs@7.8.1)
       ckbox:
         specifier: 2.9.2
         version: 2.9.2(@types/debug@4.1.12)(@types/node@25.0.2)(sass@1.85.0)(yaml@2.8.2)
@@ -370,22 +370,22 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^19.2.17
-        version: 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+        version: 19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
       '@angular/compiler':
         specifier: ^19.2.17
         version: 19.2.17
       '@angular/core':
-        specifier: ^19.2.17
-        version: 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+        specifier: ^19.2.18
+        version: 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       '@angular/forms':
         specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
+        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
       '@angular/platform-browser':
         specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))
+        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))
       '@ckeditor/ckeditor5-angular':
         specifier: 11.0.0
-        version: 11.0.0(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.3.0)(rxjs@7.8.1)
+        version: 11.0.0(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.3.0)(rxjs@7.8.1)
       ckbox:
         specifier: 2.9.2
         version: 2.9.2(@types/debug@4.1.12)(@types/node@25.0.2)(sass@1.85.0)(yaml@2.8.2)
@@ -585,8 +585,8 @@ packages:
     resolution: {integrity: sha512-qo8psYASAlDiQ8fAL8i/E2JfWH2nPTpZDKKZxSWvgBVA8o+zUEjYAJu6/k6btnu+4Qcb425T0rmM/zao6EU9Aw==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
 
-  '@angular/core@19.2.17':
-    resolution: {integrity: sha512-nVu0ryxfiXUZ9M+NV21TY+rJZkPXTYo9U0aJb19hvByPpG+EvuujXUOgpulz6vxIzGy7pz/znRa+K9kxuuC+yQ==}
+  '@angular/core@19.2.18':
+    resolution: {integrity: sha512-+QRrf0Igt8ccUWXHA+7doK5W6ODyhHdqVyblSlcQ8OciwkzIIGGEYNZom5OZyWMh+oI54lcSeyV2O3xaDepSrQ==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -6213,9 +6213,9 @@ snapshots:
       - chokidar
       - supports-color
 
-  '@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)':
+  '@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       rxjs: 7.8.1
       tslib: 2.8.1
 
@@ -6238,24 +6238,24 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)':
+  '@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)':
     dependencies:
       rxjs: 7.8.1
       tslib: 2.8.1
       zone.js: 0.15.1
 
-  '@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)':
+  '@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)':
     dependencies:
-      '@angular/common': 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
-      '@angular/platform-browser': 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))
+      '@angular/common': 19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/platform-browser': 19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  '@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))':
+  '@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))':
     dependencies:
-      '@angular/common': 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/common': 19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       tslib: 2.8.1
 
   '@aws-crypto/crc32@5.2.0':
@@ -6926,8 +6926,6 @@ snapshots:
       '@ckeditor/ckeditor5-core': 47.2.0
       '@ckeditor/ckeditor5-upload': 47.2.0
       ckeditor5: 47.2.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-adapter-ckfinder@47.3.0':
     dependencies:
@@ -6986,11 +6984,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@ckeditor/ckeditor5-angular@11.0.0(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.3.0)(rxjs@7.8.1)':
+  '@ckeditor/ckeditor5-angular@11.0.0(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.3.0)(rxjs@7.8.1)':
     dependencies:
-      '@angular/common': 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
-      '@angular/forms': 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
+      '@angular/common': 19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/forms': 19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
       '@ckeditor/ckeditor5-integrations-common': 2.2.3(ckeditor5@47.3.0)
       ckeditor5: 47.3.0
       rxjs: 7.8.1
@@ -7176,8 +7174,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       '@ckeditor/ckeditor5-widget': 47.2.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-clipboard@47.3.0':
     dependencies:
@@ -7193,8 +7189,6 @@ snapshots:
       '@ckeditor/ckeditor5-core': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-cloud-services@47.3.0':
     dependencies:
@@ -7289,8 +7283,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.3.0
       '@ckeditor/ckeditor5-watchdog': 47.3.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-dev-bump-year@54.2.3':
     dependencies:
@@ -7341,8 +7333,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-editor-balloon@47.3.0':
     dependencies:
@@ -7361,8 +7351,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-editor-classic@47.3.0':
     dependencies:
@@ -7381,8 +7369,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-editor-decoupled@47.3.0':
     dependencies:
@@ -7569,8 +7555,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-find-and-replace@47.3.0':
     dependencies:
@@ -7600,6 +7584,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.3.0
       '@ckeditor/ckeditor5-utils': 47.3.0
       ckeditor5: 47.3.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-footnotes@47.3.0':
     dependencies:
@@ -7666,6 +7652,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.3.0
       '@ckeditor/ckeditor5-utils': 47.3.0
       ckeditor5: 47.3.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-highlight@47.2.0':
     dependencies:
@@ -7695,8 +7683,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-horizontal-line@47.3.0':
     dependencies:
@@ -7726,6 +7712,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.3.0
       '@ckeditor/ckeditor5-widget': 47.3.0
       ckeditor5: 47.3.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-html-support@47.2.0':
     dependencies:
@@ -7741,6 +7729,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-html-support@47.3.0':
     dependencies:
@@ -7756,6 +7746,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.3.0
       ckeditor5: 47.3.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-icons@47.2.0': {}
 
@@ -7775,6 +7767,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-image@47.3.0':
     dependencies:
@@ -7817,6 +7811,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-indent@47.3.0':
     dependencies:
@@ -7841,6 +7837,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-language@47.3.0':
     dependencies:
@@ -7874,6 +7872,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-link@47.3.0':
     dependencies:
@@ -7913,6 +7913,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-list@47.3.0':
     dependencies:
@@ -7989,6 +7991,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-media-embed@47.3.0':
     dependencies:
@@ -8024,6 +8028,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.3.0
       ckeditor5: 47.3.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-merge-fields@47.3.0':
     dependencies:
@@ -8046,6 +8052,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-minimap@47.3.0':
     dependencies:
@@ -8072,6 +8080,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-page-break@47.3.0':
     dependencies:
@@ -8236,6 +8246,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-show-blocks@47.3.0':
     dependencies:
@@ -8325,6 +8337,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-style@47.3.0':
     dependencies:
@@ -8351,6 +8365,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-table@47.3.0':
     dependencies:
@@ -8528,6 +8544,8 @@ snapshots:
       '@ckeditor/ckeditor5-engine': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-watchdog@47.3.0':
     dependencies:
@@ -8568,6 +8586,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-word-count@47.3.0':
     dependencies:
