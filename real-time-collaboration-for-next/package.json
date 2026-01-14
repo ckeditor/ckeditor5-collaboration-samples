@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-react": "11.0.0",
+    "@ckeditor/ckeditor5-react": "11.0.1",
     "ckbox": "2.9.2",
-    "ckeditor5": "47.3.0",
-    "ckeditor5-premium-features": "47.3.0",
+    "ckeditor5": "47.4.0",
+    "ckeditor5-premium-features": "47.4.0",
     "next": "14.2.35",
     "react": "^19"
   },
