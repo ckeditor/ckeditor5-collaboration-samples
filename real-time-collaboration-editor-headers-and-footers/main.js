@@ -221,17 +221,7 @@ MultiRootEditor.defaultConfig = {
 			page_orientation: 'portrait'
 		},
 		tokenUrl: false,
-		// This callback is used to get and merge the data from all roots.
-		// For simple case, one should use `editor.getFullData()` instead. However, as it returns data
-		// in the order of roots creation, which may not be the desired order, here we sort by roots' order attribute.
-		// For more information, refer to MultiRootEditor API docs:
-		// https://ckeditor.com/docs/ckeditor5/latest/api/module_editor-multi-root_multirooteditor-MultiRootEditor.html#function-getFullData.
-		dataCallback: editor =>
-			Object
-				.entries( editor.getRootsAttributes() )
-				.sort( ( [ , attrs1 ], [ , attrs2 ] ) => attrs1.order - attrs2.order )
-				.map( ( [ rootName ] ) => editor.getData( { rootName } ) )
-				.join( '\n' )
+		dataCallback: editor => editor.getData( { rootName: 'content' } )
 	},
 	exportWord: {
 		stylesheets: [
@@ -240,12 +230,16 @@ MultiRootEditor.defaultConfig = {
 		],
 		fileName: 'export-word-demo.docx',
 		converterOptions: {
-			format: 'Tabloid',
-			margin_top: '20mm',
-			margin_bottom: '20mm',
-			margin_right: '24mm',
-			margin_left: '24mm',
-			orientation: 'portrait'
+			document: {
+				size: 'Tabloid',
+				orientation: 'portrait',
+				margin: {
+					top: '20mm',
+					bottom: '20mm',
+					right: '24mm',
+					left: '24mm'
+				}
+			}
 		},
 		tokenUrl: false,
 		// This callback is used to get and merge the data from all roots.
@@ -259,6 +253,9 @@ MultiRootEditor.defaultConfig = {
 				.sort( ( [ , attrs1 ], [ , attrs2 ] ) => attrs1.order - attrs2.order )
 				.map( ( [ rootName ] ) => editor.getData( { rootName } ) )
 				.join( '\n' )
+	},
+	importWord: {
+		tokenUrl: false
 	},
 	fontFamily: {
 		supportAllValues: true

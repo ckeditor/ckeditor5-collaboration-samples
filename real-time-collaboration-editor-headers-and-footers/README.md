@@ -21,7 +21,7 @@ The [Multi-root editor](../real-time-collaboration-editor-multi-root/) allows cr
 3. Move to the sample directory:
 
    ```shell
-   cd real-time-collaboration-editor-multi-root
+   cd real-time-collaboration-editor-headers-and-footers
    ```
 
 4. Install dependencies and start the demo:
