@@ -122,7 +122,19 @@ function updateVariantVisibility( select ) {
 	nodes.forEach( node => {
 		const name = node.getAttribute( 'data-root' );
 		const variant = name.split( ':' )[ 1 ];
-		node.style.display = select.value === variant ? '' : 'none';
+
+		if ( select.value === variant ) {
+			node.style.visibility = 'visible';
+			node.style.zIndex = '1';
+			node.style.position = 'relative';
+		} else {
+			node.style.visibility = 'hidden';
+			node.style.zIndex = '0';
+			node.style.position = 'absolute';
+			node.style.top = '0';
+			node.style.left = '0';
+			node.style.right = '0';
+		}
 	} );
 }
 
@@ -173,7 +185,16 @@ function buildRevisionViewerRoots( container, data ) {
 			variantRoot.className = 'variant-root';
 			variantRoot.setAttribute( 'data-root', `${ section.type }:${ variant }` );
 			if ( variant !== 'default' ) {
-				variantRoot.style.display = 'none';
+				variantRoot.style.visibility = 'hidden';
+				variantRoot.style.zIndex = '0';
+				variantRoot.style.position = 'absolute';
+				variantRoot.style.top = '0';
+				variantRoot.style.left = '0';
+				variantRoot.style.right = '0';
+			} else {
+				variantRoot.style.visibility = 'visible';
+				variantRoot.style.zIndex = '1';
+				variantRoot.style.position = 'relative';
 			}
 			sectionWrapper.appendChild( variantRoot );
 		}

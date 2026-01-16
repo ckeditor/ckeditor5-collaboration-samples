@@ -378,6 +378,14 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	border-radius: 4px;
 }
 
+.editor-root {
+	position: relative;
+}
+
+.variant-root {
+	width: 100%;
+}
+
 .variant-root > .ck-content {
 	padding: 1.5em 2em;
 	border: 1px solid var(--ck-color-base-border);
@@ -386,4 +394,5 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 
 .editor-section {
 	margin-top: 4rem;
+	min-height: 100px;
 }
