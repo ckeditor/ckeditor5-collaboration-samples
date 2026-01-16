@@ -226,8 +226,8 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	max-width: var(--ck-sample-container-width);
 	padding: 10px;
 	background-color: var(--ck-color-base-background);
-	width: fit-content;
-	box-sizing: content-box;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .ck-content {
@@ -246,6 +246,10 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 .editor-container__editor-wrapper {
 	display: grid;
   grid-template-columns: 1fr auto;
+}
+
+.editor-container__editor {
+	min-width: 0;
 }
 
 .editor-container__toolbar {
@@ -267,10 +271,12 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 
 .revision-history__wrapper {
 	display: flex;
+	width: 100%;
 }
 
 .revision-history .revision-history__editor {
-	width: calc(var(--ck-sample-container-width) - var(--ck-sample-sidebar-width));
+	flex: 1 1 auto;
+	min-width: 0;
 }
 
 .revision-history .revision-history__editor .ck.ck-editor__editable,
@@ -279,12 +285,13 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 }
 
 .revision-history .revision-history__editor .ck.ck-editor__editable {
-	width: 975px;
+	width: 100%;
+	max-width: 975px;
 }
 
 .revision-history__wrapper .ck.ck-editor {
 	margin: 0;
-	max-width: calc(var(--ck-sample-container-width) - var(--ck-sample-sidebar-width));
+	max-width: 100%;
 }
 
 .revision-history__wrapper .revision-history__sidebar {
@@ -321,7 +328,13 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 }
 
 .editor-container__editor .ck-editor__editable {
-	width: 975px;
+	width: 100%;
+	max-width: 975px;
+}
+
+.editor-container.sidebar-narrow .editor-container__editor .ck-editor__editable,
+.editor-container.sidebar-hidden .editor-container__editor .ck-editor__editable {
+	max-width: 100%;
 }
 
 .menubar {
@@ -330,10 +343,15 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 }
 
 .toolbar .ck.ck-toolbar {
-	width: var(--ck-sample-container-width);
+	width: 100%;
+	max-width: var(--ck-sample-container-width);
 	border-bottom: 0;
 	border-top: 0;
 	border-radius: var(--ck-border-radius);
+}
+
+.toolbar {
+	width: 100%;
 }
 
 /* Variant selector for header/footer roots */

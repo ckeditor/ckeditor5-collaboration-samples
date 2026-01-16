@@ -18,6 +18,7 @@ watchdog.setCreator( ( el, config ) => {
 			// Switch between inline, narrow sidebar and wide sidebar according to the window size.
 			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
 			const sidebarElement = document.querySelector( '.editor-container__sidebar' );
+			const editorContainerElement = document.querySelector( '.editor-container' );
 
 			// Prevent closing the tab when any action is pending.
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
@@ -34,15 +35,26 @@ watchdog.setCreator( ( el, config ) => {
 				if ( window.innerWidth < 1070 ) {
 					sidebarElement.classList.remove( 'narrow' );
 					sidebarElement.classList.add( 'hidden' );
+					if ( editorContainerElement ) {
+						editorContainerElement.classList.add( 'sidebar-hidden' );
+						editorContainerElement.classList.remove( 'sidebar-narrow' );
+					}
 					annotationsUIs.switchTo( 'inline' );
 				}
 				else if ( window.innerWidth < 1300 ) {
 					sidebarElement.classList.remove( 'hidden' );
 					sidebarElement.classList.add( 'narrow' );
+					if ( editorContainerElement ) {
+						editorContainerElement.classList.add( 'sidebar-narrow' );
+						editorContainerElement.classList.remove( 'sidebar-hidden' );
+					}
 					annotationsUIs.switchTo( 'narrowSidebar' );
 				}
 				else {
 					sidebarElement.classList.remove( 'hidden', 'narrow' );
+					if ( editorContainerElement ) {
+						editorContainerElement.classList.remove( 'sidebar-hidden', 'sidebar-narrow' );
+					}
 					annotationsUIs.switchTo( 'wideSidebar' );
 				}
 			}
