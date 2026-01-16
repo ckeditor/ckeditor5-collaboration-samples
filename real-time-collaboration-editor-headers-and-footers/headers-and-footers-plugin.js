@@ -6,6 +6,9 @@
 import { Plugin } from 'ckeditor5';
 import { ImportWordEditing } from 'ckeditor5-premium-features';
 
+/**
+ * A plugin that adds support for importing and exporting headers and footer in Word documents.
+ */
 export class HeadersAndFootersPlugin extends Plugin {
 	static get pluginName() {
 		return 'HeadersAndFootersPlugin';
@@ -30,6 +33,7 @@ export class HeadersAndFootersPlugin extends Plugin {
 
 		if ( exportCommand ) {
 			this.listenTo( exportCommand, 'execute', ( _, [ data ] ) => {
+				data.dataCallback = () => this.editor.getData({ rootName: 'content' })
 				data.converterOptions = {
 					...data.converterOptions ?? {},
 					headers: this._getExportDataForSection( 'header' ),

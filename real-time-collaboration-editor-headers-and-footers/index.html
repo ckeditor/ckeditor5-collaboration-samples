@@ -12,129 +12,133 @@ This file is licensed under the terms of the MIT License (see LICENSE.md).
 
 	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/32x32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/96x96.png" sizes="96x96">
-	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/120x120.png" sizes="120x120">
-	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/152x152.png" sizes="152x152">
-	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/167x167.png" sizes="167x167">
-	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/180x180.png" sizes="180x180">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/120x120.png"
+		sizes="120x120">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/152x152.png"
+		sizes="152x152">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/167x167.png"
+		sizes="167x167">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/180x180.png"
+		sizes="180x180">
 
 	<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<header>
-	<div class="centered">
-		<h1>
-			<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
-				<img src="https://ckeditor.com/ckeditor-5/builder/assets/LogoCKEditor5-BZXDBQA7.svg" alt="CKEditor 5 logo" />
-			</a>
-		</h1>
-
-		<nav>
-			<ul>
-				<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/collaboration.html"
-					target="_blank" rel="noopener noreferrer">Collaboration documentation</a></li>
-				<li><a href="https://ckeditor.com/docs/ckeditor5/latest/framework/guides/deep-dive/ui/custom-editor-creator.html"
-						target="_blank" rel="noopener noreferrer">Multi-root editor documentation</a></li>
-				<li><a href="https://ckeditor.com/collaboration/" target="_blank"
-						rel="noopener noreferrer">Website</a></li>
-			</ul>
-		</nav>
-	</div>
-</header>
-
-<main>
-	<div class="message">
+	<header>
 		<div class="centered">
-			<h2>CKEditor 5 multi-root editor (headers &amp; footers) with real-time collaboration features</h2>
-			<p>
-				Open this sample in another browser tab to start real-time collaborative editing.
-			</p>
-			<p>
-				<strong>Steps to test import/export:</strong>
-			</p>
-			<ol>
-				<li>Import a Word document with headers and footers.</li>
-				<li>Change something in the content.</li>
-				<li>Export it again.</li>
-				<li>Headers and footers will be preserved.</li>
-			</ol>
-		</div>
-	</div>
+			<h1>
+				<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+					<img src="https://ckeditor.com/ckeditor-5/builder/assets/LogoCKEditor5-BZXDBQA7.svg" alt="CKEditor 5 logo" />
+				</a>
+			</h1>
 
-	<div class="main-container">
+			<nav>
+				<ul>
+					<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/collaboration.html"
+							target="_blank" rel="noopener noreferrer">Collaboration documentation</a></li>
+					<li><a
+							href="https://ckeditor.com/docs/ckeditor5/latest/framework/guides/deep-dive/ui/custom-editor-creator.html"
+							target="_blank" rel="noopener noreferrer">Multi-root editor documentation</a></li>
+					<li><a href="https://ckeditor.com/collaboration/" target="_blank" rel="noopener noreferrer">Website</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="message">
+			<div class="centered">
+				<h2>CKEditor 5 multi-root editor (headers &amp; footers) with real-time collaboration features</h2>
+				<p>
+					Open this sample in another browser tab to start real-time collaborative editing.
+				</p>
+				<p>
+					<strong>Steps to test import/export:</strong>
+				</p>
+				<ol>
+					<li>Import a Word document with headers and footers.</li>
+					<li>Change something in the content.</li>
+					<li>Export it again.</li>
+					<li>Headers and footers will be preserved.</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="main-container">
 			<div class="presence" id="editor-presence"></div>
 			<div class="menubar" id="editor-menubar"></div>
-		<div
-			class="editor-container editor-container_classic-editor editor-container_include-annotations"
-			id="editor-container"
-		>
-			<div id="editor-toolbar" class="toolbar"></div>
+			<div class="editor-container editor-container_classic-editor editor-container_include-annotations"
+				id="editor-container">
+				<div id="editor-toolbar" class="toolbar"></div>
 
-			<div class="editor-container__editor-wrapper">
-				<div class="editor-container__editor">
-					<!-- Content root -->
-					<div class="editor-root">
-						<div data-root="content"></div>
-					</div>
-
-					<!-- Header variants (static in HTML) -->
-					<div class="editor-root editor-section">
-						<div class="variant-bar">
-							<label class="variant-label">HEADER:</label>
-							<select class="variant-select">
-								<option value="default">default</option>
-								<option value="first">first</option>
-								<option value="odd">odd</option>
-								<option value="even">even</option>
-							</select>
+				<div class="editor-container__editor-wrapper">
+					<div class="editor-container__editor">
+						<!-- Content root -->
+						<div class="editor-root">
+							<div data-root="content"></div>
 						</div>
-						<div class="variant-root" data-root="header:default"></div>
-						<div class="variant-root" data-root="header:first" style="display:none"></div>
-						<div class="variant-root" data-root="header:odd" style="display:none"></div>
-						<div class="variant-root" data-root="header:even" style="display:none"></div>
-					</div>
 
-					<!-- Footer variants (static in HTML) -->
-					<div class="editor-root editor-section">
-						<div class="variant-bar">
-							<label class="variant-label">FOOTER:</label>
-							<select class="variant-select">
-								<option value="default">default</option>
-								<option value="first">first</option>
-								<option value="odd">odd</option>
-								<option value="even">even</option>
-							</select>
+						<!-- Header variants (static in HTML) -->
+						<div class="editor-root editor-section">
+							<div class="variant-bar">
+								<label class="variant-label">HEADER:</label>
+								<select class="variant-select">
+									<option value="default">default</option>
+									<option value="first">first</option>
+									<option value="odd">odd</option>
+									<option value="even">even</option>
+								</select>
+							</div>
+							<div class="variant-root" data-root="header:default"></div>
+							<div class="variant-root" data-root="header:first"></div>
+							<div class="variant-root" data-root="header:odd"></div>
+							<div class="variant-root" data-root="header:even"></div>
 						</div>
-						<div class="variant-root" data-root="footer:default"></div>
-						<div class="variant-root" data-root="footer:first" style="display:none"></div>
-						<div class="variant-root" data-root="footer:odd" style="display:none"></div>
-						<div class="variant-root" data-root="footer:even" style="display:none"></div>
+
+						<!-- Footer variants (static in HTML) -->
+						<div class="editor-root editor-section">
+							<div class="variant-bar">
+								<label class="variant-label">FOOTER:</label>
+								<select class="variant-select">
+									<option value="default">default</option>
+									<option value="first">first</option>
+									<option value="odd">odd</option>
+									<option value="even">even</option>
+								</select>
+							</div>
+							<div class="variant-root" data-root="footer:default"></div>
+							<div class="variant-root" data-root="footer:first"></div>
+							<div class="variant-root" data-root="footer:odd"></div>
+							<div class="variant-root" data-root="footer:even"></div>
+						</div>
+					</div>
+					<div class="editor-container__sidebar">
+						<div id="editor-annotations"></div>
 					</div>
 				</div>
-				<div class="editor-container__sidebar"><div id="editor-annotations"></div></div>
 			</div>
-		</div>
-		<div class="revision-history" id="editor-revision-history">
-			<div class="revision-history__wrapper">
-				<div class="revision-history__editor" id="editor-revision-history-editor"></div>
-				<div class="revision-history__sidebar" id="editor-revision-history-sidebar"></div>
+			<div class="revision-history" id="editor-revision-history">
+				<div class="revision-history__wrapper">
+					<div class="revision-history__editor" id="editor-revision-history-editor"></div>
+					<div class="revision-history__sidebar" id="editor-revision-history-sidebar"></div>
+				</div>
 			</div>
+
 		</div>
+	</main>
 
-	</div>
-</main>
+	<footer>
+		<div class="centered">
+			<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text
+				editor of tomorrow, available today</p>
+			<p>Copyright © 2003-2024, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> –
+				Holding
+				sp. z o.o. All rights reserved.</p>
+		</div>
+	</footer>
 
-<footer>
-	<div class="centered">
-		<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text
-			editor of tomorrow, available today</p>
-		<p>Copyright © 2003-2024, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> –
-			Holding
-			sp. z o.o. All rights reserved.</p>
-	</div>
-</footer>
-
-<script type="module" src="init-editor.js"></script>
+	<script type="module" src="init-editor.js"></script>
 </body>
 
 </html>

@@ -18,6 +18,7 @@ watchdog.setCreator( ( el, config ) => {
 			// Switch between inline, narrow sidebar and wide sidebar according to the window size.
 			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
 			const sidebarElement = document.querySelector( '.editor-container__sidebar' );
+			const editorContainerElement = document.querySelector( '.editor-container' );
 
 			// Prevent closing the tab when any action is pending.
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
@@ -34,15 +35,26 @@ watchdog.setCreator( ( el, config ) => {
 				if ( window.innerWidth < 1070 ) {
 					sidebarElement.classList.remove( 'narrow' );
 					sidebarElement.classList.add( 'hidden' );
+					if ( editorContainerElement ) {
+						editorContainerElement.classList.add( 'sidebar-hidden' );
+						editorContainerElement.classList.remove( 'sidebar-narrow' );
+					}
 					annotationsUIs.switchTo( 'inline' );
 				}
 				else if ( window.innerWidth < 1300 ) {
 					sidebarElement.classList.remove( 'hidden' );
 					sidebarElement.classList.add( 'narrow' );
+					if ( editorContainerElement ) {
+						editorContainerElement.classList.add( 'sidebar-narrow' );
+						editorContainerElement.classList.remove( 'sidebar-hidden' );
+					}
 					annotationsUIs.switchTo( 'narrowSidebar' );
 				}
 				else {
 					sidebarElement.classList.remove( 'hidden', 'narrow' );
+					if ( editorContainerElement ) {
+						editorContainerElement.classList.remove( 'sidebar-hidden', 'sidebar-narrow' );
+					}
 					annotationsUIs.switchTo( 'wideSidebar' );
 				}
 			}
@@ -110,8 +122,106 @@ function updateVariantVisibility( select ) {
 	nodes.forEach( node => {
 		const name = node.getAttribute( 'data-root' );
 		const variant = name.split( ':' )[ 1 ];
-		node.style.display = select.value === variant ? '' : 'none';
+
+		if ( select.value === variant ) {
+			node.style.visibility = 'visible';
+			node.style.zIndex = '1';
+			node.style.position = 'relative';
+		} else {
+			node.style.visibility = 'hidden';
+			node.style.zIndex = '0';
+			node.style.position = 'absolute';
+			node.style.top = '0';
+			node.style.left = '0';
+			node.style.right = '0';
+		}
 	} );
+}
+
+function buildRevisionViewerRoots( container, data ) {
+	container.innerHTML = '';
+
+	const contentWrapper = document.createElement( 'div' );
+	contentWrapper.className = 'editor-root';
+	const contentRoot = document.createElement( 'div' );
+	contentRoot.setAttribute( 'data-root', 'content' );
+	contentWrapper.appendChild( contentRoot );
+	container.appendChild( contentWrapper );
+
+	const sections = [
+		{ type: 'header', label: 'HEADER:' },
+		{ type: 'footer', label: 'FOOTER:' }
+	];
+
+	const variants = [ 'default', 'first', 'odd', 'even' ];
+
+	for ( const section of sections ) {
+		const sectionWrapper = document.createElement( 'div' );
+		sectionWrapper.className = 'editor-root editor-section';
+
+		const bar = document.createElement( 'div' );
+		bar.className = 'variant-bar';
+
+		const label = document.createElement( 'label' );
+		label.className = 'variant-label';
+		label.textContent = section.label;
+
+		const select = document.createElement( 'select' );
+		select.className = 'variant-select';
+
+		for ( const variant of variants ) {
+			const option = document.createElement( 'option' );
+			option.value = variant;
+			option.textContent = variant;
+			select.appendChild( option );
+		}
+
+		bar.appendChild( label );
+		bar.appendChild( select );
+		sectionWrapper.appendChild( bar );
+
+		for ( const variant of variants ) {
+			const variantRoot = document.createElement( 'div' );
+			variantRoot.className = 'variant-root';
+			variantRoot.setAttribute( 'data-root', `${ section.type }:${ variant }` );
+			if ( variant !== 'default' ) {
+				variantRoot.style.visibility = 'hidden';
+				variantRoot.style.zIndex = '0';
+				variantRoot.style.position = 'absolute';
+				variantRoot.style.top = '0';
+				variantRoot.style.left = '0';
+				variantRoot.style.right = '0';
+			} else {
+				variantRoot.style.visibility = 'visible';
+				variantRoot.style.zIndex = '1';
+				variantRoot.style.position = 'relative';
+			}
+			sectionWrapper.appendChild( variantRoot );
+		}
+
+		container.appendChild( sectionWrapper );
+	}
+
+	const elements = {};
+
+	container.querySelectorAll( '[data-root]' ).forEach( el => {
+		const name = el.getAttribute( 'data-root' );
+		const innerContent = document.createElement( 'div' );
+
+		if ( data[ name ] ) {
+			innerContent.innerHTML = data[ name ];
+		}
+
+		el.appendChild( innerContent );
+		elements[ name ] = innerContent;
+	} );
+
+	container.querySelectorAll( '.variant-select' ).forEach( select => {
+		select.addEventListener( 'change', () => updateVariantVisibility( select ) );
+		updateVariantVisibility( select );
+	} );
+
+	return elements;
 }
 
 editorContainer.querySelectorAll( '.variant-select' ).forEach( select => {
@@ -139,14 +249,20 @@ watchdog.create( elements, {
 		showRevisionViewerCallback: config => {
 			const editorContainer = config.revisionHistory.editorContainer;
 			const viewerContainer = config.revisionHistory.viewerContainer;
+			const viewerEditorElement = config.revisionHistory.viewerEditorElement;
+			const editorWrapper = editorContainer.querySelector( '.editor-container__editor-wrapper' );
 			const revisionHistoryEditorConfig = {
 				...config,
 				editableParentSelector: '#editor-revision-history-editor'
 			};
 
-			return MultiRootEditor.create( {}, revisionHistoryEditorConfig ).then( viewerEditor => {
+			const viewerElements = buildRevisionViewerRoots( viewerEditorElement, content );
+
+			return MultiRootEditor.create( viewerElements, revisionHistoryEditorConfig ).then( viewerEditor => {
 				viewerContainer.style.display = 'flex';
-				editorContainer.style.display = 'none';
+				if ( editorWrapper ) {
+					editorWrapper.style.display = 'none';
+				}
 
 				const toolbarContainer = document.querySelector( '#editor-toolbar' );
 				toolbarContainer.innerHTML = '';
@@ -158,9 +274,12 @@ watchdog.create( elements, {
 		closeRevisionViewerCallback: viewerEditor => {
 			const editorContainer = viewerEditor.config.get( 'revisionHistory.editorContainer' );
 			const viewerContainer = viewerEditor.config.get( 'revisionHistory.viewerContainer' );
+			const editorWrapper = editorContainer.querySelector( '.editor-container__editor-wrapper' );
 
 			viewerContainer.style.display = 'none';
-			editorContainer.style.display = '';
+			if ( editorWrapper ) {
+				editorWrapper.style.display = '';
+			}
 
 			return viewerEditor.destroy().then( () => {
 				const toolbarContainer = document.querySelector( '#editor-toolbar' );
