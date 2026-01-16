@@ -273,6 +273,15 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	width: calc(var(--ck-sample-container-width) - var(--ck-sample-sidebar-width));
 }
 
+.revision-history .revision-history__editor .ck.ck-editor__editable,
+.revision-history .revision-history__editor .ck.ck-editor__editable_inline {
+	border: 1px solid var(--ck-color-base-border);
+}
+
+.revision-history .revision-history__editor .ck.ck-editor__editable {
+	width: 975px;
+}
+
 .revision-history__wrapper .ck.ck-editor {
 	margin: 0;
 	max-width: calc(var(--ck-sample-container-width) - var(--ck-sample-sidebar-width));
@@ -280,7 +289,6 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 
 .revision-history__wrapper .revision-history__sidebar {
 	border: 1px solid var(--ck-color-base-border);
-	border-left: 0;
 	width: var(--ck-sample-sidebar-width);
 	min-height: 100%;
 }
