@@ -165,10 +165,6 @@ main .ck-editor[role='application'] .ck-comments-archive .ck-content {
 	background: none;
 }
 
-.ck-heading-dropdown {
-	width: 105px !important;
-}
-
 .editor-container__sidebar {
 	padding: 0 10px;
 	position: relative;
