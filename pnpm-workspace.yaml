@@ -5,6 +5,10 @@ packages:
   - "!build/"
   - "!node_modules/"
 
+overrides:
+  diff@^8.0.0: ^8.0.3
+  tar: ^7.5.4
+
 minimumReleaseAge: 4320 # 3 days
 minimumReleaseAgeExclude:
   - '@ckeditor/*'

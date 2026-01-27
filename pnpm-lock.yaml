@@ -4,6 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  diff@^8.0.0: ^8.0.3
+  tar: ^7.5.4
+
 importers:
 
   .:
@@ -111,23 +115,23 @@ importers:
   collaboration-for-angular:
     dependencies:
       '@angular/common':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
       '@angular/compiler':
-        specifier: ^19.2.17
-        version: 19.2.17
+        specifier: ^19.2.18
+        version: 19.2.18
       '@angular/core':
-        specifier: ^19.2.17
-        version: 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+        specifier: ^19.2.18
+        version: 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       '@angular/forms':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
       '@angular/platform-browser':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))
       '@ckeditor/ckeditor5-angular':
         specifier: 11.0.0
-        version: 11.0.0(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.4.0)(rxjs@7.8.1)
+        version: 11.0.0(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.4.0)(rxjs@7.8.1)
       ckbox:
         specifier: 2.9.2
         version: 2.9.2(@types/debug@4.1.12)(@types/node@25.0.2)(sass@1.85.0)(yaml@2.8.2)
@@ -145,14 +149,14 @@ importers:
         version: 0.15.1
     devDependencies:
       '@angular/build':
-        specifier: ^19.2.19
-        version: 19.2.19(@angular/compiler-cli@19.2.17(@angular/compiler@19.2.17)(typescript@5.6.3))(@angular/compiler@19.2.17)(@types/node@25.0.2)(chokidar@4.0.3)(postcss@8.5.6)(typescript@5.6.3)(yaml@2.8.2)
+        specifier: ^19.2.18
+        version: 19.2.19(@angular/compiler-cli@19.2.18(@angular/compiler@19.2.18)(typescript@5.6.3))(@angular/compiler@19.2.18)(@types/node@25.0.2)(chokidar@4.0.3)(postcss@8.5.6)(typescript@5.6.3)(yaml@2.8.2)
       '@angular/cli':
-        specifier: ^19.2.19
+        specifier: ^19.2.18
         version: 19.2.19(@types/node@25.0.2)(chokidar@4.0.3)
       '@angular/compiler-cli':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/compiler@19.2.17)(typescript@5.6.3)
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/compiler@19.2.18)(typescript@5.6.3)
       typescript:
         specifier: ~5.6.3
         version: 5.6.3
@@ -369,23 +373,23 @@ importers:
   real-time-collaboration-for-angular:
     dependencies:
       '@angular/common':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
       '@angular/compiler':
-        specifier: ^19.2.17
-        version: 19.2.17
+        specifier: ^19.2.18
+        version: 19.2.18
       '@angular/core':
-        specifier: ^19.2.17
-        version: 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+        specifier: ^19.2.18
+        version: 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       '@angular/forms':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
       '@angular/platform-browser':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))
       '@ckeditor/ckeditor5-angular':
         specifier: 11.0.0
-        version: 11.0.0(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.4.0)(rxjs@7.8.1)
+        version: 11.0.0(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.4.0)(rxjs@7.8.1)
       ckbox:
         specifier: 2.9.2
         version: 2.9.2(@types/debug@4.1.12)(@types/node@25.0.2)(sass@1.85.0)(yaml@2.8.2)
@@ -400,14 +404,14 @@ importers:
         version: 0.15.1
     devDependencies:
       '@angular/build':
-        specifier: ^19.2.19
-        version: 19.2.19(@angular/compiler-cli@19.2.17(@angular/compiler@19.2.17)(typescript@5.6.3))(@angular/compiler@19.2.17)(@types/node@25.0.2)(chokidar@4.0.3)(postcss@8.5.6)(typescript@5.6.3)(yaml@2.8.2)
+        specifier: ^19.2.18
+        version: 19.2.19(@angular/compiler-cli@19.2.18(@angular/compiler@19.2.18)(typescript@5.6.3))(@angular/compiler@19.2.18)(@types/node@25.0.2)(chokidar@4.0.3)(postcss@8.5.6)(typescript@5.6.3)(yaml@2.8.2)
       '@angular/cli':
-        specifier: ^19.2.19
+        specifier: ^19.2.18
         version: 19.2.19(@types/node@25.0.2)(chokidar@4.0.3)
       '@angular/compiler-cli':
-        specifier: ^19.2.17
-        version: 19.2.17(@angular/compiler@19.2.17)(typescript@5.6.3)
+        specifier: ^19.2.18
+        version: 19.2.18(@angular/compiler@19.2.18)(typescript@5.6.3)
       typescript:
         specifier: ~5.6.3
         version: 5.6.3
@@ -566,48 +570,48 @@ packages:
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     hasBin: true
 
-  '@angular/common@19.2.17':
-    resolution: {integrity: sha512-yFUXAdpvOFirGD/EGDwp1WHravHzI4sdyRE2iH7i8im9l8IE2VZ6D1KDJp8VVpMJt38LNlRAWYek3s+z6OcAkg==}
+  '@angular/common@19.2.18':
+    resolution: {integrity: sha512-CrV02Omzw/QtfjlEVXVPJVXipdx83NuA+qSASZYrxrhKFusUZyK3P/Zznqg+wiAeNDbedQwMUVqoAARHf0xQrw==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
     peerDependencies:
-      '@angular/core': 19.2.17
+      '@angular/core': 19.2.18
       rxjs: ^6.5.3 || ^7.4.0
 
-  '@angular/compiler-cli@19.2.17':
-    resolution: {integrity: sha512-KG82fh2A0odttc6+FxlQmFfHY/Giq8rYeV1qtdafafJ8hdWIiMr4r37xwhZOl8uk2/XSLM66bxUMFHYm+zt87Q==}
+  '@angular/compiler-cli@19.2.18':
+    resolution: {integrity: sha512-N4TMtLfImJIoMaRL6mx7885UBeQidywptHH6ACZj71Ar6++DBc1mMlcwuvbeJCd3r3y8MQ5nLv5PZSN/tHr13w==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 19.2.17
+      '@angular/compiler': 19.2.18
       typescript: '>=5.5 <5.9'
 
-  '@angular/compiler@19.2.17':
-    resolution: {integrity: sha512-qo8psYASAlDiQ8fAL8i/E2JfWH2nPTpZDKKZxSWvgBVA8o+zUEjYAJu6/k6btnu+4Qcb425T0rmM/zao6EU9Aw==}
+  '@angular/compiler@19.2.18':
+    resolution: {integrity: sha512-3MscvODxRVxc3Cs0ZlHI5Pk5rEvE80otfvxZTMksOZuPlv1B+S8MjWfc3X3jk9SbyUEzODBEH55iCaBHD48V3g==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
 
-  '@angular/core@19.2.17':
-    resolution: {integrity: sha512-nVu0ryxfiXUZ9M+NV21TY+rJZkPXTYo9U0aJb19hvByPpG+EvuujXUOgpulz6vxIzGy7pz/znRa+K9kxuuC+yQ==}
+  '@angular/core@19.2.18':
+    resolution: {integrity: sha512-+QRrf0Igt8ccUWXHA+7doK5W6ODyhHdqVyblSlcQ8OciwkzIIGGEYNZom5OZyWMh+oI54lcSeyV2O3xaDepSrQ==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
       zone.js: ~0.15.0
 
-  '@angular/forms@19.2.17':
-    resolution: {integrity: sha512-INgGGmMbwXuT+niAjMiCsJrZVEGWKZOep1vCRHoKlVnGUQSRKc3UW8ztmKDKMua/io/Opi03pRMpwbYQcTBr5A==}
+  '@angular/forms@19.2.18':
+    resolution: {integrity: sha512-pe40934jWhoS7DyGl7jyZdoj1gvBgur2t1zrJD+csEkTitYnW14+La2Pv6SW1pNX5nIzFsgsS9Nex1KcH5S6Tw==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
     peerDependencies:
-      '@angular/common': 19.2.17
-      '@angular/core': 19.2.17
-      '@angular/platform-browser': 19.2.17
+      '@angular/common': 19.2.18
+      '@angular/core': 19.2.18
+      '@angular/platform-browser': 19.2.18
       rxjs: ^6.5.3 || ^7.4.0
 
-  '@angular/platform-browser@19.2.17':
-    resolution: {integrity: sha512-Rn23nIQwYMSeGXWFHI/X8bGHAkdahRxH9UIGUlJKxW61MSkK6AW4kCHG/Ev1TvDq9HjijsMjcqcsd6/Sb8aBXg==}
+  '@angular/platform-browser@19.2.18':
+    resolution: {integrity: sha512-eahtsHPyXTYLARs9YOlXhnXGgzw0wcyOcDkBvNWK/3lA0NHIgIHmQgXAmBo+cJ+g9skiEQTD2OmSrrwbFKWJkw==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
     peerDependencies:
-      '@angular/animations': 19.2.17
-      '@angular/common': 19.2.17
-      '@angular/core': 19.2.17
+      '@angular/animations': 19.2.18
+      '@angular/common': 19.2.18
+      '@angular/core': 19.2.18
     peerDependenciesMeta:
       '@angular/animations':
         optional: true
@@ -3413,10 +3417,6 @@ packages:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
 
-  chownr@2.0.0:
-    resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
-    engines: {node: '>=10'}
-
   chownr@3.0.0:
     resolution: {integrity: sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==}
     engines: {node: '>=18'}
@@ -3645,8 +3645,8 @@ packages:
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
 
-  diff@8.0.2:
-    resolution: {integrity: sha512-sSuxWU5j5SR9QQji/o2qMvqRNYRDOcBTgsJ/DeCf4iSN4gW+gNMXM7wFIP+fdXZxoNiAnHUTGjCr+TSWXdRDKg==}
+  diff@8.0.3:
+    resolution: {integrity: sha512-qejHi7bcSD4hQAZE0tNAawRK1ZtafHDmMTMkrrIGgSLl7hTnQHmKCeB45xAcbfTqK2zowkM3j3bHt/4b/ARbYQ==}
     engines: {node: '>=0.3.1'}
 
   dnd-core@16.0.1:
@@ -3981,10 +3981,6 @@ packages:
   fs-extra@10.1.0:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
     engines: {node: '>=12'}
-
-  fs-minipass@2.1.0:
-    resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
-    engines: {node: '>= 8'}
 
   fs-minipass@3.0.3:
     resolution: {integrity: sha512-XUBA9XClHbnJWSfBzjkm6RvPsyg3sryZt06BEQoXcF7EK/xpGaQYJgQKDJSUH5SGZ76Y7pFx1QBnXz09rU5Fbw==}
@@ -4786,26 +4782,13 @@ packages:
     resolution: {integrity: sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==}
     engines: {node: '>=8'}
 
-  minipass@5.0.0:
-    resolution: {integrity: sha512-3FnjYuehv9k6ovOEbyOswadCDPX1piCfhV8ncmYtHOjuPwylVWsghTLo7rabjC3Rx5xD4HDx8Wm1xnMF7S5qFQ==}
-    engines: {node: '>=8'}
-
   minipass@7.1.2:
     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  minizlib@2.1.2:
-    resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
-    engines: {node: '>= 8'}
-
   minizlib@3.1.0:
     resolution: {integrity: sha512-KZxYo1BUkWD2TVFLr0MQoM8vUUigWD3LlD83a/75BqC+4qE0Hb1Vo5v1FgcfaNXvfXzr+5EhQ6ing/CaBijTlw==}
     engines: {node: '>= 18'}
-
-  mkdirp@1.0.4:
-    resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
-    engines: {node: '>=10'}
-    hasBin: true
 
   morphdom@2.7.7:
     resolution: {integrity: sha512-04GmsiBcalrSCNmzfo+UjU8tt3PhZJKzcOy+r1FlGA7/zri8wre3I1WkYN9PT3sIeIKfW9bpyElA+VzOg2E24g==}
@@ -5633,12 +5616,8 @@ packages:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
     engines: {node: '>=6'}
 
-  tar@6.2.1:
-    resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
-    engines: {node: '>=10'}
-
-  tar@7.5.2:
-    resolution: {integrity: sha512-7NyxrTE4Anh8km8iEy7o0QYPs+0JKBTj5ZaqHg6B39erLg0qYXN3BijtShwbsNSvQ+LN75+KV+C4QR/f6Gwnpg==}
+  tar@7.5.6:
+    resolution: {integrity: sha512-xqUeu2JAIJpXyvskvU3uvQW8PAmHrtXp2KDuMJwQqW8Sqq0CaZBAQ+dKS3RBXVhU4wC5NjAdKrmh84241gO9cA==}
     engines: {node: '>=18'}
 
   test-exclude@7.0.1:
@@ -6145,12 +6124,12 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular/build@19.2.19(@angular/compiler-cli@19.2.17(@angular/compiler@19.2.17)(typescript@5.6.3))(@angular/compiler@19.2.17)(@types/node@25.0.2)(chokidar@4.0.3)(postcss@8.5.6)(typescript@5.6.3)(yaml@2.8.2)':
+  '@angular/build@19.2.19(@angular/compiler-cli@19.2.18(@angular/compiler@19.2.18)(typescript@5.6.3))(@angular/compiler@19.2.18)(@types/node@25.0.2)(chokidar@4.0.3)(postcss@8.5.6)(typescript@5.6.3)(yaml@2.8.2)':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1902.19(chokidar@4.0.3)
-      '@angular/compiler': 19.2.17
-      '@angular/compiler-cli': 19.2.17(@angular/compiler@19.2.17)(typescript@5.6.3)
+      '@angular/compiler': 19.2.18
+      '@angular/compiler-cli': 19.2.18(@angular/compiler@19.2.18)(typescript@5.6.3)
       '@babel/core': 7.26.10
       '@babel/helper-annotate-as-pure': 7.25.9
       '@babel/helper-split-export-declaration': 7.24.7
@@ -6216,15 +6195,15 @@ snapshots:
       - chokidar
       - supports-color
 
-  '@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)':
+  '@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  '@angular/compiler-cli@19.2.17(@angular/compiler@19.2.17)(typescript@5.6.3)':
+  '@angular/compiler-cli@19.2.18(@angular/compiler@19.2.18)(typescript@5.6.3)':
     dependencies:
-      '@angular/compiler': 19.2.17
+      '@angular/compiler': 19.2.18
       '@babel/core': 7.26.9
       '@jridgewell/sourcemap-codec': 1.5.5
       chokidar: 4.0.3
@@ -6237,28 +6216,28 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@angular/compiler@19.2.17':
+  '@angular/compiler@19.2.18':
     dependencies:
       tslib: 2.8.1
 
-  '@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)':
+  '@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)':
     dependencies:
       rxjs: 7.8.1
       tslib: 2.8.1
       zone.js: 0.15.1
 
-  '@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)':
+  '@angular/forms@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)':
     dependencies:
-      '@angular/common': 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
-      '@angular/platform-browser': 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))
+      '@angular/common': 19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/platform-browser': 19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  '@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))':
+  '@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))':
     dependencies:
-      '@angular/common': 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/common': 19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
       tslib: 2.8.1
 
   '@aws-crypto/crc32@5.2.0':
@@ -6957,7 +6936,7 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.4.0
       ckeditor5: 47.4.0
       ckeditor5-collaboration: 47.4.0
-      diff: 8.0.2
+      diff: 8.0.3
       dom-serializer: 2.0.0
       domhandler: 5.0.3
       domutils: 3.2.2
@@ -6991,11 +6970,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@ckeditor/ckeditor5-angular@11.0.0(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.4.0)(rxjs@7.8.1)':
+  '@ckeditor/ckeditor5-angular@11.0.0(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/forms@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1))(ckeditor5@47.4.0)(rxjs@7.8.1)':
     dependencies:
-      '@angular/common': 19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
-      '@angular/core': 19.2.17(rxjs@7.8.1)(zone.js@0.15.1)
-      '@angular/forms': 19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.17(@angular/common@19.2.17(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.17(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
+      '@angular/common': 19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1)
+      '@angular/core': 19.2.18(rxjs@7.8.1)(zone.js@0.15.1)
+      '@angular/forms': 19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1))(rxjs@7.8.1))(@angular/core@19.2.18(rxjs@7.8.1)(zone.js@0.15.1)))(rxjs@7.8.1)
       '@ckeditor/ckeditor5-integrations-common': 2.2.3(ckeditor5@47.4.0)
       ckeditor5: 47.4.0
       rxjs: 7.8.1
@@ -7252,7 +7231,7 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.4.0
       '@types/luxon': 3.6.2
       ckeditor5: 47.4.0
-      diff: 8.0.2
+      diff: 8.0.3
       luxon: 3.6.1
     transitivePeerDependencies:
       - supports-color
@@ -7556,6 +7535,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.4.0
       '@ckeditor/ckeditor5-utils': 47.4.0
       ckeditor5: 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-export-word@47.4.0':
     dependencies:
@@ -7712,6 +7693,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-horizontal-line@47.4.0':
     dependencies:
@@ -7732,6 +7715,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-html-embed@47.4.0':
     dependencies:
@@ -7741,6 +7726,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.4.0
       '@ckeditor/ckeditor5-widget': 47.4.0
       ckeditor5: 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-html-support@47.2.0':
     dependencies:
@@ -7756,6 +7743,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-html-support@47.4.0':
     dependencies:
@@ -7792,6 +7781,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-image@47.4.0':
     dependencies:
@@ -7807,6 +7798,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.4.0
       ckeditor5: 47.4.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-import-word@47.4.0':
     dependencies:
@@ -7819,6 +7812,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.4.0
       '@ckeditor/ckeditor5-utils': 47.4.0
       ckeditor5: 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-indent@47.2.0':
     dependencies:
@@ -7830,6 +7825,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-indent@47.4.0':
     dependencies:
@@ -7841,6 +7838,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.4.0
       '@ckeditor/ckeditor5-utils': 47.4.0
       ckeditor5: 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-integrations-common@2.2.3(ckeditor5@47.4.0)':
     dependencies:
@@ -7852,6 +7851,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-language@47.4.0':
     dependencies:
@@ -7859,6 +7860,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.4.0
       '@ckeditor/ckeditor5-utils': 47.4.0
       ckeditor5: 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-line-height@47.4.0':
     dependencies:
@@ -7883,6 +7886,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-link@47.4.0':
     dependencies:
@@ -7922,6 +7927,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.2.0
       '@ckeditor/ckeditor5-utils': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-list@47.4.0':
     dependencies:
@@ -7935,6 +7942,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.4.0
       '@ckeditor/ckeditor5-utils': 47.4.0
       ckeditor5: 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-markdown-gfm@47.2.0':
     dependencies:
@@ -7996,6 +8005,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.2.0
       '@ckeditor/ckeditor5-widget': 47.2.0
       ckeditor5: 47.2.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-media-embed@47.4.0':
     dependencies:
@@ -8009,6 +8020,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.4.0
       '@ckeditor/ckeditor5-widget': 47.4.0
       ckeditor5: 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-mention@47.2.0':
     dependencies:
@@ -10535,7 +10548,7 @@ snapshots:
       minipass-pipeline: 1.2.4
       p-map: 7.0.4
       ssri: 12.0.0
-      tar: 7.5.2
+      tar: 7.5.6
       unique-filename: 4.0.0
 
   call-bind-apply-helpers@1.0.2:
@@ -10592,8 +10605,6 @@ snapshots:
     dependencies:
       readdirp: 4.1.2
 
-  chownr@2.0.0: {}
-
   chownr@3.0.0: {}
 
   ckbox@2.9.2(@types/debug@4.1.12)(@types/node@25.0.2)(sass@1.85.0)(yaml@2.8.2):
@@ -10633,6 +10644,8 @@ snapshots:
   ckeditor5-collaboration@47.4.0:
     dependencies:
       '@ckeditor/ckeditor5-collaboration-core': 47.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   ckeditor5-premium-features@47.4.0(ckeditor5@47.4.0):
     dependencies:
@@ -11004,7 +11017,7 @@ snapshots:
     dependencies:
       dequal: 2.0.3
 
-  diff@8.0.2: {}
+  diff@8.0.3: {}
 
   dnd-core@16.0.1:
     dependencies:
@@ -11503,10 +11516,6 @@ snapshots:
       graceful-fs: 4.2.11
       jsonfile: 6.2.0
       universalify: 2.0.1
-
-  fs-minipass@2.1.0:
-    dependencies:
-      minipass: 3.3.6
 
   fs-minipass@3.0.3:
     dependencies:
@@ -12592,20 +12601,11 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  minipass@5.0.0: {}
-
   minipass@7.1.2: {}
-
-  minizlib@2.1.2:
-    dependencies:
-      minipass: 3.3.6
-      yallist: 4.0.0
 
   minizlib@3.1.0:
     dependencies:
       minipass: 7.1.2
-
-  mkdirp@1.0.4: {}
 
   morphdom@2.7.7: {}
 
@@ -12698,7 +12698,7 @@ snapshots:
       nopt: 8.1.0
       proc-log: 5.0.0
       semver: 7.7.3
-      tar: 7.5.2
+      tar: 7.5.6
       tinyglobby: 0.2.15
       which: 5.0.0
     transitivePeerDependencies:
@@ -12861,7 +12861,7 @@ snapshots:
       promise-retry: 2.0.1
       sigstore: 3.1.0
       ssri: 12.0.0
-      tar: 6.2.1
+      tar: 7.5.6
     transitivePeerDependencies:
       - supports-color
 
@@ -13610,16 +13610,7 @@ snapshots:
 
   tapable@2.3.0: {}
 
-  tar@6.2.1:
-    dependencies:
-      chownr: 2.0.0
-      fs-minipass: 2.1.0
-      minipass: 5.0.0
-      minizlib: 2.1.2
-      mkdirp: 1.0.4
-      yallist: 4.0.0
-
-  tar@7.5.2:
+  tar@7.5.6:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
