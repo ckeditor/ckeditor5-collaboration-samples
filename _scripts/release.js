@@ -74,7 +74,13 @@ async function getDependenciesCurrentVersion() {
  * @returns {Promise.<void>}
  */
 async function tagVersion( version, verbose ) {
-	return runCommandAsync( 'git', [ 'tag', `v${ version }` ], process.cwd(), verbose, true );
+	return runCommandAsync(
+		'git',
+		[ 'tag', '-a', `v${ version }`, '-m', `"Release: v${ version }."` ],
+		process.cwd(),
+		verbose,
+		true
+	);
 }
 
 /**
