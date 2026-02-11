@@ -93,6 +93,8 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 		}
 	}
 
+	await runCommandAsync( 'pnpm', [ 'install' ], process.cwd(), verbose, true );
+
 	return updatedPackages;
 }
 
