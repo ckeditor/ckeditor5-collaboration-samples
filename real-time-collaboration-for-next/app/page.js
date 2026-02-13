@@ -3,15 +3,13 @@
  * For licensing, see LICENSE.md.
  */
 
-import dynamic from 'next/dynamic';
-
-const CKEditorComponent = dynamic( () => import( '@/components/ckeditor' ), { ssr: false } );
+import CKEditorClient from '@/components/ckeditor-client';
 
 export default function App() {
 	return (
 		<div>
 			<div className="main-container">
-				<CKEditorComponent />
+				<CKEditorClient />
 			</div>
 		</div>
 	);
