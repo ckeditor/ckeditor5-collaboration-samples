@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "11.0.1",
@@ -14,8 +14,13 @@
     "ckeditor5": "47.5.0",
     "ckeditor5-collaboration-samples-integrations": "file:../integrations",
     "ckeditor5-premium-features": "47.5.0",
-    "next": "14.2.35",
-    "react": "^19"
+    "next": "15.5.12",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-config-next": "15.5.12"
   },
   "engines": {
     "node": ">=24.11.0",
