@@ -136,11 +136,13 @@ function runCommandAsync( command, args, directoryPath, verbose = false, rejectO
  * Retrieves the paths to samples' source directories.
  *
  * @param {Array.<String>} [sampleNames] The optional sample name. If not provided, all samples are checked.
+ * @param {Boolean} [includeIntegrations=false] If set, includes the `integrations` sample directory.
  * @returns {Array.<String>}
  */
-function getPathsToSampleSourceDirectories( sampleNames = [] ) {
+function getPathsToSampleSourceDirectories( sampleNames = [], includeIntegrations = false ) {
 	return globSync( join( '.', '*' ) )
 		.filter( isSampleSourceDirectory )
+		.filter( sample => includeIntegrations || sample !== 'integrations' )
 		.filter( sampleNames.length === 0 ? () => true : sample => sampleNames.includes( sample ) );
 }
 
@@ -169,5 +171,5 @@ function isSampleSourceDirectory( path ) {
 	const pkg = readFileSync( join( path, 'package.json' ), 'utf8' );
 	const pkgData = JSON.parse( pkg );
 
-	return pkgData.name.startsWith( '@ckeditor/' );
+	return pkgData.name.startsWith( '@ckeditor/' ) || pkgData.name.startsWith( 'ckeditor5-' );
 }
