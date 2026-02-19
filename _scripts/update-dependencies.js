@@ -69,7 +69,7 @@ async function main() {
 	}
 
 	const editorVersion = await getEditorVersionFromPackageManifests( pathsToAllSampleSourceDirectories, {
-		allowMultipleVersions: isPartialUpdate
+		useNewestVersionOnConflict: isPartialUpdate
 	} );
 
 	await updatePeerDependencies(
@@ -198,7 +198,7 @@ async function updatePeerDependencies( pathsToSampleSourceDirectories, ckeditorO
  *
  * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
  * @param {Object} [options]
- * @param {Boolean} [options.allowMultipleVersions=false] Whether to resolve to a single version when multiple are found.
+ * @param {Boolean} [options.useNewestVersionOnConflict=false] Whether to use the newest version when multiple are found.
  * @returns {Promise.<String|null>}
  */
 async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirectories, options = {} ) {
@@ -208,7 +208,7 @@ async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirector
 	);
 
 	if ( installableVersionMap.size > 0 ) {
-		return getSingleEditorVersion( installableVersionMap, options );
+		return resolveEditorVersion( installableVersionMap, options );
 	}
 
 	const peerVersionMap = await collectEditorVersionsFromPackageManifests(
@@ -216,7 +216,7 @@ async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirector
 		[ 'peerDependencies' ]
 	);
 
-	return getSingleEditorVersion( peerVersionMap, options );
+	return resolveEditorVersion( peerVersionMap, options );
 }
 
 /**
@@ -260,20 +260,20 @@ async function collectEditorVersionsFromPackageManifests( pathsToSampleSourceDir
 }
 
 /**
- * Returns a single CKEditor 5 version from a versions map.
+ * Resolves CKEditor 5 version from a versions map.
  *
  * @param {Map<String, Array<Object>>} versionMap Collected CKEditor 5 versions with occurrences.
  * @param {Object} [options]
- * @param {Boolean} [options.allowMultipleVersions=false] Whether to resolve to a single version when multiple are found.
+ * @param {Boolean} [options.useNewestVersionOnConflict=false] Whether to use the newest version when multiple are found.
  * @returns {String|null}
  */
-function getSingleEditorVersion( versionMap, { allowMultipleVersions = false } = {} ) {
+function resolveEditorVersion( versionMap, { useNewestVersionOnConflict = false } = {} ) {
 	if ( versionMap.size === 0 ) {
 		return null;
 	}
 
 	if ( versionMap.size > 1 ) {
-		if ( allowMultipleVersions ) {
+		if ( useNewestVersionOnConflict ) {
 			const newestVersion = getNewestVersion( Array.from( versionMap.keys() ) );
 
 			console.log( chalk.yellow( `⚠️  Found multiple CKEditor 5 versions. Using "${ newestVersion }" when updating peerDependencies.` ) );
