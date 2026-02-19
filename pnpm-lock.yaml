@@ -31,8 +31,11 @@ importers:
         specifier: ^1.2.5
         version: 1.2.8
       npm-check-updates:
-        specifier: ^18.0.0
-        version: 18.3.1
+        specifier: ^19.3.2
+        version: 19.3.2
+      upath:
+        specifier: ^2.0.1
+        version: 2.0.1
     devDependencies:
       '@ckeditor/ckeditor5-dev-bump-year':
         specifier: ^54.0.0
@@ -5116,9 +5119,9 @@ packages:
     resolution: {integrity: sha512-IxaQZDMsqfQ2Lz37VvyyEtKLe8FsRZuysmedy/N06TU1RyVppYKXrO4xIhR0F+7ubIBox6Q7nir6fQI3ej39iA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  npm-check-updates@18.3.1:
-    resolution: {integrity: sha512-5HwKPq7ybOOA1xB4FZg/1ToZZ5/i93U8m3co1mb3GYZAZPDkcxEFukQTTp/Abym+ZY6ShfrHl45Y0rCcwsNnQA==}
-    engines: {node: ^18.18.0 || >=20.0.0, npm: '>=8.12.1'}
+  npm-check-updates@19.3.2:
+    resolution: {integrity: sha512-9rr3z7znFjCSuaFxHGTFR2ZBOvLWaJcpLKmIquoTbDBNrwAGiHhv4MZyty6EJ9Xo/aMn35+2ISPSMgWIXx5Xkg==}
+    engines: {node: '>=20.0.0', npm: '>=8.12.1'}
     hasBin: true
 
   npm-install-checks@7.1.2:
@@ -7694,8 +7697,6 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.5.0
       ckeditor5: 47.5.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-import-word@47.5.0':
     dependencies:
@@ -7733,8 +7734,6 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.5.0
       '@ckeditor/ckeditor5-utils': 47.5.0
       ckeditor5: 47.5.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-line-height@47.5.0':
     dependencies:
@@ -7759,8 +7758,6 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.5.0
       ckeditor5: 47.5.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-list-multi-level@47.5.0':
     dependencies:
@@ -7784,8 +7781,6 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.5.0
       '@ckeditor/ckeditor5-utils': 47.5.0
       ckeditor5: 47.5.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-markdown-gfm@47.5.0':
     dependencies:
@@ -7823,8 +7818,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.5.0
       '@ckeditor/ckeditor5-widget': 47.5.0
       ckeditor5: 47.5.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-mention@47.5.0':
     dependencies:
@@ -10458,8 +10451,6 @@ snapshots:
   ckeditor5-collaboration@47.5.0:
     dependencies:
       '@ckeditor/ckeditor5-collaboration-core': 47.5.0
-    transitivePeerDependencies:
-      - supports-color
 
   ckeditor5-premium-features@47.5.0(ckeditor5@47.5.0):
     dependencies:
@@ -12600,7 +12591,7 @@ snapshots:
     dependencies:
       npm-normalize-package-bin: 4.0.0
 
-  npm-check-updates@18.3.1: {}
+  npm-check-updates@19.3.2: {}
 
   npm-install-checks@7.1.2:
     dependencies:

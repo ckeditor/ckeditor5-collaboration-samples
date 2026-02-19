@@ -23,7 +23,7 @@ main().catch( error => {
  */
 async function main() {
 	const options = parseArguments( process.argv.slice( 2 ) );
-	const pathsToSampleSourceDirectories = getPathsToSampleSourceDirectories( options.sampleNames );
+	const pathsToSampleSourceDirectories = getPathsToSampleSourceDirectories( options.sampleNames, true );
 
 	await checkDependencies( pathsToSampleSourceDirectories, options.verbose );
 }
