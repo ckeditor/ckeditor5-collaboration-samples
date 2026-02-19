@@ -37,9 +37,24 @@ async function main() {
 
 	const pathsToSampleSourceDirectories = getPathsToSampleSourceDirectories( options.sampleNames );
 
-	const numberOfChangedPackages = await updateDependencies( pathsToSampleSourceDirectories, options.ckeditorOnly, options.verbose );
-	if ( numberOfChangedPackages > 0 ) {
-		console.log( chalk.green( `✨ Updated ${ chalk.bold( numberOfChangedPackages ) } dependencies.` ) );
+	if ( options.sampleNames.length > 0 && pathsToSampleSourceDirectories.length === 0 ) {
+		console.log( chalk.yellow.bold( '\n⚠️  None of the requested samples was found.\n' ) );
+
+		return;
+	}
+
+	await updateDependencies(
+		pathsToSampleSourceDirectories,
+		options.ckeditorOnly,
+		options.verbose
+	);
+
+	await dedupeDependencies( options.verbose );
+
+	const wereDependenciesChanged = !( await isRepositoryClean( options ) );
+
+	if ( wereDependenciesChanged ) {
+		console.log( chalk.green( '✨ Updated dependencies.' ) );
 
 		if ( options.commit ) {
 			await commitChanges( options );
@@ -72,30 +87,30 @@ function isRepositoryClean( options ) {
  * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
  * @param {Boolean} ckeditorOnly If set, updates only CKEditor 5 packages.
  * @param {Boolean} verbose Prints more information.
- * @returns {Promise.<Number>} Number of samples with updated dependencies.
+ * @returns {Promise.<void>}
  */
 async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly, verbose ) {
-	let updatedPackages = 0;
+	const updateParams = [ 'update', '--recursive', '--depth', 'Infinity', '--latest' ];
 
 	for ( const sample of pathsToSampleSourceDirectories ) {
-		console.log( `Updating dependencies for the "${ sample }" sample...` );
-
-		const params = [ 'dlx', 'npm-check-updates', '-u', '-e', 2 ];
-
-		if ( ckeditorOnly ) {
-			params.push( '*ckeditor5*' );
-		}
-
-		const exitCode = await runCommandAsync( 'pnpm', params, sample, verbose );
-
-		if ( exitCode !== 0 ) {
-			updatedPackages++;
-		}
+		updateParams.push( '--filter', `./${ sample }` );
 	}
 
-	await runCommandAsync( 'pnpm', [ 'install' ], process.cwd(), verbose, true );
+	if ( ckeditorOnly ) {
+		updateParams.push( '*ckeditor5*' );
+	}
 
-	return updatedPackages;
+	await runCommandAsync( 'pnpm', updateParams, process.cwd(), verbose, true );
+}
+
+/**
+ * Executes the command to deduplicate dependencies in the lockfile.
+ *
+ * @param {Boolean} verbose Prints more information.
+ * @returns {Promise.<void>}
+ */
+async function dedupeDependencies( verbose ) {
+	await runCommandAsync( 'pnpm', [ 'dedupe' ], process.cwd(), verbose, true );
 }
 
 /**
