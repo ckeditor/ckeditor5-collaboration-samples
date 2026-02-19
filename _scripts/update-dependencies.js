@@ -5,9 +5,20 @@
  * For licensing, see LICENSE.md.
  */
 
+const { glob } = require( 'glob' );
+const fs = require( 'fs-extra' );
 const minimist = require( 'minimist' );
+const path = require( 'upath' );
 const chalk = require( 'chalk' );
 const { getPathsToSampleSourceDirectories, runCommand, runCommandAsync, toArray } = require( './utils' );
+
+const CDN_LINK_PATTERNS = [
+	/(https:\/\/cdn\.ckeditor\.com\/ckeditor5\/)([^/]+)(\/ckeditor5\.css)/g,
+	/(https:\/\/cdn\.ckeditor\.com\/ckeditor5-premium-features\/)([^/]+)(\/ckeditor5-premium-features\.css)/g
+];
+
+const INSTALLABLE_DEPENDENCY_SECTIONS = [ 'dependencies', 'devDependencies', 'optionalDependencies' ];
+const DEPENDENCY_SECTIONS = [ ...INSTALLABLE_DEPENDENCY_SECTIONS, 'peerDependencies' ];
 
 main().catch( error => {
 	if ( error ) {
@@ -35,7 +46,7 @@ async function main() {
 		return Promise.reject();
 	}
 
-	const pathsToSampleSourceDirectories = getPathsToSampleSourceDirectories( options.sampleNames );
+	const pathsToSampleSourceDirectories = getPathsToSampleSourceDirectories( options.sampleNames, true );
 
 	if ( options.sampleNames.length > 0 && pathsToSampleSourceDirectories.length === 0 ) {
 		console.log( chalk.yellow.bold( '\n⚠️  None of the requested samples was found.\n' ) );
@@ -49,12 +60,25 @@ async function main() {
 		options.verbose
 	);
 
+	const editorVersion = await getEditorVersionFromPackageManifests( pathsToSampleSourceDirectories );
+
+	await updatePeerDependencies(
+		pathsToSampleSourceDirectories,
+		options.ckeditorOnly,
+		editorVersion,
+		options.verbose
+	);
+
+	if ( editorVersion ) {
+		await updateCdnConfigurations( pathsToSampleSourceDirectories, editorVersion, options.verbose );
+	}
+
 	await dedupeDependencies( options.verbose );
 
 	const wereDependenciesChanged = !( await isRepositoryClean( options ) );
 
 	if ( wereDependenciesChanged ) {
-		console.log( chalk.green( '✨ Updated dependencies.' ) );
+		console.log( chalk.green( '✨ Updated dependencies and CDN configurations.' ) );
 
 		if ( options.commit ) {
 			await commitChanges( options );
@@ -62,7 +86,7 @@ async function main() {
 			console.log( chalk.green( '✨ All changes are committed.' ) );
 		}
 	} else {
-		console.log( '✨ All packages are up to date.' );
+		console.log( '✨ All packages and CDN configurations are up to date.' );
 	}
 }
 
@@ -104,6 +128,126 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 }
 
 /**
+ * Updates peer dependencies in samples.
+ *
+ * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
+ * @param {Boolean} ckeditorOnly If set, updates only CKEditor 5 packages.
+ * @param {String|null} editorVersion CKEditor 5 version used in package manifests.
+ * @param {Boolean} verbose Prints more information.
+ * @returns {Promise.<void>}
+ */
+async function updatePeerDependencies( pathsToSampleSourceDirectories, ckeditorOnly, editorVersion, verbose ) {
+	for ( const sample of pathsToSampleSourceDirectories ) {
+		const packageJsonPath = path.join( sample, 'package.json' );
+		const packageData = await fs.readJson( packageJsonPath );
+
+		if ( !packageData.peerDependencies ) {
+			continue;
+		}
+
+		let sampleChanged = false;
+
+		for ( const packageName of Object.keys( packageData.peerDependencies ) ) {
+			if ( ckeditorOnly && !isCkeditorPackage( packageName ) ) {
+				continue;
+			}
+
+			const dependencyVersion = getDependencyVersion( packageData, packageName, INSTALLABLE_DEPENDENCY_SECTIONS );
+			const nextVersion = dependencyVersion || ( packageName === 'ckeditor5' ? editorVersion : null );
+
+			if ( nextVersion && packageData.peerDependencies[ packageName ] !== nextVersion ) {
+				packageData.peerDependencies[ packageName ] = nextVersion;
+				sampleChanged = true;
+			}
+		}
+
+		if ( sampleChanged ) {
+			if ( verbose ) {
+				console.log( `Updating peer dependencies for the "${ sample }" sample...` );
+			}
+
+			await fs.writeJson( packageJsonPath, packageData, { spaces: 2 } );
+		}
+	}
+}
+
+/**
+ * Retrieves CKEditor 5 version from updated package manifests.
+ *
+ * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
+ * @returns {Promise.<String|null>}
+ */
+async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirectories ) {
+	for ( const sample of pathsToSampleSourceDirectories ) {
+		const packageJsonPath = path.join( sample, 'package.json' );
+		const packageData = await fs.readJson( packageJsonPath );
+
+		const editorVersion = getDependencyVersion( packageData, 'ckeditor5', INSTALLABLE_DEPENDENCY_SECTIONS, true ) ||
+			getDependencyVersion( packageData, 'ckeditor5-premium-features', INSTALLABLE_DEPENDENCY_SECTIONS, true );
+
+		if ( editorVersion ) {
+			return editorVersion;
+		}
+	}
+
+	for ( const sample of pathsToSampleSourceDirectories ) {
+		const packageJsonPath = path.join( sample, 'package.json' );
+		const packageData = await fs.readJson( packageJsonPath );
+
+		const editorVersion = getDependencyVersion( packageData, 'ckeditor5', [ 'peerDependencies' ], true );
+
+		if ( editorVersion ) {
+			return editorVersion;
+		}
+	}
+
+	return null;
+}
+
+/**
+ * Retrieves a normalized dependency version from package data.
+ *
+ * @param {Object} packageData Package data.
+ * @param {String} packageName Package name.
+ * @param {Array.<String>} [dependencySections] Dependency sections to inspect.
+ * @param {Boolean} [shouldNormalizeVersion=false] Whether the returned version should be normalized to semver.
+ * @returns {String|null}
+ */
+function getDependencyVersion( packageData, packageName, dependencySections = DEPENDENCY_SECTIONS, shouldNormalizeVersion = false ) {
+	for ( const sectionName of dependencySections ) {
+		const dependencyVersion = packageData[ sectionName ]?.[ packageName ];
+
+		if ( dependencyVersion ) {
+			return shouldNormalizeVersion ? normalizeVersion( dependencyVersion ) : dependencyVersion;
+		}
+	}
+
+	return null;
+}
+
+/**
+ * Extracts a semver version from a dependency value.
+ *
+ * @param {String} dependencyVersion Dependency version value.
+ * @returns {String}
+ */
+function normalizeVersion( dependencyVersion ) {
+	const versionMatch = dependencyVersion.match( /\d+\.\d+\.\d+(?:-[0-9A-Za-z-.]+)?/ );
+
+	return versionMatch ? versionMatch[ 0 ] : dependencyVersion;
+}
+
+/**
+ * Checks whether package belongs to CKEditor 5 ecosystem.
+ *
+ * @param {String} packageName Package name.
+ * @returns {Boolean}
+ */
+function isCkeditorPackage( packageName ) {
+	return packageName.startsWith( '@ckeditor/' ) || packageName.includes( 'ckeditor5' );
+}
+
+/**
  * Executes the command to deduplicate dependencies in the lockfile.
  *
  * @param {Boolean} verbose Prints more information.
@@ -111,6 +255,53 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
  */
 async function dedupeDependencies( verbose ) {
 	await runCommandAsync( 'pnpm', [ 'dedupe' ], process.cwd(), verbose, true );
+}
+
+/**
+ * Updates CKEditor 5 CDN configuration in samples.
+ *
+ * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
+ * @param {String} editorVersion CKEditor 5 version used in CDN links.
+ * @param {Boolean} verbose Prints more information.
+ * @returns {Promise.<Number>} Number of samples where CDN links were changed.
+ */
+async function updateCdnConfigurations( pathsToSampleSourceDirectories, editorVersion, verbose ) {
+	let numberOfCdnChanges = 0;
+
+	for ( const sample of pathsToSampleSourceDirectories ) {
+		console.log( `Updating CDN configuration for the "${ sample }" sample...` );
+
+		const globPattern = [ '*.js', '*.jsx', '*.ts', '*.tsx', '*.vue' ].map( fileType => path.join( sample, '**', fileType ) );
+		const filePaths = await glob( globPattern, {
+			ignore: [
+				path.join( sample, 'build', '**' ),
+				path.join( sample, 'node_modules', '**' )
+			]
+		} );
+
+		let sampleChanged = false;
+
+		for ( const filePath of filePaths ) {
+			const fileContent = await fs.readFile( filePath, 'utf8' );
+			let nextContent = fileContent;
+
+			for ( const regex of CDN_LINK_PATTERNS ) {
+				nextContent = nextContent.replace( regex, `$1${ editorVersion }$3` );
+			}
+
+			if ( nextContent !== fileContent ) {
+				await fs.writeFile( filePath, nextContent, 'utf8' );
+
+				sampleChanged = true;
+			}
+		}
+
+		if ( sampleChanged ) {
+			numberOfCdnChanges++;
+		}
+	}
+
+	return numberOfCdnChanges;
 }
 
 /**
