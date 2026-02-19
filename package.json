@@ -18,7 +18,6 @@
     "fs-extra": "^10.0.0",
     "glob": "^11.0.3",
     "minimist": "^1.2.5",
-    "npm-check-updates": "^19.3.2",
     "upath": "^2.0.1"
   },
   "devDependencies": {
