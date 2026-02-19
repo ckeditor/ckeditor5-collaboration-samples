@@ -7,7 +7,7 @@
     "@ckeditor/ckeditor5-vue": "7.3.1",
     "ckbox": "2.9.2",
     "ckeditor5": "47.5.0",
-    "ckeditor5-collaboration-samples-integrations": "file:../integrations",
+    "ckeditor5-collaboration-samples-integrations": "workspace:*",
     "ckeditor5-premium-features": "47.5.0",
     "vue": "^3.4.35"
   },

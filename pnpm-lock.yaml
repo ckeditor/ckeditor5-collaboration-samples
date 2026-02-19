@@ -86,7 +86,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -105,7 +105,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -142,7 +142,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -176,7 +176,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -210,7 +210,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -241,7 +241,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -272,7 +272,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -323,7 +323,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -342,7 +342,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -364,7 +364,7 @@ importers:
         specifier: 47.5.0
         version: 47.5.0
       ckeditor5-collaboration-samples-integrations:
-        specifier: file:../integrations
+        specifier: workspace:*
         version: link:../integrations
       ckeditor5-premium-features:
         specifier: 47.5.0
@@ -7390,8 +7390,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.5.0
       '@ckeditor/ckeditor5-watchdog': 47.5.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-dev-bump-year@54.2.3':
     dependencies:
@@ -7443,6 +7441,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.5.0
       ckeditor5: 47.5.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-editor-decoupled@47.5.0':
     dependencies:
@@ -7689,6 +7689,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.5.0
       ckeditor5: 47.5.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-import-word@47.5.0':
     dependencies:
@@ -7728,6 +7730,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.5.0
       '@ckeditor/ckeditor5-utils': 47.5.0
       ckeditor5: 47.5.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-line-height@47.5.0':
     dependencies:
@@ -7752,6 +7756,8 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 47.5.0
       ckeditor5: 47.5.0
       es-toolkit: 1.39.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-list-multi-level@47.5.0':
     dependencies:
@@ -7775,6 +7781,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 47.5.0
       '@ckeditor/ckeditor5-utils': 47.5.0
       ckeditor5: 47.5.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-markdown-gfm@47.5.0':
     dependencies:
@@ -7812,6 +7820,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.5.0
       '@ckeditor/ckeditor5-widget': 47.5.0
       ckeditor5: 47.5.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-mention@47.5.0':
     dependencies:
@@ -10467,6 +10477,8 @@ snapshots:
   ckeditor5-collaboration@47.5.0:
     dependencies:
       '@ckeditor/ckeditor5-collaboration-core': 47.5.0
+    transitivePeerDependencies:
+      - supports-color
 
   ckeditor5-premium-features@47.5.0(ckeditor5@47.5.0):
     dependencies:
