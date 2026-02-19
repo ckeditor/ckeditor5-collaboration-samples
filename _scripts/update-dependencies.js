@@ -38,6 +38,8 @@ main().catch( error => {
  */
 async function main() {
 	const options = parseArguments( process.argv.slice( 2 ) );
+	const isPartialUpdate = options.sampleNames.length > 0;
+	const shouldOnlyUpdatePeerDependencies = options.ckeditorOnly && isPartialUpdate;
 
 	const isClean = await isRepositoryClean( options );
 
@@ -56,33 +58,45 @@ async function main() {
 		return;
 	}
 
-	await updateDependencies(
-		pathsToSampleSourceDirectories,
-		options.ckeditorOnly,
-		options.verbose
-	);
+	if ( shouldOnlyUpdatePeerDependencies ) {
+		console.log( chalk.yellow( '\nℹ️  "--sample" used with "--ckeditor-only". Updating only peerDependencies in selected samples.\n' ) );
+	} else {
+		await updateDependencies(
+			pathsToSampleSourceDirectories,
+			options.ckeditorOnly,
+			options.verbose
+		);
+	}
 
-	const editorVersion = await getEditorVersionFromPackageManifests( pathsToAllSampleSourceDirectories );
+	const editorVersion = await getEditorVersionFromPackageManifests( pathsToAllSampleSourceDirectories, {
+		allowMultipleVersions: isPartialUpdate
+	} );
 
 	await updatePeerDependencies(
-		pathsToAllSampleSourceDirectories,
+		pathsToSampleSourceDirectories,
 		options.ckeditorOnly,
 		editorVersion,
 		options.verbose
 	);
 
-	if ( editorVersion ) {
+	if ( !shouldOnlyUpdatePeerDependencies && editorVersion ) {
 		await updateCdnConfigurations( pathsToSampleSourceDirectories, editorVersion, options.verbose );
 	}
 
-	await regenerateLockfile( options.verbose );
+	if ( !shouldOnlyUpdatePeerDependencies ) {
+		await regenerateLockfile( options.verbose );
 
-	await dedupeDependencies( options.verbose );
+		await dedupeDependencies( options.verbose );
+	}
 
 	const wereDependenciesChanged = !( await isRepositoryClean( options ) );
 
 	if ( wereDependenciesChanged ) {
-		console.log( chalk.green( '✨ Updated dependencies and CDN configurations.' ) );
+		if ( shouldOnlyUpdatePeerDependencies ) {
+			console.log( chalk.green( '✨ Updated peerDependencies in selected samples.' ) );
+		} else {
+			console.log( chalk.green( '✨ Updated dependencies and CDN configurations.' ) );
+		}
 
 		if ( options.commit ) {
 			await commitChanges( options );
@@ -90,7 +104,11 @@ async function main() {
 			console.log( chalk.green( '✨ All changes are committed.' ) );
 		}
 	} else {
-		console.log( '✨ All packages and CDN configurations are up to date.' );
+		if ( shouldOnlyUpdatePeerDependencies ) {
+			console.log( '✨ peerDependencies in selected samples are up to date.' );
+		} else {
+			console.log( '✨ All packages and CDN configurations are up to date.' );
+		}
 	}
 }
 
@@ -179,16 +197,18 @@ async function updatePeerDependencies( pathsToSampleSourceDirectories, ckeditorO
  * Retrieves CKEditor 5 version from updated package manifests.
  *
  * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
+ * @param {Object} [options]
+ * @param {Boolean} [options.allowMultipleVersions=false] Whether to resolve to a single version when multiple are found.
  * @returns {Promise.<String|null>}
  */
-async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirectories ) {
+async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirectories, options = {} ) {
 	const installableVersionMap = await collectEditorVersionsFromPackageManifests(
 		pathsToSampleSourceDirectories,
 		INSTALLABLE_DEPENDENCY_SECTIONS
 	);
 
 	if ( installableVersionMap.size > 0 ) {
-		return getSingleEditorVersion( installableVersionMap );
+		return getSingleEditorVersion( installableVersionMap, options );
 	}
 
 	const peerVersionMap = await collectEditorVersionsFromPackageManifests(
@@ -196,7 +216,7 @@ async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirector
 		[ 'peerDependencies' ]
 	);
 
-	return getSingleEditorVersion( peerVersionMap );
+	return getSingleEditorVersion( peerVersionMap, options );
 }
 
 /**
@@ -243,14 +263,24 @@ async function collectEditorVersionsFromPackageManifests( pathsToSampleSourceDir
  * Returns a single CKEditor 5 version from a versions map.
  *
  * @param {Map<String, Array<Object>>} versionMap Collected CKEditor 5 versions with occurrences.
+ * @param {Object} [options]
+ * @param {Boolean} [options.allowMultipleVersions=false] Whether to resolve to a single version when multiple are found.
  * @returns {String|null}
  */
-function getSingleEditorVersion( versionMap ) {
+function getSingleEditorVersion( versionMap, { allowMultipleVersions = false } = {} ) {
 	if ( versionMap.size === 0 ) {
 		return null;
 	}
 
 	if ( versionMap.size > 1 ) {
+		if ( allowMultipleVersions ) {
+			const newestVersion = getNewestVersion( Array.from( versionMap.keys() ) );
+
+			console.log( chalk.yellow( `⚠️  Found multiple CKEditor 5 versions. Using "${ newestVersion }" when updating peerDependencies.` ) );
+
+			return newestVersion;
+		}
+
 		const versionDetails = Array
 			.from( versionMap.entries() )
 			.map( ( [ version, occurrences ] ) => {
@@ -272,6 +302,133 @@ function getSingleEditorVersion( versionMap ) {
 	}
 
 	return Array.from( versionMap.keys() )[ 0 ];
+}
+
+/**
+ * Finds the newest version from the given list.
+ *
+ * @param {Array.<String>} versions Version list.
+ * @returns {String}
+ */
+function getNewestVersion( versions ) {
+	return versions
+		.slice()
+		.sort( compareSemverVersions )
+		.pop();
+}
+
+/**
+ * Compares two semver versions.
+ *
+ * @param {String} versionA Left-side semver.
+ * @param {String} versionB Right-side semver.
+ * @returns {Number}
+ */
+function compareSemverVersions( versionA, versionB ) {
+	const parsedVersionA = parseSemver( versionA );
+	const parsedVersionB = parseSemver( versionB );
+
+	if ( !parsedVersionA || !parsedVersionB ) {
+		return versionA.localeCompare( versionB );
+	}
+
+	for ( const key of [ 'major', 'minor', 'patch' ] ) {
+		if ( parsedVersionA[ key ] !== parsedVersionB[ key ] ) {
+			return parsedVersionA[ key ] - parsedVersionB[ key ];
+		}
+	}
+
+	return comparePrerelease( parsedVersionA.prerelease, parsedVersionB.prerelease );
+}
+
+/**
+ * Parses a semver string.
+ *
+ * @param {String} version Semver string.
+ * @returns {Object|null}
+ */
+function parseSemver( version ) {
+	const versionMatch = version.match( /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-.]+))?$/ );
+
+	if ( !versionMatch ) {
+		return null;
+	}
+
+	return {
+		major: Number( versionMatch[ 1 ] ),
+		minor: Number( versionMatch[ 2 ] ),
+		patch: Number( versionMatch[ 3 ] ),
+		prerelease: versionMatch[ 4 ] || null
+	};
+}
+
+/**
+ * Compares two semver prerelease parts.
+ *
+ * @param {String|null} prereleaseA Left-side prerelease.
+ * @param {String|null} prereleaseB Right-side prerelease.
+ * @returns {Number}
+ */
+function comparePrerelease( prereleaseA, prereleaseB ) {
+	if ( prereleaseA === prereleaseB ) {
+		return 0;
+	}
+
+	if ( !prereleaseA ) {
+		return 1;
+	}
+
+	if ( !prereleaseB ) {
+		return -1;
+	}
+
+	const identifiersA = prereleaseA.split( '.' );
+	const identifiersB = prereleaseB.split( '.' );
+	const maxLength = Math.max( identifiersA.length, identifiersB.length );
+
+	for ( let i = 0; i < maxLength; i++ ) {
+		if ( identifiersA[ i ] === undefined ) {
+			return -1;
+		}
+
+		if ( identifiersB[ i ] === undefined ) {
+			return 1;
+		}
+
+		const comparisonResult = comparePrereleaseIdentifier( identifiersA[ i ], identifiersB[ i ] );
+
+		if ( comparisonResult !== 0 ) {
+			return comparisonResult;
+		}
+	}
+
+	return 0;
+}
+
+/**
+ * Compares two semver prerelease identifiers.
+ *
+ * @param {String} identifierA Left-side identifier.
+ * @param {String} identifierB Right-side identifier.
+ * @returns {Number}
+ */
+function comparePrereleaseIdentifier( identifierA, identifierB ) {
+	const isNumericA = /^\d+$/.test( identifierA );
+	const isNumericB = /^\d+$/.test( identifierB );
+
+	if ( isNumericA && isNumericB ) {
+		return Number( identifierA ) - Number( identifierB );
+	}
+
+	if ( isNumericA ) {
+		return -1;
+	}
+
+	if ( isNumericB ) {
+		return 1;
+	}
+
+	return identifierA.localeCompare( identifierB );
 }
 
 /**
