@@ -52,6 +52,7 @@ async function main() {
 
 	const pathsToAllSampleSourceDirectories = getPathsToSampleSourceDirectories( [], true );
 	const pathsToSampleSourceDirectories = getPathsToSampleSourceDirectories( options.sampleNames, true );
+	const shouldRefreshLockfile = !shouldOnlyUpdatePeerDependencies || pathsToSampleSourceDirectories.includes( 'integrations' );
 
 	if ( options.sampleNames.length > 0 && pathsToSampleSourceDirectories.length === 0 ) {
 		console.log( chalk.yellow.bold( '\n⚠️  None of the requested samples was found.\n' ) );
@@ -84,9 +85,11 @@ async function main() {
 		await updateCdnConfigurations( pathsToSampleSourceDirectories, editorVersion, options.verbose );
 	}
 
-	if ( !shouldOnlyUpdatePeerDependencies ) {
+	if ( shouldRefreshLockfile ) {
 		await regenerateLockfile( options.verbose );
+	}
 
+	if ( !shouldOnlyUpdatePeerDependencies ) {
 		await dedupeDependencies( options.verbose );
 	}
 
