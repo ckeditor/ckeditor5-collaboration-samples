@@ -17,6 +17,7 @@ const CDN_LINK_PATTERNS = [
 	/(https:\/\/cdn\.ckeditor\.com\/ckeditor5-premium-features\/)([^/]+)(\/ckeditor5-premium-features\.css)/g
 ];
 
+const CKEDITOR_PACKAGE_NAMES = [ 'ckeditor5', 'ckeditor5-premium-features' ];
 const INSTALLABLE_DEPENDENCY_SECTIONS = [ 'dependencies', 'devDependencies', 'optionalDependencies' ];
 const DEPENDENCY_SECTIONS = [ ...INSTALLABLE_DEPENDENCY_SECTIONS, 'peerDependencies' ];
 
@@ -46,6 +47,7 @@ async function main() {
 		return Promise.reject();
 	}
 
+	const pathsToAllSampleSourceDirectories = getPathsToSampleSourceDirectories( [], true );
 	const pathsToSampleSourceDirectories = getPathsToSampleSourceDirectories( options.sampleNames, true );
 
 	if ( options.sampleNames.length > 0 && pathsToSampleSourceDirectories.length === 0 ) {
@@ -60,10 +62,10 @@ async function main() {
 		options.verbose
 	);
 
-	const editorVersion = await getEditorVersionFromPackageManifests( pathsToSampleSourceDirectories );
+	const editorVersion = await getEditorVersionFromPackageManifests( pathsToAllSampleSourceDirectories );
 
 	await updatePeerDependencies(
-		pathsToSampleSourceDirectories,
+		pathsToAllSampleSourceDirectories,
 		options.ckeditorOnly,
 		editorVersion,
 		options.verbose
@@ -72,6 +74,8 @@ async function main() {
 	if ( editorVersion ) {
 		await updateCdnConfigurations( pathsToSampleSourceDirectories, editorVersion, options.verbose );
 	}
+
+	await regenerateLockfile( options.verbose );
 
 	await dedupeDependencies( options.verbose );
 
@@ -153,7 +157,7 @@ async function updatePeerDependencies( pathsToSampleSourceDirectories, ckeditorO
 			}
 
 			const dependencyVersion = getDependencyVersion( packageData, packageName, INSTALLABLE_DEPENDENCY_SECTIONS );
-			const nextVersion = dependencyVersion || ( packageName === 'ckeditor5' ? editorVersion : null );
+			const nextVersion = dependencyVersion || ( CKEDITOR_PACKAGE_NAMES.includes( packageName ) ? editorVersion : null );
 
 			if ( nextVersion && packageData.peerDependencies[ packageName ] !== nextVersion ) {
 				packageData.peerDependencies[ packageName ] = nextVersion;
@@ -178,30 +182,106 @@ async function updatePeerDependencies( pathsToSampleSourceDirectories, ckeditorO
  * @returns {Promise.<String|null>}
  */
 async function getEditorVersionFromPackageManifests( pathsToSampleSourceDirectories ) {
+	const installableVersionMap = await collectEditorVersionsFromPackageManifests(
+		pathsToSampleSourceDirectories,
+		INSTALLABLE_DEPENDENCY_SECTIONS
+	);
+
+	if ( installableVersionMap.size > 0 ) {
+		return getSingleEditorVersion( installableVersionMap );
+	}
+
+	const peerVersionMap = await collectEditorVersionsFromPackageManifests(
+		pathsToSampleSourceDirectories,
+		[ 'peerDependencies' ]
+	);
+
+	return getSingleEditorVersion( peerVersionMap );
+}
+
+/**
+ * Collects normalized CKEditor 5 versions from package manifests.
+ *
+ * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
+ * @param {Array.<String>} dependencySections Dependency sections to inspect.
+ * @returns {Promise.<Map<String, Array<Object>>>}
+ */
+async function collectEditorVersionsFromPackageManifests( pathsToSampleSourceDirectories, dependencySections ) {
+	const versionMap = new Map();
+
 	for ( const sample of pathsToSampleSourceDirectories ) {
 		const packageJsonPath = path.join( sample, 'package.json' );
 		const packageData = await fs.readJson( packageJsonPath );
 
-		const editorVersion = getDependencyVersion( packageData, 'ckeditor5', INSTALLABLE_DEPENDENCY_SECTIONS, true ) ||
-			getDependencyVersion( packageData, 'ckeditor5-premium-features', INSTALLABLE_DEPENDENCY_SECTIONS, true );
+		for ( const sectionName of dependencySections ) {
+			for ( const packageName of CKEDITOR_PACKAGE_NAMES ) {
+				const dependencyVersion = packageData[ sectionName ]?.[ packageName ];
 
-		if ( editorVersion ) {
-			return editorVersion;
+				if ( !dependencyVersion ) {
+					continue;
+				}
+
+				const normalizedVersion = normalizeVersion( dependencyVersion );
+				const occurrences = versionMap.get( normalizedVersion ) || [];
+
+				occurrences.push( {
+					dependencyVersion,
+					packageName,
+					sample,
+					sectionName
+				} );
+
+				versionMap.set( normalizedVersion, occurrences );
+			}
 		}
 	}
 
-	for ( const sample of pathsToSampleSourceDirectories ) {
-		const packageJsonPath = path.join( sample, 'package.json' );
-		const packageData = await fs.readJson( packageJsonPath );
+	return versionMap;
+}
 
-		const editorVersion = getDependencyVersion( packageData, 'ckeditor5', [ 'peerDependencies' ], true );
-
-		if ( editorVersion ) {
-			return editorVersion;
-		}
+/**
+ * Returns a single CKEditor 5 version from a versions map.
+ *
+ * @param {Map<String, Array<Object>>} versionMap Collected CKEditor 5 versions with occurrences.
+ * @returns {String|null}
+ */
+function getSingleEditorVersion( versionMap ) {
+	if ( versionMap.size === 0 ) {
+		return null;
 	}
 
-	return null;
+	if ( versionMap.size > 1 ) {
+		const versionDetails = Array
+			.from( versionMap.entries() )
+			.map( ( [ version, occurrences ] ) => {
+				const references = occurrences
+					.map( ( { sample, sectionName, packageName, dependencyVersion } ) =>
+						`${ sample } (${ sectionName }: ${ packageName }=${ dependencyVersion })`
+					)
+					.join( ', ' );
+
+				return `- ${ version }: ${ references }`;
+			} )
+			.join( '\n' );
+
+		throw new Error( [
+			'Found more than one CKEditor 5 version in package manifests.',
+			'Expected exactly one version across "ckeditor5" and "ckeditor5-premium-features".',
+			versionDetails
+		].join( '\n' ) );
+	}
+
+	return Array.from( versionMap.keys() )[ 0 ];
+}
+
+/**
+ * Regenerates the lockfile based on current package manifests.
+ *
+ * @param {Boolean} verbose Prints more information.
+ * @returns {Promise.<void>}
+ */
+async function regenerateLockfile( verbose ) {
+	await runCommandAsync( 'pnpm', [ 'install', '--lockfile-only' ], process.cwd(), verbose, true );
 }
 
 /**
