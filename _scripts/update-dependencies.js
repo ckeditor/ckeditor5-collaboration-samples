@@ -9,6 +9,7 @@ const { glob } = require( 'glob' );
 const fs = require( 'fs-extra' );
 const minimist = require( 'minimist' );
 const path = require( 'upath' );
+const semver = require( 'semver' );
 const chalk = require( 'chalk' );
 const { getPathsToSampleSourceDirectories, runCommand, runCommandAsync, toArray } = require( './utils' );
 
@@ -313,122 +314,26 @@ function resolveEditorVersion( versionMap, { useNewestVersionOnConflict = false 
 function getNewestVersion( versions ) {
 	return versions
 		.slice()
-		.sort( compareSemverVersions )
+		.sort( compareVersions )
 		.pop();
 }
 
 /**
- * Compares two semver versions.
+ * Compares two versions.
  *
- * @param {String} versionA Left-side semver.
- * @param {String} versionB Right-side semver.
+ * @param {String} versionA Left-side version.
+ * @param {String} versionB Right-side version.
  * @returns {Number}
  */
-function compareSemverVersions( versionA, versionB ) {
-	const parsedVersionA = parseSemver( versionA );
-	const parsedVersionB = parseSemver( versionB );
+function compareVersions( versionA, versionB ) {
+	const isValidVersionA = semver.valid( versionA );
+	const isValidVersionB = semver.valid( versionB );
 
-	if ( !parsedVersionA || !parsedVersionB ) {
+	if ( !isValidVersionA || !isValidVersionB ) {
 		return versionA.localeCompare( versionB );
 	}
 
-	for ( const key of [ 'major', 'minor', 'patch' ] ) {
-		if ( parsedVersionA[ key ] !== parsedVersionB[ key ] ) {
-			return parsedVersionA[ key ] - parsedVersionB[ key ];
-		}
-	}
-
-	return comparePrerelease( parsedVersionA.prerelease, parsedVersionB.prerelease );
-}
-
-/**
- * Parses a semver string.
- *
- * @param {String} version Semver string.
- * @returns {Object|null}
- */
-function parseSemver( version ) {
-	const versionMatch = version.match( /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-.]+))?$/ );
-
-	if ( !versionMatch ) {
-		return null;
-	}
-
-	return {
-		major: Number( versionMatch[ 1 ] ),
-		minor: Number( versionMatch[ 2 ] ),
-		patch: Number( versionMatch[ 3 ] ),
-		prerelease: versionMatch[ 4 ] || null
-	};
-}
-
-/**
- * Compares two semver prerelease parts.
- *
- * @param {String|null} prereleaseA Left-side prerelease.
- * @param {String|null} prereleaseB Right-side prerelease.
- * @returns {Number}
- */
-function comparePrerelease( prereleaseA, prereleaseB ) {
-	if ( prereleaseA === prereleaseB ) {
-		return 0;
-	}
-
-	if ( !prereleaseA ) {
-		return 1;
-	}
-
-	if ( !prereleaseB ) {
-		return -1;
-	}
-
-	const identifiersA = prereleaseA.split( '.' );
-	const identifiersB = prereleaseB.split( '.' );
-	const maxLength = Math.max( identifiersA.length, identifiersB.length );
-
-	for ( let i = 0; i < maxLength; i++ ) {
-		if ( identifiersA[ i ] === undefined ) {
-			return -1;
-		}
-
-		if ( identifiersB[ i ] === undefined ) {
-			return 1;
-		}
-
-		const comparisonResult = comparePrereleaseIdentifier( identifiersA[ i ], identifiersB[ i ] );
-
-		if ( comparisonResult !== 0 ) {
-			return comparisonResult;
-		}
-	}
-
-	return 0;
-}
-
-/**
- * Compares two semver prerelease identifiers.
- *
- * @param {String} identifierA Left-side identifier.
- * @param {String} identifierB Right-side identifier.
- * @returns {Number}
- */
-function comparePrereleaseIdentifier( identifierA, identifierB ) {
-	const isNumericA = /^\d+$/.test( identifierA );
-	const isNumericB = /^\d+$/.test( identifierB );
-
-	if ( isNumericA && isNumericB ) {
-		return Number( identifierA ) - Number( identifierB );
-	}
-
-	if ( isNumericA ) {
-		return -1;
-	}
-
-	if ( isNumericB ) {
-		return 1;
-	}
-
-	return identifierA.localeCompare( identifierB );
+	return semver.compare( isValidVersionA, isValidVersionB );
 }
 
 /**
