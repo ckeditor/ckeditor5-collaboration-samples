@@ -8,7 +8,7 @@
     "ckbox": "2.9.2",
     "ckeditor5": "47.5.0",
     "ckeditor5-premium-features": "47.5.0",
-    "ckeditor5-collaboration-samples-integrations": "file:../integrations",
+    "ckeditor5-collaboration-samples-integrations": "workspace:*",
     "react": "^19",
     "react-dom": "^19"
   },

@@ -4,11 +4,11 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-vue": "7.3.0",
+    "@ckeditor/ckeditor5-vue": "7.3.1",
     "ckbox": "2.9.2",
     "ckeditor5": "47.5.0",
+    "ckeditor5-collaboration-samples-integrations": "workspace:*",
     "ckeditor5-premium-features": "47.5.0",
-    "ckeditor5-collaboration-samples-integrations": "file:../integrations",
     "vue": "^3.4.35"
   },
   "devDependencies": {

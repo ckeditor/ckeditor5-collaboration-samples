@@ -7,7 +7,7 @@
     "ckeditor5": "47.5.0",
     "ckeditor5-premium-features": "47.5.0",
     "ckbox": "2.9.2",
-    "ckeditor5-collaboration-samples-integrations": "file:../integrations"
+    "ckeditor5-collaboration-samples-integrations": "workspace:*"
   },
   "devDependencies": {
     "vite": "^7.0.0"
