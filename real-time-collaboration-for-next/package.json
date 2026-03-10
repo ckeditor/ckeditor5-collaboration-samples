@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "11.0.1",
-    "ckbox": "2.9.2",
+    "ckbox": "2.11.0",
     "ckeditor5": "47.6.0",
     "ckeditor5-premium-features": "47.6.0",
     "next": "15.5.12",

@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@ckeditor/ckeditor5-vue": "7.3.1",
-    "ckbox": "2.9.2",
+    "ckbox": "2.11.0",
     "ckeditor5": "47.6.0",
     "ckeditor5-premium-features": "47.6.0",
     "vue": "^3.4.35"
