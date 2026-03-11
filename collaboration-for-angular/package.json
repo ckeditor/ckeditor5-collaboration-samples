@@ -18,9 +18,9 @@
     "@angular/platform-browser": "^19.2.18",
     "@ckeditor/ckeditor5-angular": "11.0.1",
     "ckbox": "2.11.0",
-    "ckeditor5": "47.6.0",
+    "ckeditor5": "47.6.1",
     "ckeditor5-collaboration-samples-integrations": "workspace:*",
-    "ckeditor5-premium-features": "47.6.0",
+    "ckeditor5-premium-features": "47.6.1",
     "zone.js": "~0.15.1"
   },
   "devDependencies": {

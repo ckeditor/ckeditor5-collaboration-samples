@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "peerDependencies": {
-    "ckeditor5": "47.6.0"
+    "ckeditor5": "47.6.1"
   },
   "engines": {
     "node": ">=24.11.0",
