@@ -6,10 +6,9 @@ packages:
   - "!node_modules/"
 
 overrides:
-  diff@^8.0.0: ^8.0.3
-  tar@6: ^7.5.8
   'ajv@^8': '^8.18.0'
   'rollup@^4': '^4.59.0'
+  'tar@^6': '^7.5.11'
 
 minimumReleaseAge: 4320 # 3 days
 minimumReleaseAgeExclude:
