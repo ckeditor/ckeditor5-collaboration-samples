@@ -103,7 +103,7 @@ export class MultiRootEditorIntegration extends Plugin {
 					newOrder = root.getAttribute( 'order' ) + 5000;
 				}
 
-				editor.addRoot( 'root' + ( String( new Date().getTime() ) ).slice( -5 ), { attributes: { order: newOrder }, isUndoable: true } );
+				editor.addRoot( 'root' + ( String( new Date().getTime() ) ).slice( -5 ), { modelAttributes: { order: newOrder }, isUndoable: true } );
 			} );
 
 			return view;
@@ -139,7 +139,7 @@ export class MultiRootEditorIntegration extends Plugin {
 		} );
 
 		editor.on( 'addRoot', ( evt, root ) => {
-			const domElement = editor.createEditable( root );
+			const domElement = editor.createEditable( root, {} );
 			const index = this._getRootIndex( root );
 
 			const container = document.createElement( 'div' );
