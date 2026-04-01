@@ -230,7 +230,9 @@ export default function CKEditorComponent() {
 	}, [] );
 
 	const editorConfig = {
-		initialData,
+		root: {
+			initialData
+		},
 		plugins: [
 			Alignment,
 			Autoformat,
