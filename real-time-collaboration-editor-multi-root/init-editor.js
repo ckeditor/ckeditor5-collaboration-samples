@@ -8,12 +8,12 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 
 window.CKBox = CKBox;
 
-const watchdog = new EditorWatchdog();
+const watchdog = new EditorWatchdog( MultiRootEditor );
 
 window.watchdog = watchdog;
 
-watchdog.setCreator( ( el, config ) => {
-	return MultiRootEditor.create( el, config )
+watchdog.setCreator( config => {
+	return MultiRootEditor.create( config )
 		.then( editor => {
 			// Switch between inline, narrow sidebar and wide sidebar according to the window size.
 			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
@@ -74,6 +74,19 @@ const attributes = JSON.parse( localStorage.getItem( 'documentRootsAttributes:' 
 
 const elements = {};
 
+function getRootsConfiguration( editableElements, rootsData, rootsAttributes ) {
+	return Object.fromEntries(
+		Object.keys( editableElements ).map( rootName => ( [
+			rootName,
+			{
+				element: editableElements[ rootName ],
+				initialData: rootsData[ rootName ] || '',
+				modelAttributes: rootsAttributes[ rootName ] || {}
+			}
+		] ) )
+	);
+}
+
 // Sorted elements based on order attribute.
 const sortedContent = Object.fromEntries( Object.entries( content )
 	.sort( ( a, b ) => ( attributes[ a[ 0 ] ].order ) - ( attributes[ b[ 0 ] ].order ) ) );
@@ -91,7 +104,8 @@ for ( const rootName of Object.keys( sortedContent ) ) {
 	document.querySelector( '.editor-container__editor' ).appendChild( container );
 }
 
-watchdog.create( elements, {
+watchdog.create( {
+	roots: getRootsConfiguration( elements, content, attributes ),
 	editableParentSelector: '.editor-container__editor',
 	collaboration: {
 		channelId
@@ -111,12 +125,24 @@ watchdog.create( elements, {
 		showRevisionViewerCallback: config => {
 			const editorContainer = config.revisionHistory.editorContainer;
 			const viewerContainer = config.revisionHistory.viewerContainer;
+			const viewerEditorElement = config.revisionHistory.viewerEditorElement;
+			const viewerElements = {};
+
+			viewerEditorElement.innerHTML = '';
+
+			for ( const rootName of Object.keys( content ) ) {
+				const domElement = document.createElement( 'div' );
+				viewerEditorElement.appendChild( domElement );
+				viewerElements[ rootName ] = domElement;
+			}
+
 			const revisionHistoryEditorConfig = {
 				...config,
-				editableParentSelector: '#editor-revision-history-editor'
+				editableParentSelector: '#editor-revision-history-editor',
+				roots: getRootsConfiguration( viewerElements, content, attributes )
 			};
 
-			return MultiRootEditor.create( {}, revisionHistoryEditorConfig ).then( viewerEditor => {
+			return MultiRootEditor.create( revisionHistoryEditorConfig ).then( viewerEditor => {
 				viewerContainer.style.display = 'flex';
 				editorContainer.style.display = 'none';
 
@@ -183,8 +209,7 @@ watchdog.create( elements, {
 			}
 		},
 		waitingTime: 2000
-	},
-	rootsAttributes: attributes
+	}
 } )
 	.then( () => {
 		const editor = watchdog.editor;
