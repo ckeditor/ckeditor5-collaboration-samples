@@ -8,12 +8,12 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 
 window.CKBox = CKBox;
 
-const watchdog = new EditorWatchdog();
+const watchdog = new EditorWatchdog( MultiRootEditor );
 
 window.watchdog = watchdog;
 
-watchdog.setCreator( ( el, config ) => {
-	return MultiRootEditor.create( el, config )
+watchdog.setCreator( config => {
+	return MultiRootEditor.create( config )
 		.then( editor => {
 			// Switch between inline, narrow sidebar and wide sidebar according to the window size.
 			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
@@ -99,6 +99,19 @@ const attributes = JSON.parse( localStorage.getItem( 'documentRootsAttributes:' 
 // Gather elements from static HTML by `data-root` attributes.
 const editorContainer = document.querySelector( '.editor-container__editor' );
 const elements = {};
+
+function getRootsConfiguration( editableElements, rootsData, rootsAttributes ) {
+	return Object.fromEntries(
+		Object.keys( editableElements ).map( rootName => ( [
+			rootName,
+			{
+				element: editableElements[ rootName ],
+				initialData: rootsData[ rootName ] || '',
+				modelAttributes: rootsAttributes[ rootName ] || {}
+			}
+		] ) )
+	);
+}
 
 // Populate static DOM roots with initial content from `content` if present.
 editorContainer.querySelectorAll( '[data-root]' ).forEach( el => {
@@ -229,7 +242,8 @@ editorContainer.querySelectorAll( '.variant-select' ).forEach( select => {
 	updateVariantVisibility( select );
 } );
 
-watchdog.create( elements, {
+watchdog.create( {
+	roots: getRootsConfiguration( elements, content, attributes ),
 	editableParentSelector: '.editor-container__editor',
 	collaboration: {
 		channelId
@@ -257,8 +271,9 @@ watchdog.create( elements, {
 			};
 
 			const viewerElements = buildRevisionViewerRoots( viewerEditorElement, content );
+			revisionHistoryEditorConfig.roots = getRootsConfiguration( viewerElements, content, attributes );
 
-			return MultiRootEditor.create( viewerElements, revisionHistoryEditorConfig ).then( viewerEditor => {
+			return MultiRootEditor.create( revisionHistoryEditorConfig ).then( viewerEditor => {
 				viewerContainer.style.display = 'flex';
 				if ( editorWrapper ) {
 					editorWrapper.style.display = 'none';
@@ -330,8 +345,7 @@ watchdog.create( elements, {
 			}
 		},
 		waitingTime: 2000
-	},
-	rootsAttributes: attributes
+	}
 } )
 	.then( () => {
 		const editor = watchdog.editor;
