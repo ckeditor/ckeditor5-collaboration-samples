@@ -132,7 +132,6 @@ export default function App() {
 
 		if ( editorInstance.plugins.get( 'PendingActions' ).hasAny ) {
 			domEvt.preventDefault();
-			domEvt.returnValue = true;
 		}
 	}, [ isLayoutReady ] );
 

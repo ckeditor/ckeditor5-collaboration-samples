@@ -69,7 +69,6 @@ async function createEditor( config ) {
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
 				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
 					domEvt.preventDefault();
-					domEvt.returnValue = true;
 				}
 			} );
 

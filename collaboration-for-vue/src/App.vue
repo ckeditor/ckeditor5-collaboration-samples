@@ -433,7 +433,6 @@ export default {
 		checkPendingActions( editor, domEvt ) {
 			if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
 				domEvt.preventDefault();
-				domEvt.returnValue = true;
 			}
 		},
 		showEditorDataInConsole( editor, domEvt ) {

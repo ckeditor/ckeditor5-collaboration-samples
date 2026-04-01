@@ -422,7 +422,6 @@ export class AppComponent {
 	public checkPendingActions( domEvt: any ): boolean {
 		if ( this.editorInstance?.plugins.get( 'PendingActions' ).hasAny ) {
 			domEvt.preventDefault();
-			domEvt.returnValue = true;
 			return false;
 		}
 

@@ -132,7 +132,6 @@ function CKEditorComponent() {
 
 		if ( editorInstance.plugins.get( 'PendingActions' ).hasAny ) {
 			domEvt.preventDefault();
-			domEvt.returnValue = true;
 		}
 	}, [ isLayoutReady ] );
 
