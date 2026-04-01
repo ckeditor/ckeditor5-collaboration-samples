@@ -19,7 +19,7 @@
             <div ref="editorElement">
               <ckeditor
                 v-if="isLayoutReady"
-                v-model="config.initialData"
+                v-model="editorData"
                 :editor="editor"
                 :config="config"
                 @ready="onEditorReady"
@@ -213,12 +213,15 @@ export default {
 		return {
 			isLayoutReady: false,
 			config: null, // CKEditor needs the DOM tree before calculating the configuration.
+			editorData: initialData,
 			editor: ClassicEditor
 		};
 	},
 	mounted() {
 		this.config = {
-			initialData,
+			root: {
+				initialData
+			},
 			plugins: [
 				Alignment,
 				Autoformat,
