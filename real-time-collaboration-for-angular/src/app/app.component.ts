@@ -200,7 +200,9 @@ export class AppComponent {
 
 	public ngAfterViewInit(): void {
 		this.config = {
-			initialData,
+			root: {
+				initialData
+			},
 			plugins: [
 				Alignment,
 				Autoformat,
