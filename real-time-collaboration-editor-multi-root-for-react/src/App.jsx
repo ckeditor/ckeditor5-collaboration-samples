@@ -174,6 +174,24 @@ export default function App() {
 	const rootsContent = JSON.parse( localStorage.getItem( 'documentData:' + channelId ) ) || multiRootDefaultDataAll;
 	const rootsAttributes = JSON.parse( localStorage.getItem( 'documentRootsAttributes:' + channelId ) ) || multiRootDefaultRootsAttributesAll;
 
+	const buildRootsConfiguration = ( container, data, attributes ) => {
+		const roots = {};
+		container.innerHTML = '';
+
+		for ( const rootName of Object.keys( data ) ) {
+			const rootElement = document.createElement( 'div' );
+			container.appendChild( rootElement );
+
+			roots[ rootName ] = {
+				element: rootElement,
+				initialData: data[ rootName ] || '',
+				modelAttributes: attributes[ rootName ] || {}
+			};
+		}
+
+		return roots;
+	};
+
 	const editorConfig = {
 		plugins: [
 			Alignment,
@@ -306,12 +324,16 @@ export default function App() {
 			fileName: 'export-pdf-demo.pdf',
 			appID: 'cke5-demos',
 			converterOptions: {
-				format: 'Tabloid',
-				margin_top: '20mm',
-				margin_bottom: '20mm',
-				margin_right: '24mm',
-				margin_left: '24mm',
-				page_orientation: 'portrait'
+				document: {
+					size: 'Tabloid',
+					orientation: 'portrait',
+					margins: {
+						top: '20mm',
+						bottom: '20mm',
+						right: '24mm',
+						left: '24mm'
+					}
+				}
 			},
 			tokenUrl: false,
 			// This callback is used to get and merge the data from all roots.
@@ -446,13 +468,14 @@ export default function App() {
 				const viewerContainer = editorRevisionHistoryRef.current;
 				const revisionHistoryEditorConfig = {
 					...config,
-					editableParentSelector: '#editor-revision-history-editor'
+					editableParentSelector: '#editor-revision-history-editor',
+					roots: buildRootsConfiguration( editorRevisionHistoryEditorRef.current, rootsContent, rootsAttributes )
 				};
 
 				// Add the integration plugin to the revision history editor.
 				revisionHistoryEditorConfig.plugins.push( MultiRootEditorReactRevisionHistoryIntegration );
 
-				return MultiRootEditor.create( {}, revisionHistoryEditorConfig ).then( viewerEditor => {
+				return MultiRootEditor.create( revisionHistoryEditorConfig ).then( viewerEditor => {
 					viewerContainer.style.display = 'flex';
 					editorContainer.style.display = 'none';
 
