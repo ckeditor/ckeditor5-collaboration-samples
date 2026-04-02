@@ -20,7 +20,7 @@ export class MultiRootEditorReactRevisionHistoryIntegration extends Plugin {
 		const editor = this.editor;
 
 		editor.on( 'addRoot', ( evt, root ) => {
-			const domElement = editor.createEditable( root );
+			const domElement = editor.createEditable( root, {} );
 			const index = this._getRootIndex( root );
 
 			const container = document.createElement( 'div' );

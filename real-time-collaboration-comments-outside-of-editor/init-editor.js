@@ -9,7 +9,7 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 ( async () => {
 	window.CKBox = CKBox;
 
-	const watchdog = new ContextWatchdog();
+	const watchdog = new ContextWatchdog( Context );
 
 	window.watchdog = watchdog;
 
@@ -53,8 +53,10 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 		await watchdog.add( {
 			id: editorId,
 			type: 'editor',
-			config: editorConfig,
-			sourceElementOrData: editorElement,
+			config: {
+				...editorConfig,
+				attachTo: editorElement
+			},
 			creator: createEditor,
 			destructor: editor => {
 				editor.destroy();
@@ -63,14 +65,13 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 	}
 } )();
 
-async function createEditor( element, config ) {
-	return ClassicEditor.create( element, config )
+async function createEditor( config ) {
+	return ClassicEditor.create( config )
 		.then( editor => {
 			// Prevent closing the tab when any action is pending.
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
 				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
 					domEvt.preventDefault();
-					domEvt.returnValue = true;
 				}
 			} );
 

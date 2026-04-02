@@ -8,12 +8,12 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 
 window.CKBox = CKBox;
 
-const watchdog = new EditorWatchdog();
+const watchdog = new EditorWatchdog( ClassicEditor );
 
 window.watchdog = watchdog;
 
-watchdog.setCreator( ( el, config ) => {
-	return ClassicEditor.create( el, config )
+watchdog.setCreator( config => {
+	return ClassicEditor.create( config )
 		.then( editor => {
 			window.editor = editor;
 
@@ -25,7 +25,6 @@ watchdog.setCreator( ( el, config ) => {
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
 				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
 					domEvt.preventDefault();
-					domEvt.returnValue = true;
 				}
 			} );
 
@@ -135,8 +134,11 @@ const initialData =
     is an essential element of daily life.
 </p>`;
 
-watchdog.create( document.querySelector( '#editor' ), {
-	initialData,
+watchdog.create( {
+	attachTo: document.querySelector( '#editor' ),
+	root: {
+		initialData
+	},
 	presenceList: {
 		container: document.querySelector( '#editor-presence' )
 	},

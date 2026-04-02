@@ -200,7 +200,9 @@ export class AppComponent {
 
 	public ngAfterViewInit(): void {
 		this.config = {
-			initialData,
+			root: {
+				initialData
+			},
 			plugins: [
 				Alignment,
 				Autoformat,
@@ -330,12 +332,16 @@ export class AppComponent {
 				fileName: 'export-pdf-demo.pdf',
 				appID: 'cke5-demos',
 				converterOptions: {
-					format: 'Tabloid',
-					margin_top: '20mm',
-					margin_bottom: '20mm',
-					margin_right: '24mm',
-					margin_left: '24mm',
-					page_orientation: 'portrait'
+					document: {
+						size: 'Tabloid',
+						orientation: 'portrait',
+						margins: {
+							top: '20mm',
+							bottom: '20mm',
+							right: '24mm',
+							left: '24mm'
+						}
+					}
 				},
 				tokenUrl: false
 			},
@@ -455,7 +461,7 @@ export class AppComponent {
 		this.isLayoutReady = false;
 	}
 
-	@HostListener( 'window:resize', [ '$event' ] )
+	@HostListener( 'window:resize' )
 	public refreshDisplayMode(): void {
 		if ( !this.editorInstance || !this.editorAnnotations ) {
 			return;
@@ -483,7 +489,6 @@ export class AppComponent {
 	public checkPendingActions( domEvt: any ): boolean {
 		if ( this.editorInstance?.plugins.get( 'PendingActions' ).hasAny ) {
 			domEvt.preventDefault();
-			domEvt.returnValue = true;
 			return false;
 		}
 

@@ -9,7 +9,7 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 ( async () => {
 	window.CKBox = CKBox;
 
-	const watchdog = new ContextWatchdog();
+	const watchdog = new ContextWatchdog( Context );
 
 	window.watchdog = watchdog;
 
@@ -51,13 +51,24 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 		};
 
 		const isInline = editorElement.classList.contains( 'inline' );
+		const editorType = isInline ? InlineEditor : ClassicEditor;
 
 		await watchdog.add( {
 			id: editorId,
 			type: 'editor',
-			config: editorConfig,
-			sourceElementOrData: editorElement,
-			creator: ( element, config ) => createEditor( element, config, isInline ? InlineEditor : ClassicEditor ),
+			config: {
+				...editorConfig,
+				...( editorType === ClassicEditor ?
+					{
+						attachTo: editorElement
+					} :
+					{
+						root: {
+							element: editorElement
+						}
+					} )
+			},
+			creator: config => createEditor( config, editorType ),
 			destructor: editor => {
 				editor.destroy();
 			}
@@ -65,14 +76,13 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 	}
 } )();
 
-async function createEditor( element, config, editorType ) {
-	return editorType.create( element, config )
+async function createEditor( config, editorType ) {
+	return editorType.create( config )
 		.then( editor => {
 			// Prevent closing the tab when any action is pending.
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
 				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
 					domEvt.preventDefault();
-					domEvt.returnValue = true;
 				}
 			} );
 

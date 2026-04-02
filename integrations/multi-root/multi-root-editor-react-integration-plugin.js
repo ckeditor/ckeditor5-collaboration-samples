@@ -97,7 +97,7 @@ export class MultiRootEditorReactIntegration extends Plugin {
 					newOrder = root.getAttribute( 'order' ) + 5000;
 				}
 
-				editor.addRoot( 'root' + ( String( new Date().getTime() ) ).slice( -5 ), { attributes: { order: newOrder }, isUndoable: true } );
+				editor.addRoot( 'root' + ( String( new Date().getTime() ) ).slice( -5 ), { modelAttributes: { order: newOrder }, isUndoable: true } );
 			} );
 
 			return view;

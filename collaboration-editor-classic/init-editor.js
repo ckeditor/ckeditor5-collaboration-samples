@@ -8,12 +8,12 @@ import { configUpdateAlert } from '../credentials.js';
 
 window.CKBox = CKBox;
 
-const watchdog = new EditorWatchdog();
+const watchdog = new EditorWatchdog( ClassicEditor );
 
 window.watchdog = watchdog;
 
-watchdog.setCreator( ( el, config ) => {
-	return ClassicEditor.create( el, config )
+watchdog.setCreator( config => {
+	return ClassicEditor.create( config )
 		.then( editor => {
 			window.editor = editor;
 
@@ -25,7 +25,6 @@ watchdog.setCreator( ( el, config ) => {
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
 				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
 					domEvt.preventDefault();
-					domEvt.returnValue = true;
 				}
 			} );
 
@@ -80,7 +79,8 @@ watchdog.setDestructor( editor => editor.destroy() );
 // This call exists to remind you to update the config needed for premium features. It can be safely removed.
 configUpdateAlert( ClassicEditor.defaultConfig, false );
 
-watchdog.create( document.querySelector( '#editor' ), {
+watchdog.create( {
+	attachTo: document.querySelector( '#editor' ),
 	revisionHistory: {
 		editorContainer: document.querySelector( '#editor-container' ),
 		viewerContainer: document.querySelector( '#editor-revision-history' ),

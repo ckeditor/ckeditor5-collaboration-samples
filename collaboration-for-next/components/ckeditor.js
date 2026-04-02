@@ -132,7 +132,6 @@ function CKEditorComponent() {
 
 		if ( editorInstance.plugins.get( 'PendingActions' ).hasAny ) {
 			domEvt.preventDefault();
-			domEvt.returnValue = true;
 		}
 	}, [ isLayoutReady ] );
 
@@ -308,12 +307,16 @@ function CKEditorComponent() {
 			fileName: 'export-pdf-demo.pdf',
 			appID: 'cke5-demos',
 			converterOptions: {
-				format: 'Tabloid',
-				margin_top: '20mm',
-				margin_bottom: '20mm',
-				margin_right: '24mm',
-				margin_left: '24mm',
-				page_orientation: 'portrait'
+				document: {
+					size: 'Tabloid',
+					orientation: 'portrait',
+					margins: {
+						top: '20mm',
+						bottom: '20mm',
+						right: '24mm',
+						left: '24mm'
+					}
+				}
 			},
 			tokenUrl: false
 		},

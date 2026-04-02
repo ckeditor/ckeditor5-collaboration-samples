@@ -138,7 +138,6 @@ export default function App() {
 
 		if ( editorInstance.plugins.get( 'PendingActions' ).hasAny ) {
 			domEvt.preventDefault();
-			domEvt.returnValue = true;
 		}
 	}, [ isLayoutReady ] );
 
@@ -306,12 +305,16 @@ export default function App() {
 			fileName: 'export-pdf-demo.pdf',
 			appID: 'cke5-demos',
 			converterOptions: {
-				format: 'Tabloid',
-				margin_top: '20mm',
-				margin_bottom: '20mm',
-				margin_right: '24mm',
-				margin_left: '24mm',
-				page_orientation: 'portrait'
+				document: {
+					size: 'Tabloid',
+					orientation: 'portrait',
+					margins: {
+						top: '20mm',
+						bottom: '20mm',
+						right: '24mm',
+						left: '24mm'
+					}
+				}
 			},
 			tokenUrl: false,
 			// This callback is used to get and merge the data from all roots.
@@ -452,7 +455,7 @@ export default function App() {
 				// Add the integration plugin to the revision history editor.
 				revisionHistoryEditorConfig.plugins.push( MultiRootEditorReactRevisionHistoryIntegration );
 
-				return MultiRootEditor.create( {}, revisionHistoryEditorConfig ).then( viewerEditor => {
+				return MultiRootEditor.create( revisionHistoryEditorConfig ).then( viewerEditor => {
 					viewerContainer.style.display = 'flex';
 					editorContainer.style.display = 'none';
 
@@ -519,8 +522,7 @@ export default function App() {
 				}
 			},
 			waitingTime: 2000
-		},
-		rootsAttributes
+		}
 	};
 
 	configUpdateAlert( editorConfig );
