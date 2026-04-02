@@ -461,7 +461,7 @@ export class AppComponent {
 		this.isLayoutReady = false;
 	}
 
-	@HostListener( 'window:resize', [ '$event' ] )
+	@HostListener( 'window:resize' )
 	public refreshDisplayMode(): void {
 		if ( !this.editorInstance || !this.editorAnnotations ) {
 			return;
