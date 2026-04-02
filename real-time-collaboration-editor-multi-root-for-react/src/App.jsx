@@ -541,8 +541,7 @@ export default function App() {
 				}
 			},
 			waitingTime: 2000
-		},
-		rootsAttributes
+		}
 	};
 
 	configUpdateAlert( editorConfig );
