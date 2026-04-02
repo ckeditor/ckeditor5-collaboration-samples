@@ -148,8 +148,10 @@ export default {
 	},
 	mounted() {
 		this.config = {
-			root: {
-				initialData: ''
+			roots: {
+				main: {
+					initialData: ''
+				}
 			},
 			plugins: [
 				Alignment,
