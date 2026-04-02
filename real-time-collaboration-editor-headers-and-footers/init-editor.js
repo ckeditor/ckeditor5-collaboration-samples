@@ -270,7 +270,6 @@ watchdog.create( {
 			};
 
 			const viewerElements = buildRevisionViewerRoots( viewerEditorElement, content );
-			revisionHistoryEditorConfig.roots = getRootsConfiguration( viewerElements, content, attributes );
 
 			return MultiRootEditor.create( revisionHistoryEditorConfig ).then( viewerEditor => {
 				viewerContainer.style.display = 'flex';
