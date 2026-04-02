@@ -467,8 +467,7 @@ export default function App() {
 				const viewerContainer = editorRevisionHistoryRef.current;
 				const revisionHistoryEditorConfig = {
 					...config,
-					editableParentSelector: '#editor-revision-history-editor',
-					roots: buildRootsConfiguration( editorRevisionHistoryEditorRef.current, rootsContent, rootsAttributes )
+					editableParentSelector: '#editor-revision-history-editor'
 				};
 
 				// Add the integration plugin to the revision history editor.

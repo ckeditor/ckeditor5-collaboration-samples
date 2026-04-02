@@ -137,8 +137,7 @@ watchdog.create( {
 
 			const revisionHistoryEditorConfig = {
 				...config,
-				editableParentSelector: '#editor-revision-history-editor',
-				roots: getRootsConfiguration( viewerElements, content, attributes )
+				editableParentSelector: '#editor-revision-history-editor'
 			};
 
 			return MultiRootEditor.create( revisionHistoryEditorConfig ).then( viewerEditor => {
