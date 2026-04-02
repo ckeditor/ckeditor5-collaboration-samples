@@ -173,24 +173,6 @@ export default function App() {
 	const rootsContent = JSON.parse( localStorage.getItem( 'documentData:' + channelId ) ) || multiRootDefaultDataAll;
 	const rootsAttributes = JSON.parse( localStorage.getItem( 'documentRootsAttributes:' + channelId ) ) || multiRootDefaultRootsAttributesAll;
 
-	const buildRootsConfiguration = ( container, data, attributes ) => {
-		const roots = {};
-		container.innerHTML = '';
-
-		for ( const rootName of Object.keys( data ) ) {
-			const rootElement = document.createElement( 'div' );
-			container.appendChild( rootElement );
-
-			roots[ rootName ] = {
-				element: rootElement,
-				initialData: data[ rootName ] || '',
-				modelAttributes: attributes[ rootName ] || {}
-			};
-		}
-
-		return roots;
-	};
-
 	const editorConfig = {
 		plugins: [
 			Alignment,
