@@ -13,13 +13,13 @@
     "ckbox": "2.11.0",
     "ckeditor5": "48.0.0",
     "ckeditor5-premium-features": "48.0.0",
-    "next": "15.5.12",
+    "next": "15.5.15",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "eslint": "^9.39.2",
-    "eslint-config-next": "15.5.12"
+    "eslint-config-next": "15.5.15"
   },
   "engines": {
     "node": ">=24.11.0",
