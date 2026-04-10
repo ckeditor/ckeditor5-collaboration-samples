@@ -10,13 +10,15 @@ overrides:
   'picomatch@^4': '^4.0.4'
   'rollup@^4': '^4.59.0'
   'tar@^6': '^7.5.11'
-  'vite@^6': '^6.4.2'
 
 minimumReleaseAge: 4320 # 3 days
 minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
   - '*ckeditor5*'
+  - '@angular/*' # Remove after 2026-04-11.
+  - '@angular-devkit/*' # Remove after 2026-04-11.
+  - '@schematics/*' # Remove after 2026-04-11.
   - 'lodash' # Remove after 2026-04-12.
   - '@next/*' # Remove after 2026-04-11.
   - 'eslint-config-next' # Remove after 2026-04-11.
