@@ -10,7 +10,7 @@ overrides:
   'picomatch@^4': '^4.0.4'
   'rollup@^4': '^4.59.0'
   'tar@^6': '^7.5.11'
-  '@angular/build>vite': '^6.4.2'
+  'vite@^6': '^6.4.2'
 
 minimumReleaseAge: 4320 # 3 days
 minimumReleaseAgeExclude:
