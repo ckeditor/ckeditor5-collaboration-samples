@@ -16,14 +16,6 @@ minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
   - '*ckeditor5*'
-  - '@angular/*' # Remove after 2026-04-11.
-  - '@angular-devkit/*' # Remove after 2026-04-11.
-  - '@schematics/*' # Remove after 2026-04-11.
-  - 'lodash' # Remove after 2026-04-12.
-  - '@next/*' # Remove after 2026-04-11.
-  - 'eslint-config-next' # Remove after 2026-04-11.
-  - 'next' # Remove after 2026-04-11.
-  - 'vite' # Remove after 2026-04-12.
 
 shellEmulator: true
 shamefullyHoist: true
