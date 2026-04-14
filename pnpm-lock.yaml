@@ -154,10 +154,10 @@ importers:
         version: 0.15.1
     devDependencies:
       '@angular/build':
-        specifier: ^19.2.24
+        specifier: ^19.2.20
         version: 19.2.24(@angular/compiler-cli@19.2.20(@angular/compiler@19.2.20)(typescript@5.6.3))(@angular/compiler@19.2.20)(@types/node@25.5.0)(chokidar@4.0.3)(postcss@8.5.8)(typescript@5.6.3)(yaml@2.8.3)
       '@angular/cli':
-        specifier: ^19.2.24
+        specifier: ^19.2.20
         version: 19.2.24(@types/node@25.5.0)(chokidar@4.0.3)
       '@angular/compiler-cli':
         specifier: ^19.2.20
@@ -419,10 +419,10 @@ importers:
         version: 0.15.1
     devDependencies:
       '@angular/build':
-        specifier: ^19.2.24
+        specifier: ^19.2.20
         version: 19.2.24(@angular/compiler-cli@19.2.20(@angular/compiler@19.2.20)(typescript@5.6.3))(@angular/compiler@19.2.20)(@types/node@25.5.0)(chokidar@4.0.3)(postcss@8.5.8)(typescript@5.6.3)(yaml@2.8.3)
       '@angular/cli':
-        specifier: ^19.2.24
+        specifier: ^19.2.20
         version: 19.2.24(@types/node@25.5.0)(chokidar@4.0.3)
       '@angular/compiler-cli':
         specifier: ^19.2.20
@@ -8975,7 +8975,7 @@ snapshots:
       domhandler: 5.0.3
       htmlparser2: 10.0.0
       picocolors: 1.1.1
-      postcss: 8.5.6
+      postcss: 8.5.8
       postcss-media-query-parser: 0.2.3
 
   before-after-hook@4.0.0: {}
