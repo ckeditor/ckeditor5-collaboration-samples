@@ -16,6 +16,16 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    // CKEditor's React wrapper requires DOM elements (via refs) in its config object,
+    // which forces the `isLayoutReady` two-render pattern used in this sample. That pattern
+    // trips these React-Compiler-aware rules added in eslint-config-next 16.
+    files: [ "components/ckeditor.js" ],
+    rules: {
+      "react-hooks/refs": "off",
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
