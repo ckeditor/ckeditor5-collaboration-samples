@@ -7,9 +7,12 @@ packages:
 
 overrides:
   'ajv@^8': '^8.18.0'
+  'next@^16': '^16.2.3'
   'picomatch@^4': '^4.0.4'
+  'postcss@^8': '^8.5.10'
   'rollup@^4': '^4.59.0'
   'tar@^6': '^7.5.11'
+  'uuid@^9': '^14.0.0'
 
 minimumReleaseAge: 4320 # 3 days
 minimumReleaseAgeExclude:
