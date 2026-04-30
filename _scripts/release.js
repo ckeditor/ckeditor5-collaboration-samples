@@ -85,13 +85,13 @@ async function tagVersion( version, verbose ) {
 
 /**
  * Bumps CKEditor 5 packages to the latest versions for all samples.
- * Runs `samples:update-dependencies --cke5 --c` internally.
+ * Runs `samples:update-dependencies --ckeditor-only --fresh-cache --c` internally.
  *
  * @param {Boolean} verbose Prints more information.
  * @returns {Promise.<void>}
  */
 async function bumpCKEditor5Packages( verbose ) {
-	return runCommandAsync( 'pnpm', [ 'run', 'samples:update-dependencies', '--ckeditor-only', '-c' ], process.cwd(), verbose, true );
+	return runCommandAsync( 'pnpm', [ 'run', 'samples:update-dependencies', '--ckeditor-only', '--fresh-cache', '-c' ], process.cwd(), verbose, true );
 }
 
 /**

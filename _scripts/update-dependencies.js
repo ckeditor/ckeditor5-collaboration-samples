@@ -66,7 +66,8 @@ async function main() {
 		await updateDependencies(
 			pathsToSampleSourceDirectories,
 			options.ckeditorOnly,
-			options.verbose
+			options.verbose,
+			options.freshCache
 		);
 	}
 
@@ -137,9 +138,12 @@ function isRepositoryClean( options ) {
  * @param {Array.<String>} pathsToSampleSourceDirectories List of paths to the samples.
  * @param {Boolean} ckeditorOnly If set, updates only CKEditor 5 packages.
  * @param {Boolean} verbose Prints more information.
+ * @param {Boolean} freshCache If set, uses a temporary empty pnpm metadata cache for the update command.
  * @returns {Promise.<void>}
  */
-async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly, verbose ) {
+
+async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly, verbose, freshCache ) {
+	let cacheDirPath = null;
 	const updateParams = [ 'update', '--recursive', '--depth', 'Infinity', '--latest' ];
 
 	for ( const sample of pathsToSampleSourceDirectories ) {
@@ -150,7 +154,26 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 		updateParams.push( '*ckeditor5*' );
 	}
 
-	await runCommandAsync( 'pnpm', updateParams, process.cwd(), verbose, true );
+	if ( freshCache ) {
+		cacheDirPath = `.tmp-pnpm-cache-${ Date.now() }`;
+
+		await fs.ensureDir( cacheDirPath );
+		updateParams.unshift( `--config.cache-dir=${ cacheDirPath }` );
+
+		if ( verbose ) {
+			console.log( `Using a fresh pnpm cache directory for dependency update: ${ cacheDirPath }` );
+		}
+	}
+
+	const removeTemporaryCacheDir = () => {
+		if ( !cacheDirPath ) {
+			return Promise.resolve();
+		}
+
+		return fs.remove( cacheDirPath );
+	};
+
+	return runCommandAsync( 'pnpm', updateParams, process.cwd(), verbose, true ).finally( () => removeTemporaryCacheDir() );
 }
 
 /**
@@ -480,6 +503,7 @@ function parseArguments( args ) {
 		boolean: [
 			'ckeditor-only',
 			'commit',
+			'fresh-cache',
 			'verbose'
 		],
 		alias: {
@@ -490,6 +514,7 @@ function parseArguments( args ) {
 		default: {
 			ckeditorOnly: false,
 			commit: false,
+			'fresh-cache': false,
 			sample: [],
 			verbose: false
 		}
@@ -500,6 +525,7 @@ function parseArguments( args ) {
 	return {
 		ckeditorOnly: parsedOptions[ 'ckeditor-only' ],
 		commit: parsedOptions.commit,
+		freshCache: parsedOptions[ 'fresh-cache' ],
 		sampleNames: toArray( parsedOptions.sample ).filter( sampleName => !!sampleName ),
 		verbose: parsedOptions.verbose
 	};
@@ -509,6 +535,7 @@ function parseArguments( args ) {
  * @typedef {Object} Options Parsed CLI arguments.
  * @property {Boolean} ckeditorOnly If set, updates only CKEditor 5 packages. False (off) by default.
  * @property {Boolean} commit If set, automatically commits the changes. False (off) by default.
+ * @property {Boolean} freshCache If set, uses a temporary empty pnpm metadata cache for the update command. False (off) by default.
  * @property {Array.<String>} sampleNames If provided, updates dependencies only for the given samples. Empty array
  * by default, so all samples are updated.
  * @property {Boolean} verbose Prints more information. False (off) by default.
