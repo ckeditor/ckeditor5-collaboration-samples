@@ -418,7 +418,7 @@ function CKEditorComponent() {
 		}
 	};
 
-	configUpdateAlert( editorConfig, false );
+	configUpdateAlert( editorConfig );
 
 	return (
 		<>

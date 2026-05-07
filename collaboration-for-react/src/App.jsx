@@ -418,7 +418,7 @@ export default function App() {
 		}
 	};
 
-	configUpdateAlert( editorConfig, false );
+	configUpdateAlert( editorConfig );
 
 	return (
 		<div>

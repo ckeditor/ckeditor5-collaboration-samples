@@ -361,7 +361,7 @@ export class AppComponent {
 			}
 		};
 
-		configUpdateAlert( this.config, false );
+		configUpdateAlert( this.config );
 
 		this.isLayoutReady = true;
 		this.changeDetector.detectChanges();
