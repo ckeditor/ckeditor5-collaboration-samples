@@ -393,7 +393,7 @@ export default {
 			}
 		};
 
-		configUpdateAlert( this.config );
+		configUpdateAlert( this.config, true, false );
 
 		this.isLayoutReady = true;
 	},
