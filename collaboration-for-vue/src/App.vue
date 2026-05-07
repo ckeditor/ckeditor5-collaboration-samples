@@ -133,6 +133,7 @@ import 'ckbox/dist/ckbox.js';
 import {
 	LICENSE_KEY,
 	CKBOX_TOKEN_URL,
+	CLOUD_SERVICES_TOKEN_URL,
 	configUpdateAlert
 } from '../../credentials.js';
 
@@ -292,8 +293,7 @@ export default {
 							left: '24mm'
 						}
 					}
-				},
-				tokenUrl: false
+				}
 			},
 			exportWord: {
 				stylesheets: [
@@ -308,8 +308,7 @@ export default {
 					margin_right: '24mm',
 					margin_left: '24mm',
 					orientation: 'portrait'
-				},
-				tokenUrl: false
+				}
 			},
 			fontFamily: {
 				supportAllValues: true
@@ -378,6 +377,9 @@ export default {
 			licenseKey: LICENSE_KEY,
 			ckbox: {
 				tokenUrl: CKBOX_TOKEN_URL
+			},
+			cloudServices: {
+				tokenUrl: CLOUD_SERVICES_TOKEN_URL
 			},
 			revisionHistory: {
 				editorContainer: this.$refs.editorContainerElement,

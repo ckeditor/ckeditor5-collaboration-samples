@@ -85,7 +85,8 @@ import 'ckbox/dist/ckbox.js';
 import {
 	LICENSE_KEY,
 	CKBOX_TOKEN_URL,
-	configUpdateAlert
+	configUpdateAlert,
+	CLOUD_SERVICES_TOKEN_URL
 } from '../../credentials.js';
 
 function CKEditorComponent() {
@@ -317,8 +318,7 @@ function CKEditorComponent() {
 						left: '24mm'
 					}
 				}
-			},
-			tokenUrl: false
+			}
 		},
 		exportWord: {
 			stylesheets: [
@@ -333,8 +333,7 @@ function CKEditorComponent() {
 				margin_right: '24mm',
 				margin_left: '24mm',
 				orientation: 'portrait'
-			},
-			tokenUrl: false
+			}
 		},
 		fontFamily: {
 			supportAllValues: true
@@ -413,6 +412,9 @@ function CKEditorComponent() {
 		},
 		sidebar: {
 			container: editorAnnotationsRef.current
+		},
+		cloudServices: {
+			tokenUrl: CLOUD_SERVICES_TOKEN_URL
 		}
 	};
 

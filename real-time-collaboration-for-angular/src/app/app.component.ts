@@ -342,8 +342,7 @@ export class AppComponent {
 							left: '24mm'
 						}
 					}
-				},
-				tokenUrl: false
+				}
 			},
 			exportWord: {
 				stylesheets: [
@@ -358,8 +357,7 @@ export class AppComponent {
 					margin_right: '24mm',
 					margin_left: '24mm',
 					orientation: 'portrait'
-				},
-				tokenUrl: false
+				}
 			},
 			fontFamily: {
 				supportAllValues: true

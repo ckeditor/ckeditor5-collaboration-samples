@@ -227,7 +227,6 @@ MultiRootEditor.defaultConfig = {
 				}
 			}
 		},
-		tokenUrl: false,
 		// This callback is used to get and merge the data from all roots.
 		// For simple case, one should use `editor.getFullData()` instead. However, as it returns data
 		// in the order of roots creation, which may not be the desired order, here we sort by roots' order attribute.
@@ -254,7 +253,6 @@ MultiRootEditor.defaultConfig = {
 			margin_left: '24mm',
 			orientation: 'portrait'
 		},
-		tokenUrl: false,
 		// This callback is used to get and merge the data from all roots.
 		// For simple case, one should use `editor.getFullData()` instead. However, as it returns data
 		// in the order of roots creation, which may not be the desired order, here we sort by roots' order attribute.
