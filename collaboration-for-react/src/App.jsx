@@ -83,6 +83,7 @@ import 'ckbox/dist/ckbox.js';
 import {
 	LICENSE_KEY,
 	CKBOX_TOKEN_URL,
+	CLOUD_SERVICES_TOKEN_URL,
 	configUpdateAlert
 } from '../../credentials.js';
 
@@ -317,8 +318,7 @@ export default function App() {
 						left: '24mm'
 					}
 				}
-			},
-			tokenUrl: false
+			}
 		},
 		exportWord: {
 			stylesheets: [
@@ -333,8 +333,7 @@ export default function App() {
 				margin_right: '24mm',
 				margin_left: '24mm',
 				orientation: 'portrait'
-			},
-			tokenUrl: false
+			}
 		},
 		fontFamily: {
 			supportAllValues: true
@@ -404,6 +403,9 @@ export default function App() {
 		ckbox: {
 			tokenUrl: CKBOX_TOKEN_URL
 		},
+		cloudServices: {
+			tokenUrl: CLOUD_SERVICES_TOKEN_URL
+		},
 		revisionHistory: {
 			editorContainer: editorContainerRef.current,
 			viewerContainer: editorRevisionHistoryRef.current,
@@ -416,7 +418,7 @@ export default function App() {
 		}
 	};
 
-	configUpdateAlert( editorConfig, false );
+	configUpdateAlert( editorConfig, true, false );
 
 	return (
 		<div>

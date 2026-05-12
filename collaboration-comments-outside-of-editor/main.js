@@ -79,7 +79,8 @@ import * as CKBoxApp from 'ckbox/dist/ckbox.js';
 
 import {
 	LICENSE_KEY,
-	CKBOX_TOKEN_URL
+	CKBOX_TOKEN_URL,
+	CLOUD_SERVICES_TOKEN_URL
 } from '../credentials.js';
 
 ClassicEditor.builtinPlugins = [
@@ -200,8 +201,7 @@ ClassicEditor.defaultConfig = {
 					left: '24mm'
 				}
 			}
-		},
-		tokenUrl: false
+		}
 	},
 	exportWord: {
 		stylesheets: [
@@ -216,8 +216,7 @@ ClassicEditor.defaultConfig = {
 			margin_right: '24mm',
 			margin_left: '24mm',
 			orientation: 'portrait'
-		},
-		tokenUrl: false
+		}
 	},
 	fontFamily: {
 		supportAllValues: true
@@ -303,6 +302,9 @@ Context.defaultConfig = {
 		editorConfig: {
 			extraPlugins: [ Bold, Italic, Underline, List, Autoformat ]
 		}
+	},
+	cloudServices: {
+		tokenUrl: CLOUD_SERVICES_TOKEN_URL
 	}
 };
 

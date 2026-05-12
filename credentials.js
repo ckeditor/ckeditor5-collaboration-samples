@@ -20,7 +20,11 @@ const CLOUD_SERVICES_WEBSOCKET_URL = '<YOUR_CLOUD_SERVICES_WEBSOCKET_URL>';
  * This function exists to remind you to update the config needed for premium features.
  * The function can be safely removed. Make sure to also remove call to this function when doing so.
  */
-function configUpdateAlert( config, withCloudServices = true ) {
+function configUpdateAlert(
+	config,
+	withCloudServices = true,
+	withCloudWebsocketUrl = withCloudServices
+) {
 	if ( configUpdateAlert.configUpdateAlertShown ) {
 		return;
 	}
@@ -53,7 +57,7 @@ function configUpdateAlert( config, withCloudServices = true ) {
 		valuesToUpdate.push( 'CLOUD_SERVICES_TOKEN_URL' );
 	}
 
-	if ( withCloudServices && !isModifiedByUser( config.cloudServices?.webSocketUrl, '<YOUR_CLOUD_SERVICES_WEBSOCKET_URL>' ) ) {
+	if ( withCloudWebsocketUrl && !isModifiedByUser( config.cloudServices?.webSocketUrl, '<YOUR_CLOUD_SERVICES_WEBSOCKET_URL>' ) ) {
 		valuesToUpdate.push( 'CLOUD_SERVICES_WEBSOCKET_URL' );
 	}
 

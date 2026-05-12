@@ -84,6 +84,7 @@ import 'ckbox/dist/ckbox.js';
 import {
 	LICENSE_KEY,
 	CKBOX_TOKEN_URL,
+	CLOUD_SERVICES_TOKEN_URL,
 	configUpdateAlert
 	// @ts-ignore //
 } from './../../../credentials';
@@ -260,8 +261,7 @@ export class AppComponent {
 							left: '24mm'
 						}
 					}
-				},
-				tokenUrl: false
+				}
 			},
 			exportWord: {
 				stylesheets: [
@@ -276,8 +276,7 @@ export class AppComponent {
 					margin_right: '24mm',
 					margin_left: '24mm',
 					orientation: 'portrait'
-				},
-				tokenUrl: false
+				}
 			},
 			fontFamily: {
 				supportAllValues: true
@@ -356,10 +355,13 @@ export class AppComponent {
 			},
 			sidebar: {
 				container: this.editorAnnotations.nativeElement
+			},
+			cloudServices: {
+				tokenUrl: CLOUD_SERVICES_TOKEN_URL
 			}
 		};
 
-		configUpdateAlert( this.config, false );
+		configUpdateAlert( this.config, true, false );
 
 		this.isLayoutReady = true;
 		this.changeDetector.detectChanges();

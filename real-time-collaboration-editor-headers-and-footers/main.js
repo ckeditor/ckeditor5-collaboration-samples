@@ -224,7 +224,6 @@ MultiRootEditor.defaultConfig = {
 				}
 			}
 		},
-		tokenUrl: false,
 		dataCallback: editor => editor.getData( { rootName: 'content' } )
 	},
 	exportWord: {
@@ -245,7 +244,6 @@ MultiRootEditor.defaultConfig = {
 				}
 			}
 		},
-		tokenUrl: false,
 		// This callback is used to get and merge the data from all roots.
 		// For simple case, one should use `editor.getFullData()` instead. However, as it returns data
 		// in the order of roots creation, which may not be the desired order, here we sort by roots' order attribute.
@@ -257,9 +255,6 @@ MultiRootEditor.defaultConfig = {
 				.sort( ( [ , attrs1 ], [ , attrs2 ] ) => attrs1.order - attrs2.order )
 				.map( ( [ rootName ] ) => editor.getData( { rootName } ) )
 				.join( '\n' )
-	},
-	importWord: {
-		tokenUrl: false
 	},
 	fontFamily: {
 		supportAllValues: true
