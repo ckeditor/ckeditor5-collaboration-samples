@@ -5,9 +5,9 @@
   "private": true,
   "dependencies": {
     "ckbox": "2.11.0",
-    "ckeditor5": "48.0.1",
+    "ckeditor5": "48.1.0",
     "ckeditor5-collaboration-samples-integrations": "workspace:*",
-    "ckeditor5-premium-features": "48.0.1"
+    "ckeditor5-premium-features": "48.1.0"
   },
   "devDependencies": {
     "vite": "^7.0.0"
