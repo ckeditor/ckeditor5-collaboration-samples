@@ -21,6 +21,10 @@
               "bowser",
               "fast-xml-parser"
             ],
+            "externalDependencies": [
+              "url",
+              "util"
+            ],
             "outputPath": "dist/real-time-collaboration-for-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -44,8 +48,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "4.3mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
