@@ -17,7 +17,7 @@
     "@angular/forms": "^19.2.20",
     "@angular/platform-browser": "^19.2.20",
     "@ckeditor/ckeditor5-angular": "11.1.2",
-    "ckbox": "2.11.0",
+    "ckbox": "2.12.0",
     "ckeditor5": "48.1.1",
     "ckeditor5-collaboration-samples-integrations": "workspace:*",
     "ckeditor5-premium-features": "48.1.1",
