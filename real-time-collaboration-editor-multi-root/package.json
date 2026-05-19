@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "ckbox": "2.11.0",
+    "ckbox": "2.12.0",
     "ckeditor5": "48.1.1",
     "ckeditor5-collaboration-samples-integrations": "workspace:*",
     "ckeditor5-premium-features": "48.1.1"
