@@ -18,8 +18,8 @@
     "@angular/platform-browser": "^19.2.20",
     "@ckeditor/ckeditor5-angular": "11.1.2",
     "ckbox": "2.12.0",
-    "ckeditor5": "48.1.1",
-    "ckeditor5-premium-features": "48.1.1",
+    "ckeditor5": "48.2.0",
+    "ckeditor5-premium-features": "48.2.0",
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
