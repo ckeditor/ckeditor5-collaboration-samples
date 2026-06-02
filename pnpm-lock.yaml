@@ -6,7 +6,6 @@ settings:
 
 overrides:
   ajv@^8: ^8.18.0
-  next@^16: ^16.2.6
   picomatch@^4: ^4.0.4
   postcss@^8: ^8.5.10
   rollup@^4: ^4.59.0
@@ -188,7 +187,7 @@ importers:
         specifier: 48.2.0
         version: 48.2.0(ckeditor5@48.2.0)
       next:
-        specifier: ^16.2.6
+        specifier: 16.2.6
         version: 16.2.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.85.0)
       react:
         specifier: 19.2.4
@@ -201,8 +200,8 @@ importers:
         specifier: ^9.39.2
         version: 9.39.4
       eslint-config-next:
-        specifier: 16.2.3
-        version: 16.2.3(@typescript-eslint/parser@8.59.0(eslint@9.39.4)(typescript@5.6.3))(eslint@9.39.4)(typescript@5.6.3)
+        specifier: 16.2.6
+        version: 16.2.6(@typescript-eslint/parser@8.59.0(eslint@9.39.4)(typescript@5.6.3))(eslint@9.39.4)(typescript@5.6.3)
 
   collaboration-for-react:
     dependencies:
@@ -450,7 +449,7 @@ importers:
         specifier: 48.2.0
         version: 48.2.0(ckeditor5@48.2.0)
       next:
-        specifier: ^16.2.6
+        specifier: 16.2.6
         version: 16.2.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.85.0)
       react:
         specifier: 19.2.4
@@ -463,8 +462,8 @@ importers:
         specifier: ^9.39.2
         version: 9.39.4
       eslint-config-next:
-        specifier: 16.2.3
-        version: 16.2.3(@typescript-eslint/parser@8.59.0(eslint@9.39.4)(typescript@5.6.3))(eslint@9.39.4)(typescript@5.6.3)
+        specifier: 16.2.6
+        version: 16.2.6(@typescript-eslint/parser@8.59.0(eslint@9.39.4)(typescript@5.6.3))(eslint@9.39.4)(typescript@5.6.3)
 
   real-time-collaboration-for-react:
     dependencies:
@@ -2116,8 +2115,8 @@ packages:
   '@next/env@16.2.6':
     resolution: {integrity: sha512-gd8HoHN4ufj73WmR3JmVolrpJR47ILK6LouP5xElPglaVxir6e1a7VzvTvDWkOoPXT9rkkTzyCxBu4yeZfZwcw==}
 
-  '@next/eslint-plugin-next@16.2.3':
-    resolution: {integrity: sha512-nE/b9mht28XJxjTwKs/yk7w4XTaU3t40UHVAky6cjiijdP/SEy3hGsnQMPxmXPTpC7W4/97okm6fngKnvCqVaA==}
+  '@next/eslint-plugin-next@16.2.6':
+    resolution: {integrity: sha512-Z8l6o4JWKUl755x4R+wogD86KPeU+Ckw4K+SYG4kHeOJtRenDeK+OSbGcqZpDtbwn9DsJVdir2UxmwXuinUbUw==}
 
   '@next/swc-darwin-arm64@16.2.6':
     resolution: {integrity: sha512-ZJGkkcNfYgrrMkqOdZ7zoLa1TOy0qpcMfk/z4Mh/FKUz40gVO+HNQWqmLxf67Z5WB64DRp0dhEbyHfel+6sJUg==}
@@ -3588,8 +3587,8 @@ packages:
       eslint: ^9.0.0
       typescript: ^5.0.0
 
-  eslint-config-next@16.2.3:
-    resolution: {integrity: sha512-Dnkrylzjof/Az7iNoIQJqD18zTxQZcngir19KJaiRsMnnjpQSVoa6aEg/1Q4hQC+cW90uTlgQYadwL1CYNwFWA==}
+  eslint-config-next@16.2.6:
+    resolution: {integrity: sha512-z2ELYSkyrrJ6cuunTU8vhsT/RpouPkjaSah06nVW6Rg2Hpg0Vs8s497/e5s8G8qtdp4ccsiovz5P1rv+5VSW2Q==}
     peerDependencies:
       eslint: '>=9.0.0'
       typescript: '>=3.3.1'
@@ -8095,7 +8094,7 @@ snapshots:
 
   '@next/env@16.2.6': {}
 
-  '@next/eslint-plugin-next@16.2.3':
+  '@next/eslint-plugin-next@16.2.6':
     dependencies:
       fast-glob: 3.3.1
 
@@ -9773,9 +9772,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-config-next@16.2.3(@typescript-eslint/parser@8.59.0(eslint@9.39.4)(typescript@5.6.3))(eslint@9.39.4)(typescript@5.6.3):
+  eslint-config-next@16.2.6(@typescript-eslint/parser@8.59.0(eslint@9.39.4)(typescript@5.6.3))(eslint@9.39.4)(typescript@5.6.3):
     dependencies:
-      '@next/eslint-plugin-next': 16.2.3
+      '@next/eslint-plugin-next': 16.2.6
       eslint: 9.39.4
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.59.0(eslint@9.39.4)(typescript@5.6.3))(eslint@9.39.4))(eslint@9.39.4)

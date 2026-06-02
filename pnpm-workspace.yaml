@@ -7,7 +7,6 @@ packages:
 
 overrides:
   'ajv@^8': '^8.18.0'
-  'next@^16': '^16.2.6'
   'picomatch@^4': '^4.0.4'
   'postcss@^8': '^8.5.10'
   'rollup@^4': '^4.59.0'

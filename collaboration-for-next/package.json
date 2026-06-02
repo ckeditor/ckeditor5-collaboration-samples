@@ -14,13 +14,13 @@
     "ckeditor5": "48.2.0",
     "ckeditor5-collaboration-samples-integrations": "workspace:*",
     "ckeditor5-premium-features": "48.2.0",
-    "next": "16.2.3",
+    "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "eslint": "^9.39.2",
-    "eslint-config-next": "16.2.3"
+    "eslint-config-next": "16.2.6"
   },
   "engines": {
     "node": ">=24.11.0",
