@@ -17,8 +17,6 @@ watchdog.setCreator( config => {
 		.then( editor => {
 			window.editor = editor;
 
-			// MultiRootEditor does not auto-inject the toolbar or menu bar into the page.
-			// Both must be appended manually to a container element after the editor is ready.
 			const toolbarContainer = document.querySelector( '#editor-toolbar' );
 
 			if ( editor.ui.view.menuBarView ) {
@@ -27,11 +25,9 @@ watchdog.setCreator( config => {
 
 			toolbarContainer.appendChild( editor.ui.view.toolbar.element );
 
-			// Switch between inline, narrow and wide sidebar according to window width.
 			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
 			const sidebarElement = document.querySelector( '.editor-container__sidebar' );
 
-			// Prevent closing the tab when any action is pending.
 			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
 				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
 					domEvt.preventDefault();
@@ -164,7 +160,66 @@ watchdog.create( {
 		viewerContainer: document.querySelector( '#editor-revision-history' ),
 		viewerEditorElement: document.querySelector( '#editor-revision-history-editor' ),
 		viewerSidebarContainer: document.querySelector( '#editor-revision-history-sidebar' ),
-		resumeUnsavedRevision: true
+		resumeUnsavedRevision: true,
+		showRevisionViewerCallback: async viewerConfig => {
+			const editorContainer = document.querySelector( '#editor-container' );
+			const revisionHistoryContainer = document.querySelector( '#editor-revision-history' );
+			const toolbarContainer = document.querySelector( '#editor-toolbar' );
+
+			viewerConfig.roots = Object.create( null );
+
+			for ( const rootName of window.editor.model.document.getRootNames() ) {
+				if ( rootName === '$graveyard' ) {
+					continue;
+				}
+
+				const root = window.editor.model.document.getRoot( rootName );
+
+				viewerConfig.roots[ rootName ] = {
+					element: document.querySelector( `#editor-revision-history-${ rootName }` ),
+					modelElement: root.name,
+					initialData: '',
+				};
+			}
+
+			const viewerEditor = await MultiRootEditor.create( viewerConfig );
+
+			// Swap the main editor toolbar for the viewer toolbar in the shared container.
+			window.editor.ui.view.toolbar.element.remove();
+
+			if ( window.editor.ui.view.menuBarView ) {
+				window.editor.ui.view.menuBarView.element.remove();
+			}
+
+			toolbarContainer.appendChild( viewerEditor.ui.view.toolbar.element );
+
+			// Show the revision viewer, hide the live editing area.
+			editorContainer.style.display = 'none';
+			revisionHistoryContainer.style.display = 'block';
+
+			return viewerEditor;
+		},
+
+		closeRevisionViewerCallback: async viewerEditor => {
+			const editorContainer = document.querySelector( '#editor-container' );
+			const revisionHistoryContainer = document.querySelector( '#editor-revision-history' );
+			const toolbarContainer = document.querySelector( '#editor-toolbar' );
+
+			// Restore the live editing area.
+			revisionHistoryContainer.style.display = 'none';
+			editorContainer.style.display = '';
+
+			// Remove the viewer toolbar and reattach the main editor toolbar.
+			viewerEditor.ui.view.toolbar.element.remove();
+
+			if ( window.editor.ui.view.menuBarView ) {
+				toolbarContainer.appendChild( window.editor.ui.view.menuBarView.element );
+			}
+
+			toolbarContainer.appendChild( window.editor.ui.view.toolbar.element );
+
+			await viewerEditor.destroy();
+		}
 	},
 	sidebar: {
 		container: document.querySelector( '#editor-annotations' )
