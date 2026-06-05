@@ -186,14 +186,7 @@ watchdog.create( {
 
 			// Swap the main editor toolbar for the viewer toolbar in the shared container.
 			window.editor.ui.view.toolbar.element.remove();
-
-			if ( window.editor.ui.view.menuBarView ) {
-				window.editor.ui.view.menuBarView.element.remove();
-			}
-
-			if ( viewerEditor.ui.view.menuBarView ) {
-				toolbarContainer.appendChild( viewerEditor.ui.view.menuBarView.element );
-			}
+			window.editor.ui.view.menuBarView?.element.remove();
 
 			toolbarContainer.appendChild( viewerEditor.ui.view.toolbar.element );
 
@@ -213,7 +206,7 @@ watchdog.create( {
 			revisionHistoryContainer.style.display = 'none';
 			editorContainer.style.display = '';
 
-			// Remove the viewer toolbar and reattach the main editor toolbar.
+			viewerEditor.ui.view.menuBarView?.element.remove();
 			viewerEditor.ui.view.toolbar.element.remove();
 
 			if ( window.editor.ui.view.menuBarView ) {
