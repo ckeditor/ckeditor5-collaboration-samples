@@ -161,12 +161,11 @@ watchdog.create( {
 		viewerEditorElement: document.querySelector( '#editor-revision-history-editor' ),
 		viewerSidebarContainer: document.querySelector( '#editor-revision-history-sidebar' ),
 		resumeUnsavedRevision: true,
-		showRevisionViewerCallback: async viewerConfig => {
+		showRevisionViewerCallback: async sourceViewerConfig => {
 			const editorContainer = document.querySelector( '#editor-container' );
 			const revisionHistoryContainer = document.querySelector( '#editor-revision-history' );
 			const toolbarContainer = document.querySelector( '#editor-toolbar' );
-
-			viewerConfig.roots = Object.create( null );
+			const viewerConfig = { ...sourceViewerConfig, roots: Object.create( null ) };
 
 			for ( const rootName of window.editor.model.document.getRootNames() ) {
 				if ( rootName === '$graveyard' ) {
