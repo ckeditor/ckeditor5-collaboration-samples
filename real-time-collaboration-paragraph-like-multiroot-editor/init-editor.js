@@ -191,6 +191,10 @@ watchdog.create( {
 				window.editor.ui.view.menuBarView.element.remove();
 			}
 
+			if ( viewerEditor.ui.view.menuBarView ) {
+				toolbarContainer.appendChild( viewerEditor.ui.view.menuBarView.element );
+			}
+
 			toolbarContainer.appendChild( viewerEditor.ui.view.toolbar.element );
 
 			// Show the revision viewer, hide the live editing area.
