@@ -42,8 +42,7 @@ import {
 	TrackChangesPreview,
 	// Premium features
 	CaseChange,
-	PasteFromOfficeEnhanced,
-	SlashCommand
+	PasteFromOfficeEnhanced
 } from 'ckeditor5-premium-features';
 
 import 'ckeditor5/ckeditor5.css';
@@ -95,8 +94,7 @@ ClassicEditor.builtinPlugins = [
 	TrackChangesPreview,
 
 	CaseChange,
-	PasteFromOfficeEnhanced,
-	SlashCommand
+	PasteFromOfficeEnhanced
 ];
 
 ClassicEditor.defaultConfig = {
