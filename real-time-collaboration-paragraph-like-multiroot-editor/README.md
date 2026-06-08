@@ -16,7 +16,7 @@ This sample presents a [multi-root editor](https://ckeditor.com/docs/ckeditor5/l
 3. Move to the sample directory:
 
    ```shell
-   cd real-time-collaboration-editor-multi-root
+   cd real-time-collaboration-paragraph-like-multiroot-editor
    ```
 
 4. Install dependencies and start the demo:

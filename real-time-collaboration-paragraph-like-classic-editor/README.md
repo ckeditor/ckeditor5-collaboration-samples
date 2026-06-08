@@ -16,7 +16,7 @@ This sample presents a [classic editor](https://ckeditor.com/docs/ckeditor5/late
 3. Move to the sample directory:
 
    ```shell
-   cd real-time-collaboration-editor-classic
+   cd real-time-collaboration-paragraph-like-classic-editor
    ```
 
 4. Install dependencies and start the demo:
