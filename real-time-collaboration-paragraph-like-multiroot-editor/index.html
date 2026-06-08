@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2026, CKSource Holding sp. z o.o. All rights reserved.
+This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+<html>
+
+<head>
+	<title>CKEditor 5 – Real-time collaborative multi-root blog post editor</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/96x96.png" sizes="96x96">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/120x120.png" sizes="120x120">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/152x152.png" sizes="152x152">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/167x167.png" sizes="167x167">
+	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/180x180.png" sizes="180x180">
+
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header>
+	<div class="centered">
+		<h1>
+			<a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer">
+				<img src="https://ckeditor.com/ckeditor-5/builder/assets/LogoCKEditor5-BZXDBQA7.svg" alt="CKEditor 5 logo" />
+			</a>
+		</h1>
+
+		<nav>
+			<ul>
+				<li><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html"
+						target="_blank" rel="noopener noreferrer">Documentation</a></li>
+				<li><a href="https://ckeditor.com/collaboration/real-time-collaborative-editing/" target="_blank"
+						rel="noopener noreferrer">Website</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<main>
+	<div class="message">
+		<div class="centered">
+			<h2>CKEditor 5 – Multi-root collaborative blog post editor</h2>
+			<p>
+				Three independent editing roots — <code>title</code> and <code>author</code> use
+				<code>modelElement: '$inlineRoot'</code> (inline only), while <code>content</code> is a
+				standard <code>$root</code> (full block content). All roots share one toolbar and one
+				real-time collaboration session. Open in another tab to collaborate.
+			</p>
+		</div>
+	</div>
+
+	<div class="main-container">
+		<div class="presence" id="editor-presence"></div>
+		<div class="editor-toolbar-wrapper" id="editor-toolbar"></div>
+		<div id="editor-container" class="editor-container editor-container_multi-root editor-container_include-annotations">
+			<div class="editor-container__editor-wrapper">
+				<div class="blog-post">
+					<div class="blog-post__field blog-post__field--title">
+						<span class="blog-post__field-label" aria-hidden="true">Title</span>
+						<div id="editor-title" class="blog-post__editable blog-post__editable--title"></div>
+					</div>
+
+					<div class="blog-post__divider"></div>
+
+					<div class="blog-post__field blog-post__field--content">
+						<span class="blog-post__field-label" aria-hidden="true">Content</span>
+						<div id="editor-content" class="blog-post__editable blog-post__editable--content"></div>
+					</div>
+
+					<div class="blog-post__divider"></div>
+
+					<div class="blog-post__field blog-post__field--author">
+						<span class="blog-post__field-label" aria-hidden="true">Author</span>
+						<div id="editor-author" class="blog-post__editable blog-post__editable--author"></div>
+					</div>
+				</div>
+
+				<div class="editor-container__sidebar">
+					<div id="editor-annotations"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="revision-history" id="editor-revision-history">
+			<div class="revision-history__wrapper">
+				<div class="revision-history__editor" id="editor-revision-history-editor">
+					<div id="editor-revision-history-title" class="revision-history__root revision-history__root--title"></div>
+					<div id="editor-revision-history-content" class="revision-history__root revision-history__root--content"></div>
+					<div id="editor-revision-history-author" class="revision-history__root revision-history__root--author"></div>
+				</div>
+				<div class="revision-history__sidebar" id="editor-revision-history-sidebar"></div>
+			</div>
+		</div>
+
+	</div>
+</main>
+
+<footer>
+	<div class="centered">
+		<p><a href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener">CKEditor 5</a> – Rich text
+			editor of tomorrow, available today</p>
+		<p>Copyright © 2003-2026, <a href="https://cksource.com/" target="_blank" rel="noopener">CKSource</a> –
+			Holding sp. z o.o. All rights reserved.</p>
+	</div>
+</footer>
+
+<script type="module" src="init-editor.js"></script>
+</body>
+
+</html>

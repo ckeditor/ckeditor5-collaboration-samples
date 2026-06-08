@@ -25,3 +25,6 @@ shamefullyHoist: true
 preferFrozenLockfile: true
 linkWorkspacePackages: true
 ignoreWorkspaceCycles: true
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
