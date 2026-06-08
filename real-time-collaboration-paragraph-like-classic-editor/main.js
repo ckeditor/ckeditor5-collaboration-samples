@@ -6,7 +6,6 @@
 import {
 	ClassicEditor,
 	EditorWatchdog,
-	Alignment,
 	Autoformat,
 	AutoLink,
 	Autosave,
@@ -43,9 +42,6 @@ import {
 	TrackChangesPreview,
 	// Premium features
 	CaseChange,
-	ExportPdf,
-	ExportWord,
-	ImportWord,
 	PasteFromOfficeEnhanced,
 	SlashCommand
 } from 'ckeditor5-premium-features';
@@ -66,7 +62,6 @@ import {
 // Block-level plugins (Heading, Paragraph, List, Table, Image, MediaEmbed, etc.)
 // are intentionally omitted — they are not valid inside an $inlineRoot.
 ClassicEditor.builtinPlugins = [
-	Alignment,
 	Autoformat,
 	AutoLink,
 	Autosave,
@@ -100,9 +95,6 @@ ClassicEditor.builtinPlugins = [
 	TrackChangesPreview,
 
 	CaseChange,
-	ExportPdf,
-	ExportWord,
-	ImportWord,
 	PasteFromOfficeEnhanced,
 	SlashCommand
 ];
@@ -118,9 +110,6 @@ ClassicEditor.defaultConfig = {
 			'comment',
 			'commentsArchive',
 			'|',
-			'importWord',
-			'exportWord',
-			'exportPdf',
 			'caseChange',
 			'|',
 			'fontSize',
@@ -136,8 +125,6 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'link',
 			'highlight',
-			'|',
-			'alignment',
 			'|',
 			'fullscreen',
 			'|',
@@ -158,41 +145,6 @@ ClassicEditor.defaultConfig = {
 	comments: {
 		editorConfig: {
 			extraPlugins: [ Bold, Italic, Underline, Autoformat ]
-		}
-	},
-	exportPdf: {
-		stylesheets: [
-			'https://cdn.ckeditor.com/ckeditor5/48.2.0/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/48.2.0/ckeditor5-premium-features.css'
-		],
-		fileName: 'export-pdf-demo.pdf',
-		appID: 'cke5-demos',
-		converterOptions: {
-			document: {
-				size: 'A4',
-				orientation: 'portrait',
-				margins: {
-					top: '20mm',
-					bottom: '20mm',
-					right: '24mm',
-					left: '24mm'
-				}
-			}
-		}
-	},
-	exportWord: {
-		stylesheets: [
-			'https://cdn.ckeditor.com/ckeditor5/48.2.0/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/48.2.0/ckeditor5-premium-features.css'
-		],
-		fileName: 'export-word-demo.docx',
-		converterOptions: {
-			format: 'A4',
-			margin_top: '20mm',
-			margin_bottom: '20mm',
-			margin_right: '24mm',
-			margin_left: '24mm',
-			orientation: 'portrait'
 		}
 	},
 	fontFamily: {
