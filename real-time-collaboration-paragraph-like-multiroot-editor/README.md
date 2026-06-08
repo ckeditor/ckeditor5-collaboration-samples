@@ -35,4 +35,6 @@ All three roots share a single toolbar, a single [presence list](https://ckedito
 
 Because `MultiRootEditor` does not inject its toolbar into the page automatically, the application manually appends `editor.ui.view.toolbar.element` (and `editor.ui.view.menuBarView.element`) to a dedicated container element after the editor is created, and removes them again in the watchdog destructor.
 
+**Requirements:** The `modelElement` root configuration option and the `$inlineRoot` schema element were introduced in CKEditor 5 **v48.1.0**. This sample uses v48.2.0. On earlier versions `modelElement` is ignored and the root falls back to a regular block root.
+
 **Note:** Real-time collaboration is a complex topic and despite having over ten thousand tests, we cannot guarantee that no error will show up during a long collaboration session. Hence why the integration comes with the watchdog, which is a helpful utility that ensures an editor instance is running and in case of an error, tries to restore it to the working state. See the usage guide in the [watchdog documentation](https://ckeditor.com/docs/ckeditor5/latest/features/watchdog.html).
