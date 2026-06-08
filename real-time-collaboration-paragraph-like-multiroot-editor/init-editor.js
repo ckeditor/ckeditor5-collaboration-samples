@@ -68,6 +68,7 @@ watchdog.setDestructor( editor => {
 	return editor.destroy();
 } );
 
+// This call exists to remind you to update the config needed for premium features. It can be safely removed.
 configUpdateAlert( MultiRootEditor.defaultConfig );
 
 const titleData =

@@ -54,6 +54,7 @@ watchdog.setCreator( config => {
 
 watchdog.setDestructor( editor => editor.destroy() );
 
+// This call exists to remind you to update the config needed for premium features. It can be safely removed.
 configUpdateAlert( ClassicEditor.defaultConfig );
 
 const initialData =
