@@ -12,7 +12,7 @@ commands:
       - run:
           name: Install pnpm
           command: |
-            npm install -g pnpm@10 --prefix .pnpm
+            npm install -g pnpm@11 --prefix .pnpm
             echo 'export PATH="$PWD/.pnpm/bin:$PATH"' >> $BASH_ENV
       - run:
           name: Verify pnpm version
