@@ -5,6 +5,16 @@ packages:
   - "!build/"
   - "!node_modules/"
 
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lmdb: false
+  msgpackr-extract: false
+  protobufjs: true
+  sharp: true
+  snyk: true
+  unrs-resolver: true
+
 overrides:
   'ajv@^8': '^8.18.0'
   'picomatch@^4': '^4.0.4'
@@ -25,6 +35,4 @@ shamefullyHoist: true
 preferFrozenLockfile: true
 linkWorkspacePackages: true
 ignoreWorkspaceCycles: true
-allowBuilds:
-  '@parcel/watcher': true
-  esbuild: true
+verifyDepsBeforeRun: false
