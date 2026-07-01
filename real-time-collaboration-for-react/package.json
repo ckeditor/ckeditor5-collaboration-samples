@@ -4,10 +4,10 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-react": "11.1.2",
+    "@ckeditor/ckeditor5-react": "11.2.0",
     "ckbox": "2.12.0",
-    "ckeditor5": "48.2.0",
-    "ckeditor5-premium-features": "48.2.0",
+    "ckeditor5": "48.3.0",
+    "ckeditor5-premium-features": "48.3.0",
     "react": "^19",
     "react-dom": "^19"
   },
