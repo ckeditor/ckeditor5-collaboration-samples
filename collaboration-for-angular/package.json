@@ -13,9 +13,9 @@
   "dependencies": {
     "@angular/common": "^20.3.25",
     "@angular/compiler": "^20.3.25",
-    "@angular/core": "^19.2.20",
-    "@angular/forms": "^19.2.25",
-    "@angular/platform-browser": "^19.2.25",
+    "@angular/core": "^20.3.25",
+    "@angular/forms": "^20.3.25",
+    "@angular/platform-browser": "^20.3.25",
     "@ckeditor/ckeditor5-angular": "11.2.0",
     "ckbox": "2.12.0",
     "ckeditor5": "48.3.0",
@@ -24,9 +24,9 @@
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "^19.2.20",
-    "@angular/cli": "^20.3.30",
-    "@angular/compiler-cli": "^19.2.20",
+    "@angular/build": "^20.3.25",
+    "@angular/cli": "^20.3.25",
+    "@angular/compiler-cli": "^20.3.25",
     "typescript": "~5.6.3"
   },
   "engines": {
