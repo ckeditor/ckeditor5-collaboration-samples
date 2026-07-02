@@ -11,11 +11,11 @@
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
-    "@angular/common": "^19.2.20",
-    "@angular/compiler": "^19.2.20",
+    "@angular/common": "^20.3.25",
+    "@angular/compiler": "^20.3.25",
     "@angular/core": "^19.2.20",
-    "@angular/forms": "^19.2.20",
-    "@angular/platform-browser": "^19.2.20",
+    "@angular/forms": "^19.2.25",
+    "@angular/platform-browser": "^19.2.25",
     "@ckeditor/ckeditor5-angular": "11.2.0",
     "ckbox": "2.12.0",
     "ckeditor5": "48.3.0",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@angular/build": "^19.2.20",
-    "@angular/cli": "^19.2.20",
+    "@angular/cli": "^20.3.30",
     "@angular/compiler-cli": "^19.2.20",
     "typescript": "~5.6.3"
   },
