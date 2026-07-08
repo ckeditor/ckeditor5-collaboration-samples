@@ -10,6 +10,22 @@ This file is licensed under the terms of the MIT License (see LICENSE.md).
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!--
+		CKBox bundles Node.js code paths that reference the "url" and "util" builtins.
+		They are marked as external in angular.json so the browser build succeeds, but the
+		browser then can't resolve those bare specifiers. These branches never run in the
+		browser (they are guarded by `typeof document === 'undefined'`), so mapping them to
+		harmless stub modules is safe and fixes the "Failed to resolve module specifier" error.
+	-->
+	<script type="importmap">
+	{
+		"imports": {
+			"url": "data:text/javascript,export function pathToFileURL(p){return{href:String(p)}}export default {pathToFileURL};",
+			"util": "data:text/javascript,export const types={};export default {types};"
+		}
+	}
+	</script>
+
 	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/32x32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/96x96.png" sizes="96x96">
 	<link rel="apple-touch-icon" type="image/png" href="https://ckeditor.com/assets/images/favicons/120x120.png" sizes="120x120">
