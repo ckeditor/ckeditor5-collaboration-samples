@@ -24,9 +24,9 @@
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-bump-year": "^54.0.0",
     "@ckeditor/ckeditor5-dev-ci": "^54.0.0",
-    "eslint": "^9.34.0",
-    "eslint-config-ckeditor5": "^13.0.0",
-    "eslint-plugin-ckeditor5-rules": "^13.0.0",
+    "eslint": "^10.0.0",
+    "eslint-config-ckeditor5": "^18.0.0",
+    "eslint-plugin-ckeditor5-rules": "^18.0.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-vue": "^10.1.0",
     "globals": "^16.2.0",
