@@ -36,7 +36,6 @@ minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
   - '*ckeditor5*'
-  - 'ws' # Remove after 2026-07-17.
 
 shellEmulator: true
 shamefullyHoist: true
