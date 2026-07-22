@@ -46,20 +46,20 @@ importers:
         version: 2.0.1
     devDependencies:
       '@ckeditor/ckeditor5-dev-bump-year':
-        specifier: ^54.0.0
-        version: 54.7.1
+        specifier: ^58.0.0
+        version: 58.0.0
       '@ckeditor/ckeditor5-dev-ci':
-        specifier: ^54.0.0
-        version: 54.7.1
+        specifier: ^58.0.0
+        version: 58.0.0
       eslint:
         specifier: ^10.0.0
         version: 10.7.0
       eslint-config-ckeditor5:
-        specifier: ^18.1.0
-        version: 18.1.0(eslint@10.7.0)(typescript@5.9.3)
+        specifier: ^19.0.0
+        version: 19.0.0(eslint@10.7.0)(typescript@5.9.3)
       eslint-plugin-ckeditor5-rules:
-        specifier: ^18.1.0
-        version: 18.1.0
+        specifier: ^19.0.0
+        version: 19.0.0
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.7.0)
@@ -930,12 +930,12 @@ packages:
   '@ckeditor/ckeditor5-core@48.3.1':
     resolution: {integrity: sha512-wrAhYK5R8MkGAE0VrOMFQN9LSRpSATS7DFKr4CCJod9EgBT873SCu34Ey0fzSqGxeOqamlcXQJVh/77+3JP4SQ==}
 
-  '@ckeditor/ckeditor5-dev-bump-year@54.7.1':
-    resolution: {integrity: sha512-bpwOn6fe8+i1eBDA3K1HGS+eSQGp5KXvxFqFHBY450QU1NWuscLN2t3M8f4ary6YZ2ehcmjK87Q+ebO0e9g+TA==}
+  '@ckeditor/ckeditor5-dev-bump-year@58.0.0':
+    resolution: {integrity: sha512-Z7h1jrjoqcbDDQGqICyx1nfXxWM6XRsVfDTApcpxLSz8NPyL/we4i+3kt6LGKom1CnrZdVzr4ilNodH4n8y9Gw==}
     engines: {node: '>=24.11.0', npm: '>=5.7.1'}
 
-  '@ckeditor/ckeditor5-dev-ci@54.7.1':
-    resolution: {integrity: sha512-Ibbv8H1ficou7flZCeIhDlNG82vbXLBdGnZyN9cXgfq1JODE6CQOvJ685bsUdJ9BlEjZoID89INvazJV1ciEgg==}
+  '@ckeditor/ckeditor5-dev-ci@58.0.0':
+    resolution: {integrity: sha512-aP9ykYebNviBQrzeOBLLbGdDmbKv5emxBjIwdoRwg4oHBaQQvUfi5d5m+FezUSdrtF/NQt/glE88eRs+qZP7ag==}
     engines: {node: '>=24.11.0', npm: '>=5.7.1'}
     hasBin: true
 
@@ -3605,8 +3605,8 @@ packages:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
 
-  eslint-config-ckeditor5@18.1.0:
-    resolution: {integrity: sha512-65yQYs1SPjirxtMYGj3M1r0DhuGMmnfccDfFzjiqawunaMXer0HXbexYUqTaeM476mjiiAIaeRtV0Etz9hiM7Q==}
+  eslint-config-ckeditor5@19.0.0:
+    resolution: {integrity: sha512-LCngFCHjuCmLOOze1BicUieFCbnIFnlnuiQvfjma4Qs0LfnClosWbsfhxjCLuHcgBgvGjU7whf1v80VGShVbKg==}
     engines: {node: '>=24.11.0'}
     peerDependencies:
       eslint: ^10.0.0
@@ -3658,8 +3658,8 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-ckeditor5-rules@18.1.0:
-    resolution: {integrity: sha512-arHlwq24iiktj8RMs5rxpnRGl/EgGoZUj7VBYvbHCA5Ku6jwh7fwjQJ5fhqDD4OMSBsxyGi4Pz4KuxN+a9T/iw==}
+  eslint-plugin-ckeditor5-rules@19.0.0:
+    resolution: {integrity: sha512-nbDuphrXCh3rhb0FLZfPZaB9DaJ3mYoZcxT91vqx9+Uvsw3glmRwgIiIgh4k4dsshm77XDhZu8rjVpqP/lAkYg==}
     engines: {node: '>=24.11.0'}
 
   eslint-plugin-import@2.32.0:
@@ -6698,11 +6698,11 @@ snapshots:
       '@ckeditor/ckeditor5-watchdog': 48.3.1
       es-toolkit: 1.45.1
 
-  '@ckeditor/ckeditor5-dev-bump-year@54.7.1':
+  '@ckeditor/ckeditor5-dev-bump-year@58.0.0':
     dependencies:
       glob: 13.0.6
 
-  '@ckeditor/ckeditor5-dev-ci@54.7.1':
+  '@ckeditor/ckeditor5-dev-ci@58.0.0':
     dependencies:
       '@octokit/rest': 22.0.1
       slack-notify: 2.0.7
@@ -9942,14 +9942,14 @@ snapshots:
 
   escape-string-regexp@5.0.0: {}
 
-  eslint-config-ckeditor5@18.1.0(eslint@10.7.0)(typescript@5.9.3):
+  eslint-config-ckeditor5@19.0.0(eslint@10.7.0)(typescript@5.9.3):
     dependencies:
       '@eslint/css': 1.4.0
       '@eslint/js': 10.0.1(eslint@10.7.0)
       '@eslint/markdown': 6.6.0
       '@stylistic/eslint-plugin': 4.4.1(eslint@10.7.0)(typescript@5.9.3)
       eslint: 10.7.0
-      eslint-plugin-ckeditor5-rules: 18.1.0
+      eslint-plugin-ckeditor5-rules: 19.0.0
       eslint-plugin-mocha: 11.2.0(eslint@10.7.0)
       globals: 16.5.0
       typescript: 5.9.3
@@ -10011,7 +10011,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-ckeditor5-rules@18.1.0:
+  eslint-plugin-ckeditor5-rules@19.0.0:
     dependencies:
       '@es-joy/jsdoccomment': 0.50.2
       '@eslint/css-tree': 4.0.4
