@@ -12,10 +12,6 @@ import ts from 'typescript-eslint';
 
 export default defineConfig( [
 	{
-		// `@eslint-react/eslint-plugin` replaces `eslint-plugin-react` with ESLint 10 support.
-		// It targets the modern JSX transform, so no separate `jsx-runtime` config is needed.
-		// Scoped to the React/JS/TS sources so its rules do not run on the Vue single-file
-		// components; the Node build scripts are excluded as they are not React code.
 		files: [ '**/*.{js,jsx,mjs,ts,tsx}' ],
 		ignores: [ '**/_scripts/**' ],
 		extends: [ eslintReact.configs.recommended ]
@@ -25,10 +21,6 @@ export default defineConfig( [
 		ignores: [
 			'**/build/**',
 			'**/*.d.ts',
-
-			// The Next.js sample apps are self-contained (own `package.json`, `node_modules` and
-			// `eslint-config-next` flat config); they are linted by their own ESLint config, not by
-			// this root config (whose React/Vue toolchain cannot parse them under ESLint 10).
 			'**/*-next/**'
 		]
 	},
