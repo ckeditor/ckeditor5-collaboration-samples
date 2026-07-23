@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-bump-year": "^58.0.0",
-    "@ckeditor/ckeditor5-dev-ci": "^58.0.0",
     "eslint": "^10.0.0",
     "eslint-config-ckeditor5": "^19.0.0",
     "eslint-plugin-ckeditor5-rules": "^19.0.0",
@@ -35,11 +34,6 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.49.0",
     "vue-eslint-parser": "^10.1.3"
-  },
-  "lint-staged": {
-    "**/*": [
-      "eslint --quiet"
-    ]
   },
   "engines": {
     "pnpm": "^11.9.0"

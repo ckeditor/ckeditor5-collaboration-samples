@@ -4,9 +4,25 @@
  */
 
 import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import ckeditor5Rules from "eslint-plugin-ckeditor5-rules";
 
 const eslintConfig = [
   ...nextCoreWebVitals,
+  {
+    plugins: {
+      "ckeditor5-rules": ckeditor5Rules,
+    },
+    rules: {
+      "ckeditor5-rules/license-header": [ "error", {
+        headerLines: [
+          "/**",
+          " * @license Copyright (c) 2003-2026, CKSource Holding sp. z o.o. All rights reserved.",
+          " * For licensing, see LICENSE.md.",
+          " */",
+        ],
+      } ],
+    },
+  },
   {
     ignores: [
       "node_modules/**",
