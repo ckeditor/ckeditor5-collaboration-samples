@@ -21,6 +21,10 @@ export default defineConfig( [
 		ignores: [
 			'**/build/**',
 			'**/*.d.ts',
+
+			// The Next.js sample apps lint themselves with their own `eslint-config-next` flat
+			// configs (on ESLint 9), which the root ESLint 10 cannot run. Exclude them from the
+			// root lint here; `lint-staged` runs with `--config` so it honours this ignore too.
 			'**/*-next/**'
 		]
 	},

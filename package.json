@@ -35,6 +35,11 @@
     "typescript-eslint": "^8.49.0",
     "vue-eslint-parser": "^10.1.3"
   },
+  "lint-staged": {
+    "**/*": [
+      "eslint --quiet --config eslint.config.mjs"
+    ]
+  },
   "engines": {
     "pnpm": "^11.9.0"
   }
