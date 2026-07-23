@@ -6,29 +6,41 @@
 import globals from 'globals';
 import { defineConfig } from 'eslint/config';
 import ckeditor5Rules from 'eslint-plugin-ckeditor5-rules';
-import react from 'eslint-plugin-react';
+import eslintReact from '@eslint-react/eslint-plugin';
 import vue from 'eslint-plugin-vue';
 import ts from 'typescript-eslint';
 
 export default defineConfig( [
-	react.configs.flat.recommended,
-	react.configs.flat[ 'jsx-runtime' ],
+	{
+		// `@eslint-react/eslint-plugin` replaces `eslint-plugin-react` with ESLint 10 support.
+		// It targets the modern JSX transform, so no separate `jsx-runtime` config is needed.
+		// Scoped to the React/JS/TS sources so its rules do not run on the Vue single-file
+		// components; the Node build scripts are excluded as they are not React code.
+		files: [ '**/*.{js,jsx,mjs,ts,tsx}' ],
+		ignores: [ '**/_scripts/**' ],
+		extends: [ eslintReact.configs.recommended ]
+	},
 	vue.configs[ 'flat/recommended' ],
 	{
 		ignores: [
 			'**/build/**',
-			'**/*.d.ts'
+			'**/*.d.ts',
+
+			// The Next.js sample apps are self-contained (own `package.json`, `node_modules` and
+			// `eslint-config-next` flat config); they are linted by their own ESLint config, not by
+			// this root config (whose React/Vue toolchain cannot parse them under ESLint 10).
+			'**/*-next/**'
 		]
 	},
 	{
-		settings: {
-			react: {
-				version: 'detect'
-			}
-		},
 		languageOptions: {
 			ecmaVersion: 'latest',
-			sourceType: 'module'
+			sourceType: 'module',
+			parserOptions: {
+				ecmaFeatures: {
+					jsx: true
+				}
+			}
 		},
 		linterOptions: {
 			reportUnusedInlineConfigs: 'warn',
@@ -71,12 +83,6 @@ export default defineConfig( [
 		files: [ '**/*.vue' ],
 		rules: {
 			'ckeditor5Rules/license-header': 'off'
-		}
-	},
-	{
-		files: [ '**/*.jsx', '**/*-react*/**/*.js', '**/*-next*/**/*.js' ],
-		rules: {
-			'react/prop-types': 'off'
 		}
 	},
 	{
