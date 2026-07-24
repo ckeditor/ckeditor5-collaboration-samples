@@ -19,7 +19,8 @@
   },
   "devDependencies": {
     "eslint": "^9.39.2",
-    "eslint-config-next": "16.2.6"
+    "eslint-config-next": "16.2.6",
+    "eslint-plugin-ckeditor5-rules": "^19.0.0"
   },
   "engines": {
     "node": ">=24.11.0",
