@@ -35,7 +35,10 @@ overrides:
   # the already-resolved 1.x. The SDK is its only consumer.
   '@hono/node-server': '^2.0.5'
 
-minimumReleaseAge: 4320 # 3 days
+trustPolicy: no-downgrade
+blockExoticSubdeps: true
+
+minimumReleaseAge: 10080 # 7 days
 minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
