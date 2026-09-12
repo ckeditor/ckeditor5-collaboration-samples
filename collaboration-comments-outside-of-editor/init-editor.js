@@ -3,31 +3,18 @@
  * For licensing, see LICENSE.md.
  */
 
-import { ClassicEditor, Context, ContextWatchdog, CKBox } from './main.js';
+import { ClassicEditor, Context, CKBox } from './main.js';
 import { configUpdateAlert, setupChannelId } from '../credentials.js';
 
 ( async () => {
 	window.CKBox = CKBox;
-
-	const watchdog = new ContextWatchdog( Context );
-
-	window.watchdog = watchdog;
-
-	watchdog.setCreator( async config => {
-		const context = await Context.create( config );
-		return context;
-	} );
-
-	watchdog.setDestructor( async context => {
-		await context.destroy();
-	} );
 
 	// This call exists to remind you to update the config needed for premium features. It can be safely removed.
 	configUpdateAlert( Context.defaultConfig, false );
 
 	const channelId = setupChannelId();
 
-	await watchdog.create( {
+	const context = await Context.create( {
 		sidebar: {
 			container: document.querySelector( '.sidebar' )
 		},
@@ -47,17 +34,10 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 			}
 		};
 
-		await watchdog.add( {
-			id: editorId,
-			type: 'editor',
-			config: {
-				...editorConfig,
-				attachTo: editorElement
-			},
-			creator: createEditor,
-			destructor: editor => {
-				editor.destroy();
-			}
+		await createEditor( {
+			...editorConfig,
+			context,
+			attachTo: editorElement
 		} );
 	}
 } )();
