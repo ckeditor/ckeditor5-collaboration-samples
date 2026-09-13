@@ -36,3 +36,5 @@ The sample consists of a simple React application using CKEditor 5 with [real-ti
 The application uses the `<CKEditor>` React component, which is a wrapper for the React interface provided by the [@ckeditor/ckeditor5-react](https://github.com/ckeditor/ckeditor5-react) package.
 
 To learn more about the integration and the `@ckeditor/ckeditor5-react` package check out the [React integration guide](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/react.html).
+
+**Note:** Real-time collaboration is a complex topic and despite having over ten thousand tests, we cannot guarantee that no error will show up during a long collaboration session. CKEditor 5 does not restart a crashed editor, and does not save or restore its content. To be told when an error escapes an editor, and to decide what your application does about it, see the [error handling](https://ckeditor.com/docs/ckeditor5/latest/getting-started/setup/error-handling.html) guide — this sample does not register a handler.

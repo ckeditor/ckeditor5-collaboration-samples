@@ -3,7 +3,7 @@
 This sample presents a [multi-root editor type](https://ckeditor.com/docs/ckeditor5/latest/examples/framework/multi-root-editor.html) of CKEditor 5 demonstrating headers & footers implemented as separate editable roots, together with
 [real-time collaboration features](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html) and [revision history](https://ckeditor.com/docs/ckeditor5/latest/features/revision-history/revision-history.html).
 
-Using `Context` allows to instantiate multiple editor instances easier, however for cases when you may need multiple editable areas (for example header, body and footer), not necessarily multiple editor instances,
+Using `Context` allows to instantiate multiple editor instances easier, however for cases when you may need multiple editable areas (for example header, body and footer), not necessarily multiple editor instances, the multi-root editor shown here is a recommended approach.
 
 The [Multi-root editor](../real-time-collaboration-editor-multi-root/) allows creating multiple editable areas for single editor instance. For initializing multiple editor instances on the same page using [`Context`](../real-time-collaboration-with-context/) is a recommended approach.
 
@@ -40,4 +40,4 @@ The API exposed by the [multi-root editor](https://ckeditor.com/docs/ckeditor5/l
 
 If you want to modify the editor setup, for instance to add more plugins, refer to the [Configuring features](https://ckeditor.com/docs/ckeditor5/latest/getting-started/setup/configuration.html) guide.
 
-**Note:** Real-time collaboration is a complex topic and despite having over ten thousand tests, we cannot guarantee that no error will show up during a long collaboration session. Hence why the integration comes with the watchdog, which is a helpful utility that ensures an editor instance is running and in case of an error, tries to restore it to the working state. See the usage guide in the [watchdog documentation](https://ckeditor.com/docs/ckeditor5/latest/features/watchdog.html).
+**Note:** Real-time collaboration is a complex topic and despite having over ten thousand tests, we cannot guarantee that no error will show up during a long collaboration session. CKEditor 5 does not restart a crashed editor, and does not save or restore its content. To be told when an error escapes an editor, and to decide what your application does about it, see the [error handling](https://ckeditor.com/docs/ckeditor5/latest/getting-started/setup/error-handling.html) guide — this sample does not register a handler.
