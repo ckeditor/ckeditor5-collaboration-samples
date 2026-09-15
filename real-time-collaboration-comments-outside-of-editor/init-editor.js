@@ -26,6 +26,10 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 		}
 	} );
 
+	// Keyed by the same `id` the sample uses for the channels, so a single editor is reachable
+	// from the console the way `window.editor` is in the single-editor samples.
+	window.editors = {};
+
 	for ( const editorElement of document.querySelectorAll( '.editor' ) ) {
 		// Use `id` attribute as an identifier for everything related to given editor instance.
 		const editorId = editorElement.id;
@@ -37,7 +41,7 @@ import { configUpdateAlert, setupChannelId } from '../credentials.js';
 			}
 		};
 
-		await createEditor( {
+		window.editors[ editorId ] = await createEditor( {
 			...editorConfig,
 			context,
 			attachTo: editorElement
