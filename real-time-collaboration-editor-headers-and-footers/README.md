@@ -3,9 +3,7 @@
 This sample presents a [multi-root editor type](https://ckeditor.com/docs/ckeditor5/latest/examples/framework/multi-root-editor.html) of CKEditor 5 demonstrating headers & footers implemented as separate editable roots, together with
 [real-time collaboration features](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html) and [revision history](https://ckeditor.com/docs/ckeditor5/latest/features/revision-history/revision-history.html).
 
-Using `Context` allows to instantiate multiple editor instances easier, however for cases when you may need multiple editable areas (for example header, body and footer), not necessarily multiple editor instances, the multi-root editor shown here is a recommended approach.
-
-The [Multi-root editor](../real-time-collaboration-editor-multi-root/) allows creating multiple editable areas for single editor instance. For initializing multiple editor instances on the same page using [`Context`](../real-time-collaboration-with-context/) is a recommended approach.
+The multi-root editor shown here creates multiple editable areas (for example header, body and footer) within a single editor instance. That is the recommended approach when you need several editable areas rather than several editors — to initialize multiple editor instances on the same page, use [`Context`](../real-time-collaboration-with-context/) instead. For a plain multi-root setup, see the [Multi-root editor](../real-time-collaboration-editor-multi-root/) sample.
 
 ## Quick start
 
