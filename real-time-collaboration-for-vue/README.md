@@ -1,4 +1,4 @@
-# CKEditor 5 real-time collaborative editing sample for React
+# CKEditor 5 real-time collaborative editing sample for Vue
 
 This sample presents an integration of CKEditor 5 WYSIWYG editor including [real-time collaboration features](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html), [revision history](https://ckeditor.com/docs/ckeditor5/latest/features/revision-history/revision-history.html) and [Vue.js](https://vuejs.org/).
 
@@ -31,7 +31,7 @@ The integration supports Vue.js from version 2.0.0. The `package.json` file stor
 
 ## Overview
 
-The sample consists of a simple React application using CKEditor 5 with [real-time collaborative editing](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html) and [revision history](https://ckeditor.com/docs/ckeditor5/latest/features/revision-history/revision-history.html). The application includes the editor with [the users presence list](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/users-in-real-time-collaboration.html#users-presence-list) together with [real-time collaborative comments and track changes](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html) using a sidebar and a responsive [display mode](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments-display-mode.html) integration which reacts to the screen width.
+The sample consists of a simple Vue.js application using CKEditor 5 with [real-time collaborative editing](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html) and [revision history](https://ckeditor.com/docs/ckeditor5/latest/features/revision-history/revision-history.html). The application includes the editor with [the users presence list](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/users-in-real-time-collaboration.html#users-presence-list) together with [real-time collaborative comments and track changes](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html) using a sidebar and a responsive [display mode](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments-display-mode.html) integration which reacts to the screen width.
 
 The application uses the `<ckeditor>` Vue.js component, which is a wrapper for the Vue.js interface provided by the [@ckeditor/ckeditor5-vue](https://github.com/ckeditor/ckeditor5-vue) package.
 
