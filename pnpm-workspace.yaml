@@ -40,9 +40,6 @@ minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
   - '*ckeditor5*'
-  # Needed for the `next` bump below - 16.3.3 is newer than the age gate.
-  - 'next' # Remove after 2026-08-28.
-  - '@next/*' # Remove after 2026-08-28.
 
 shellEmulator: true
 shamefullyHoist: true
