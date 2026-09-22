@@ -5,7 +5,6 @@
 
 import {
 	ClassicEditor,
-	EditorWatchdog,
 	Alignment,
 	Autoformat,
 	AutoLink,
@@ -313,4 +312,4 @@ ClassicEditor.defaultConfig = {
 	}
 };
 
-export { ClassicEditor, EditorWatchdog, CKBoxApp as CKBox };
+export { ClassicEditor, CKBoxApp as CKBox };

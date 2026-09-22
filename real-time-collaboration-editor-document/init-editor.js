@@ -3,58 +3,10 @@
  * For licensing, see LICENSE.md.
  */
 
-import { DecoupledEditor, EditorWatchdog, CKBox } from './main.js';
+import { DecoupledEditor, CKBox } from './main.js';
 import { configUpdateAlert, setupChannelId } from '../credentials.js';
 
 window.CKBox = CKBox;
-
-const watchdog = new EditorWatchdog( DecoupledEditor );
-
-window.watchdog = watchdog;
-
-watchdog.setCreator( config => {
-	return DecoupledEditor.create( config )
-		.then( editor => {
-			window.editor = editor;
-
-			// Switch between inline, narrow sidebar and wide sidebar according to the window size.
-			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
-			const sidebarElement = document.querySelector( '.editor-container__sidebar' );
-
-			// Prevent closing the tab when any action is pending.
-			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
-				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
-					domEvt.preventDefault();
-				}
-			} );
-
-			editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
-			refreshDisplayMode();
-
-			document.querySelector( '#editor-toolbar' ).appendChild( editor.ui.view.toolbar.element );
-
-			function refreshDisplayMode() {
-				if ( window.innerWidth < 1070 ) {
-					sidebarElement.classList.remove( 'narrow' );
-					sidebarElement.classList.add( 'hidden' );
-					annotationsUIs.switchTo( 'inline' );
-				}
-				else if ( window.innerWidth < 1300 ) {
-					sidebarElement.classList.remove( 'hidden' );
-					sidebarElement.classList.add( 'narrow' );
-					annotationsUIs.switchTo( 'narrowSidebar' );
-				}
-				else {
-					sidebarElement.classList.remove( 'hidden', 'narrow' );
-					annotationsUIs.switchTo( 'wideSidebar' );
-				}
-			}
-
-			return editor;
-		} );
-} );
-
-watchdog.setDestructor( editor => editor.destroy() );
 
 // This call exists to remind you to update the config needed for premium features. It can be safely removed.
 configUpdateAlert( DecoupledEditor.defaultConfig );
@@ -136,7 +88,7 @@ const initialData =
     is an essential element of daily life.
 </p>`;
 
-watchdog.create( {
+DecoupledEditor.create( {
 	root: {
 		element: document.querySelector( '#editor' ),
 		initialData
@@ -156,5 +108,40 @@ watchdog.create( {
 	},
 	collaboration: {
 		channelId: setupChannelId()
+	}
+} ).then( editor => {
+	window.editor = editor;
+
+	// Switch between inline, narrow sidebar and wide sidebar according to the window size.
+	const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
+	const sidebarElement = document.querySelector( '.editor-container__sidebar' );
+
+	// Prevent closing the tab when any action is pending.
+	editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
+		if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
+			domEvt.preventDefault();
+		}
+	} );
+
+	editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
+	refreshDisplayMode();
+
+	document.querySelector( '#editor-toolbar' ).appendChild( editor.ui.view.toolbar.element );
+
+	function refreshDisplayMode() {
+		if ( window.innerWidth < 1070 ) {
+			sidebarElement.classList.remove( 'narrow' );
+			sidebarElement.classList.add( 'hidden' );
+			annotationsUIs.switchTo( 'inline' );
+		}
+		else if ( window.innerWidth < 1300 ) {
+			sidebarElement.classList.remove( 'hidden' );
+			sidebarElement.classList.add( 'narrow' );
+			annotationsUIs.switchTo( 'narrowSidebar' );
+		}
+		else {
+			sidebarElement.classList.remove( 'hidden', 'narrow' );
+			annotationsUIs.switchTo( 'wideSidebar' );
+		}
 	}
 } );

@@ -6,7 +6,6 @@
 import {
 	ClassicEditor,
 	Context,
-	ContextWatchdog,
 	Alignment,
 	Autoformat,
 	AutoLink,
@@ -332,4 +331,4 @@ Context.defaultConfig = {
 	}
 };
 
-export { ClassicEditor, Context, ContextWatchdog, CKBoxApp as CKBox };
+export { ClassicEditor, Context, CKBoxApp as CKBox };

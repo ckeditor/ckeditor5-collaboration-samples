@@ -5,7 +5,6 @@
 
 import {
 	MultiRootEditor,
-	EditorWatchdog,
 	Alignment,
 	Autoformat,
 	AutoLink,
@@ -330,4 +329,4 @@ MultiRootEditor.defaultConfig = {
 	}
 };
 
-export { MultiRootEditor, EditorWatchdog, CKBoxApp as CKBox };
+export { MultiRootEditor, CKBoxApp as CKBox };

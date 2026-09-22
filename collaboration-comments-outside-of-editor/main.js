@@ -15,7 +15,6 @@ import {
 	CKBoxImageEdit,
 	CloudServices,
 	Context,
-	ContextWatchdog,
 	Essentials,
 	FontSize,
 	FontFamily,
@@ -308,4 +307,4 @@ Context.defaultConfig = {
 	}
 };
 
-export { ClassicEditor, Context, ContextWatchdog, CKBoxApp as CKBox };
+export { ClassicEditor, Context, CKBoxApp as CKBox };

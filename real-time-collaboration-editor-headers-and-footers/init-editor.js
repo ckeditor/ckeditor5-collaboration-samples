@@ -3,66 +3,10 @@
  * For licensing, see LICENSE.md.
  */
 
-import { MultiRootEditor, EditorWatchdog, CKBox } from './main.js';
+import { MultiRootEditor, CKBox } from './main.js';
 import { configUpdateAlert, setupChannelId } from '../credentials.js';
 
 window.CKBox = CKBox;
-
-const watchdog = new EditorWatchdog( MultiRootEditor );
-
-window.watchdog = watchdog;
-
-watchdog.setCreator( config => {
-	return MultiRootEditor.create( config )
-		.then( editor => {
-			// Switch between inline, narrow sidebar and wide sidebar according to the window size.
-			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
-			const sidebarElement = document.querySelector( '.editor-container__sidebar' );
-			const editorContainerElement = document.querySelector( '.editor-container' );
-
-			// Prevent closing the tab when any action is pending.
-			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
-				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
-					domEvt.preventDefault();
-				}
-			} );
-
-			editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
-			refreshDisplayMode();
-
-			function refreshDisplayMode() {
-				if ( window.innerWidth < 1070 ) {
-					sidebarElement.classList.remove( 'narrow' );
-					sidebarElement.classList.add( 'hidden' );
-					if ( editorContainerElement ) {
-						editorContainerElement.classList.add( 'sidebar-hidden' );
-						editorContainerElement.classList.remove( 'sidebar-narrow' );
-					}
-					annotationsUIs.switchTo( 'inline' );
-				}
-				else if ( window.innerWidth < 1300 ) {
-					sidebarElement.classList.remove( 'hidden' );
-					sidebarElement.classList.add( 'narrow' );
-					if ( editorContainerElement ) {
-						editorContainerElement.classList.add( 'sidebar-narrow' );
-						editorContainerElement.classList.remove( 'sidebar-hidden' );
-					}
-					annotationsUIs.switchTo( 'narrowSidebar' );
-				}
-				else {
-					sidebarElement.classList.remove( 'hidden', 'narrow' );
-					if ( editorContainerElement ) {
-						editorContainerElement.classList.remove( 'sidebar-hidden', 'sidebar-narrow' );
-					}
-					annotationsUIs.switchTo( 'wideSidebar' );
-				}
-			}
-
-			return editor;
-		} );
-} );
-
-watchdog.setDestructor( editor => editor.destroy() );
 
 // This call exists to remind you to update the config needed for premium features. It can be safely removed.
 configUpdateAlert( MultiRootEditor.defaultConfig );
@@ -241,7 +185,7 @@ editorContainer.querySelectorAll( '.variant-select' ).forEach( select => {
 	updateVariantVisibility( select );
 } );
 
-watchdog.create( {
+MultiRootEditor.create( {
 	roots: getRootsConfiguration( elements, content, attributes ),
 	editableParentSelector: '.editor-container__editor',
 	collaboration: {
@@ -345,12 +289,52 @@ watchdog.create( {
 		},
 		waitingTime: 2000
 	}
-} )
-	.then( () => {
-		const editor = watchdog.editor;
+} ).then( editor => {
+	// Switch between inline, narrow sidebar and wide sidebar according to the window size.
+	const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
+	const sidebarElement = document.querySelector( '.editor-container__sidebar' );
+	const editorContainerElement = document.querySelector( '.editor-container' );
 
-		window.editor = editor;
-
-		document.querySelector( '#editor-toolbar' ).appendChild( editor.ui.view.toolbar.element );
-		document.querySelector( '#editor-menubar' ).appendChild( editor.ui.view.menuBarView.element );
+	// Prevent closing the tab when any action is pending.
+	editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
+		if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
+			domEvt.preventDefault();
+		}
 	} );
+
+	editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
+	refreshDisplayMode();
+
+	function refreshDisplayMode() {
+		if ( window.innerWidth < 1070 ) {
+			sidebarElement.classList.remove( 'narrow' );
+			sidebarElement.classList.add( 'hidden' );
+			if ( editorContainerElement ) {
+				editorContainerElement.classList.add( 'sidebar-hidden' );
+				editorContainerElement.classList.remove( 'sidebar-narrow' );
+			}
+			annotationsUIs.switchTo( 'inline' );
+		}
+		else if ( window.innerWidth < 1300 ) {
+			sidebarElement.classList.remove( 'hidden' );
+			sidebarElement.classList.add( 'narrow' );
+			if ( editorContainerElement ) {
+				editorContainerElement.classList.add( 'sidebar-narrow' );
+				editorContainerElement.classList.remove( 'sidebar-hidden' );
+			}
+			annotationsUIs.switchTo( 'narrowSidebar' );
+		}
+		else {
+			sidebarElement.classList.remove( 'hidden', 'narrow' );
+			if ( editorContainerElement ) {
+				editorContainerElement.classList.remove( 'sidebar-hidden', 'sidebar-narrow' );
+			}
+			annotationsUIs.switchTo( 'wideSidebar' );
+		}
+	}
+
+	window.editor = editor;
+
+	document.querySelector( '#editor-toolbar' ).appendChild( editor.ui.view.toolbar.element );
+	document.querySelector( '#editor-menubar' ).appendChild( editor.ui.view.menuBarView.element );
+} );
