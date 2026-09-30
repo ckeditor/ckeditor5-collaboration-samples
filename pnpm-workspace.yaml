@@ -47,6 +47,7 @@ minimumReleaseAgeExclude:
 shellEmulator: true
 shamefullyHoist: true
 preferFrozenLockfile: true
+autoDedupe: true
 linkWorkspacePackages: true
 ignoreWorkspaceCycles: true
 verifyDepsBeforeRun: false
