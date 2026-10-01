@@ -114,7 +114,10 @@ async function main() {
 	}
 
 	console.log( chalk.white( '🔗 Installing dependencies…\n' ) );
-	await installDependencies( path.join( RELEASE_DIRECTORY, '..' ), options.verbose );
+	// Install from the repository root. The release directory is excluded from the pnpm workspace, and pnpm 12.8.2 treats
+	// a project outside the workspace on its own, without the root lockfile, so a frozen install there fails. The copied
+	// samples resolve their dependencies from the root `node_modules`, as they did before.
+	await installDependencies( '.', options.verbose );
 
 	// Build samples.
 	await buildSamples( samplesToBuild, options );
