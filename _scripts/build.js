@@ -114,10 +114,18 @@ async function main() {
 	}
 
 	console.log( chalk.white( '🔗 Installing dependencies…\n' ) );
-	// Install from the repository root. The release directory is excluded from the pnpm workspace, and pnpm treats
-	// a project outside the workspace on its own, without the root lockfile, so a frozen install there fails. The copied
-	// samples resolve their dependencies from the root `node_modules`, as they did before.
-	await installDependencies( '.', options.verbose );
+
+	if ( options.useNightlyVersions ) {
+		// The copied samples now ask for nightly versions, which the root lockfile does not have. The release directory
+		// is excluded from the root workspace, so install it as a workspace of its own, with the root settings.
+		await createTemporaryWorkspace();
+		await installDependencies( DESTINATION_DIRECTORY, options.verbose, false );
+	} else {
+		// Install from the repository root. The release directory is excluded from the pnpm workspace, and pnpm treats
+		// a project outside the workspace on its own, without the root lockfile, so a frozen install there fails. The
+		// copied samples resolve their dependencies from the root `node_modules`, as they did before.
+		await installDependencies( '.', options.verbose );
+	}
 
 	// Build samples.
 	await buildSamples( samplesToBuild, options );
@@ -171,6 +179,20 @@ async function createTemporaryPackageJson( samplesToBuild ) {
 	packageJson.workspaces.push( ...new Set( ckeditor5samples ) );
 
 	await fs.writeJson( packageJsonPath, packageJson, { spaces: 2 } );
+}
+
+/**
+ * Creates a temporary `pnpm-workspace.yaml` file in the destination directory. It lists the workspaces from the temporary
+ * `package.json` file and keeps every other setting of the root `pnpm-workspace.yaml` file.
+ *
+ * @return {Promise}
+ */
+async function createTemporaryWorkspace() {
+	const { workspaces } = await fs.readJson( `${ DESTINATION_DIRECTORY }/package.json` );
+	const rootSettings = ( await fs.readFile( 'pnpm-workspace.yaml', 'utf8' ) ).replace( /^packages:\n(?:[ \t]+.*\n)*/m, '' );
+	const packages = workspaces.map( workspace => `  - '${ workspace }'` ).join( '\n' );
+
+	await fs.writeFile( `${ DESTINATION_DIRECTORY }/pnpm-workspace.yaml`, `packages:\n${ packages }\n${ rootSettings }` );
 }
 
 /**

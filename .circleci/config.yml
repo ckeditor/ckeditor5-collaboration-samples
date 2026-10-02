@@ -20,7 +20,7 @@ commands:
       - install_ssh_keys_command
       - run:
           name: Install dependencies
-          command: pnpm install
+          command: pnpm install --frozen-lockfile
 
   install_ssh_keys_command:
     description: "Install SSH keys"
