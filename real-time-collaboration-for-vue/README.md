@@ -27,6 +27,8 @@ The integration supports Vue.js from version 2.0.0. The `package.json` file stor
    pnpm i && pnpm run dev
    ```
 
+   > This project requires **pnpm v12.8.2**. You can check your version with `pnpm --version` and update if needed with `npm install -g pnpm@12.8.2`.
+
 5. Copy the URL and share it or paste in another tab to enjoy real-time collaborative editing.
 
 ## Overview

@@ -3045,11 +3045,6 @@ packages:
 
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
-    peerDependencies:
-      ajv: ^8.0.0
-    peerDependenciesMeta:
-      ajv:
-        optional: true
 
   ajv@6.15.0:
     resolution: {integrity: sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw==}
@@ -4502,7 +4497,6 @@ packages:
 
   jsonparse@1.3.1:
     resolution: {integrity: sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==}
-    engines: {'0': node >= 0.2.0}
 
   jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
@@ -6221,7 +6215,7 @@ snapshots:
   '@angular-devkit/core@20.3.30(chokidar@4.0.3)':
     dependencies:
       ajv: 8.18.0
-      ajv-formats: 3.0.1(ajv@8.18.0)
+      ajv-formats: 3.0.1
       jsonc-parser: 3.3.1
       picomatch: 4.0.4
       rxjs: 7.8.2
@@ -8210,7 +8204,7 @@ snapshots:
     dependencies:
       '@hono/node-server': 2.0.12(hono@4.13.8)
       ajv: 8.18.0
-      ajv-formats: 3.0.1(ajv@8.18.0)
+      ajv-formats: 3.0.1
       content-type: 1.0.5
       cors: 2.8.6
       cross-spawn: 7.0.6
@@ -8849,8 +8843,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.62.0(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.68.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.70.0
+      '@typescript-eslint/tsconfig-utils': 8.62.0(typescript@5.9.3)
+      '@typescript-eslint/types': 8.62.0
       debug: 4.4.3(supports-color@7.2.0)
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -8858,7 +8852,7 @@ snapshots:
 
   '@typescript-eslint/project-service@8.64.0(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.68.0(typescript@5.9.3)
+      '@typescript-eslint/tsconfig-utils': 8.64.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.70.0
       debug: 4.4.3(supports-color@7.2.0)
       typescript: 5.9.3
@@ -9270,8 +9264,8 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ajv-formats@3.0.1(ajv@8.18.0):
-    optionalDependencies:
+  ajv-formats@3.0.1:
+    dependencies:
       ajv: 8.18.0
 
   ajv@6.15.0:
@@ -10575,6 +10569,10 @@ snapshots:
     dependencies:
       format: 0.2.2
 
+  fdir@6.5.0(picomatch@4.0.4):
+    optionalDependencies:
+      picomatch: 4.0.4
+
   fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:
       picomatch: 4.0.7
@@ -10874,7 +10872,7 @@ snapshots:
       rehype-minify-whitespace: 6.0.2
       trim-trailing-lines: 2.1.0
       unist-util-position: 5.0.0
-      unist-util-visit: 5.1.0
+      unist-util-visit: 5.0.0
 
   hast-util-to-text@4.0.2:
     dependencies:
@@ -11461,7 +11459,7 @@ snapshots:
       micromark-util-sanitize-uri: 2.0.1
       trim-lines: 3.0.1
       unist-util-position: 5.0.0
-      unist-util-visit: 5.1.0
+      unist-util-visit: 5.0.0
       vfile: 6.0.3
 
   mdast-util-to-markdown@2.1.2:
@@ -12828,8 +12826,8 @@ snapshots:
 
   tinyglobby@0.2.14:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.7)
-      picomatch: 4.0.7
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
 
   tinyglobby@0.2.17:
     dependencies:
@@ -13076,8 +13074,8 @@ snapshots:
   vite@7.3.5(@types/node@26.6.2)(sass@1.90.0)(yaml@2.9.1):
     dependencies:
       esbuild: 0.28.1
-      fdir: 6.5.0(picomatch@4.0.7)
-      picomatch: 4.0.7
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
       postcss: 8.5.23
       rollup: 4.59.0
       tinyglobby: 0.2.17
