@@ -42,7 +42,10 @@ function installDependencies( dir, verbose = false, frozenLockfile = true ) {
  * @returns {Promise.<void>}
  */
 function runBuildCommand( dir, verbose = false ) {
-	return runCommandAsync( 'pnpm', [ 'run', 'build' ], dir, verbose, true );
+	// The sample copies are outside the workspace, so the root `verifyDepsBeforeRun: false` does not apply to them.
+	// Without the flag, pnpm installs each copy on its own first whenever no pnpm parent passes the setting down,
+	// for example when the build starts with `npm run` or `yarn`.
+	return runCommandAsync( 'pnpm', [ '--config.verify-deps-before-run=false', 'run', 'build' ], dir, verbose, true );
 }
 
 /**

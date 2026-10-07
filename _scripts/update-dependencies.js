@@ -158,7 +158,8 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 		cacheDirPath = `.tmp-pnpm-cache-${ Date.now() }`;
 
 		await fs.ensureDir( cacheDirPath );
-		// `pnpm update` ignores `--config.cache-dir`, so the cache directory is passed through the environment.
+		// Some pnpm 12 releases ignore `--config.cache-dir` in `pnpm update`, so the cache directory is passed through
+		// the environment.
 		process.env.PNPM_CONFIG_CACHE_DIR = cacheDirPath;
 
 		if ( verbose ) {

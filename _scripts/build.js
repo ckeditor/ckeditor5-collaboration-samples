@@ -115,6 +115,11 @@ async function main() {
 
 	console.log( chalk.white( '🔗 Installing dependencies…\n' ) );
 
+	// Remove the workspace that a previous `--dev` build left in the destination directory.
+	for ( const item of [ 'node_modules', 'pnpm-lock.yaml', 'pnpm-workspace.yaml' ] ) {
+		await fs.remove( path.join( DESTINATION_DIRECTORY, item ) );
+	}
+
 	if ( options.useNightlyVersions ) {
 		// The copied samples now ask for nightly versions, which the root lockfile does not have. The release directory
 		// is excluded from the root workspace, so install it as a workspace of its own, with the root settings.
