@@ -3,70 +3,10 @@
  * For licensing, see LICENSE.md.
  */
 
-import { MultiRootEditor, EditorWatchdog, CKBox } from './main.js';
+import { MultiRootEditor, CKBox } from './main.js';
 import { configUpdateAlert, setupChannelId } from '../credentials.js';
 
 window.CKBox = CKBox;
-
-const watchdog = new EditorWatchdog( MultiRootEditor );
-
-window.watchdog = watchdog;
-
-watchdog.setCreator( config => {
-	return MultiRootEditor.create( config )
-		.then( editor => {
-			window.editor = editor;
-
-			const toolbarContainer = document.querySelector( '#editor-toolbar' );
-
-			if ( editor.ui.view.menuBarView ) {
-				toolbarContainer.appendChild( editor.ui.view.menuBarView.element );
-			}
-
-			toolbarContainer.appendChild( editor.ui.view.toolbar.element );
-
-			const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
-			const sidebarElement = document.querySelector( '.editor-container__sidebar' );
-
-			editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
-				if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
-					domEvt.preventDefault();
-				}
-			} );
-
-			editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
-			refreshDisplayMode();
-
-			function refreshDisplayMode() {
-				if ( window.innerWidth < 1070 ) {
-					sidebarElement.classList.remove( 'narrow' );
-					sidebarElement.classList.add( 'hidden' );
-					annotationsUIs.switchTo( 'inline' );
-				}
-				else if ( window.innerWidth < 1300 ) {
-					sidebarElement.classList.remove( 'hidden' );
-					sidebarElement.classList.add( 'narrow' );
-					annotationsUIs.switchTo( 'narrowSidebar' );
-				}
-				else {
-					sidebarElement.classList.remove( 'hidden', 'narrow' );
-					annotationsUIs.switchTo( 'wideSidebar' );
-				}
-			}
-
-			return editor;
-		} );
-} );
-
-watchdog.setDestructor( editor => {
-	editor.ui.view.toolbar.element.remove();
-
-	if ( editor.ui.view.menuBarView ) {
-		editor.ui.view.menuBarView.element.remove();
-	}
-
-	return editor.destroy();
-} );
 
 // This call exists to remind you to update the config needed for premium features. It can be safely removed.
 configUpdateAlert( MultiRootEditor.defaultConfig );
@@ -136,7 +76,7 @@ const contentData =
 const authorData =
 	'Dr. Elena Kowalska &nbsp;<strong>·</strong>&nbsp; <em>Linguistics &amp; Cognitive Science</em>';
 
-watchdog.create( {
+MultiRootEditor.create( {
 	roots: {
 		title: {
 			element: document.querySelector( '#editor-title' ),
@@ -223,5 +163,44 @@ watchdog.create( {
 	},
 	collaboration: {
 		channelId: setupChannelId()
+	}
+} ).then( editor => {
+	window.editor = editor;
+
+	const toolbarContainer = document.querySelector( '#editor-toolbar' );
+
+	if ( editor.ui.view.menuBarView ) {
+		toolbarContainer.appendChild( editor.ui.view.menuBarView.element );
+	}
+
+	toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+
+	const annotationsUIs = editor.plugins.get( 'AnnotationsUIs' );
+	const sidebarElement = document.querySelector( '.editor-container__sidebar' );
+
+	editor.ui.view.listenTo( window, 'beforeunload', ( evt, domEvt ) => {
+		if ( editor.plugins.get( 'PendingActions' ).hasAny ) {
+			domEvt.preventDefault();
+		}
+	} );
+
+	editor.ui.view.listenTo( window, 'resize', refreshDisplayMode );
+	refreshDisplayMode();
+
+	function refreshDisplayMode() {
+		if ( window.innerWidth < 1070 ) {
+			sidebarElement.classList.remove( 'narrow' );
+			sidebarElement.classList.add( 'hidden' );
+			annotationsUIs.switchTo( 'inline' );
+		}
+		else if ( window.innerWidth < 1300 ) {
+			sidebarElement.classList.remove( 'hidden' );
+			sidebarElement.classList.add( 'narrow' );
+			annotationsUIs.switchTo( 'narrowSidebar' );
+		}
+		else {
+			sidebarElement.classList.remove( 'hidden', 'narrow' );
+			annotationsUIs.switchTo( 'wideSidebar' );
+		}
 	}
 } );

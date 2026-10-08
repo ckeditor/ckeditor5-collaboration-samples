@@ -15,7 +15,6 @@ import {
 	CKBoxImageEdit,
 	CloudServices,
 	Context,
-	ContextWatchdog,
 	Essentials,
 	FontSize,
 	FontFamily,
@@ -185,8 +184,8 @@ ClassicEditor.defaultConfig = {
 	},
 	exportPdf: {
 		stylesheets: [
-			'https://cdn.ckeditor.com/ckeditor5/48.5.2/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/48.5.2/ckeditor5-premium-features.css'
+			'https://cdn.ckeditor.com/ckeditor5/49.0.0/ckeditor5.css',
+			'https://cdn.ckeditor.com/ckeditor5-premium-features/49.0.0/ckeditor5-premium-features.css'
 		],
 		fileName: 'export-pdf-demo.pdf',
 		appID: 'cke5-demos',
@@ -205,8 +204,8 @@ ClassicEditor.defaultConfig = {
 	},
 	exportWord: {
 		stylesheets: [
-			'https://cdn.ckeditor.com/ckeditor5/48.5.2/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/48.5.2/ckeditor5-premium-features.css'
+			'https://cdn.ckeditor.com/ckeditor5/49.0.0/ckeditor5.css',
+			'https://cdn.ckeditor.com/ckeditor5-premium-features/49.0.0/ckeditor5-premium-features.css'
 		],
 		fileName: 'export-word-demo.docx',
 		converterOptions: {
@@ -308,4 +307,4 @@ Context.defaultConfig = {
 	}
 };
 
-export { ClassicEditor, Context, ContextWatchdog, CKBoxApp as CKBox };
+export { ClassicEditor, Context, CKBoxApp as CKBox };

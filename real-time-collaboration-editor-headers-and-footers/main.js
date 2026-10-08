@@ -5,7 +5,6 @@
 
 import {
 	MultiRootEditor,
-	EditorWatchdog,
 	Alignment,
 	Autoformat,
 	AutoLink,
@@ -207,8 +206,8 @@ MultiRootEditor.defaultConfig = {
 	},
 	exportPdf: {
 		stylesheets: [
-			'https://cdn.ckeditor.com/ckeditor5/48.5.2/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/48.5.2/ckeditor5-premium-features.css'
+			'https://cdn.ckeditor.com/ckeditor5/49.0.0/ckeditor5.css',
+			'https://cdn.ckeditor.com/ckeditor5-premium-features/49.0.0/ckeditor5-premium-features.css'
 		],
 		fileName: 'export-pdf-demo.pdf',
 		appID: 'cke5-demos',
@@ -228,8 +227,8 @@ MultiRootEditor.defaultConfig = {
 	},
 	exportWord: {
 		stylesheets: [
-			'https://cdn.ckeditor.com/ckeditor5/48.5.2/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/48.5.2/ckeditor5-premium-features.css'
+			'https://cdn.ckeditor.com/ckeditor5/49.0.0/ckeditor5.css',
+			'https://cdn.ckeditor.com/ckeditor5-premium-features/49.0.0/ckeditor5-premium-features.css'
 		],
 		fileName: 'export-word-demo.docx',
 		converterOptions: {
@@ -330,4 +329,4 @@ MultiRootEditor.defaultConfig = {
 	}
 };
 
-export { MultiRootEditor, EditorWatchdog, CKBoxApp as CKBox };
+export { MultiRootEditor, CKBoxApp as CKBox };
