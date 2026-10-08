@@ -5,7 +5,6 @@
 
 import {
 	DecoupledEditor,
-	EditorWatchdog,
 	Alignment,
 	Autoformat,
 	AutoLink,
@@ -330,4 +329,4 @@ DecoupledEditor.defaultConfig = {
 	}
 };
 
-export { DecoupledEditor, EditorWatchdog, CKBoxApp as CKBox };
+export { DecoupledEditor, CKBoxApp as CKBox };

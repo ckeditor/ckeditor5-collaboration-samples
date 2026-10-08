@@ -38,3 +38,5 @@ The Angular part was supposed to be really simple, thus we removed test files an
 This application uses the `<ckeditor>` Angular component, which is a wrapper for the Angular interface provided by the [@ckeditor/ckeditor5-angular](https://github.com/ckeditor/ckeditor5-angular) package.
 
 To learn more about the integration and the `@ckeditor/ckeditor5-angular` package check out the [Angular integration guide](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/angular.html).
+
+**Note:** Real-time collaboration is a complex topic and despite having over ten thousand tests, we cannot guarantee that no error will show up during a long collaboration session. CKEditor 5 does not restart a crashed editor, and does not save or restore its content. To be told when an error escapes an editor, and to decide what your application does about it, see the [error handling](https://ckeditor.com/docs/ckeditor5/latest/getting-started/setup/error-handling.html) guide — this sample does not register a handler.

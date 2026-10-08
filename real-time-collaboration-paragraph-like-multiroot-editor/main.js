@@ -8,7 +8,6 @@ import {
 	// multiple independent editable regions sharing a single toolbar,
 	// collaboration session, and revision history.
 	MultiRootEditor,
-	EditorWatchdog,
 	Alignment,
 	Autoformat,
 	AutoLink,
@@ -284,4 +283,4 @@ MultiRootEditor.defaultConfig = {
 	}
 };
 
-export { MultiRootEditor, EditorWatchdog, CKBoxApp as CKBox };
+export { MultiRootEditor, CKBoxApp as CKBox };
