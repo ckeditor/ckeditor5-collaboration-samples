@@ -45,7 +45,7 @@ And accepts following flags:
 - `--verbose` (`-v`) - adds more logging,
 - `--sample` (`-s`) - checks only given sample (full name needs to be passed).
 
-> Internally, this script uses [`depcheck`](https://www.npmjs.com/package/depcheck) and [`pnpm outdated --depth Infinity`](https://pnpm.io/cli/outdated).
+> Internally, this script uses [`depcheck`](https://www.npmjs.com/package/depcheck) and [`pnpm outdated`](https://pnpm.io/cli/outdated).
 
 **IMPORTANT**: The `depcheck` library does not work perfectly with Angular and so it may complain about unused deps which are in fact needed. This false positive usually looks as below:
 ```

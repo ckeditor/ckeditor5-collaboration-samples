@@ -27,6 +27,8 @@ The basic usage of `Context` is shown in a dedicated [`Context`](../real-time-co
    pnpm i && pnpm run dev
    ```
 
+   > This project requires **pnpm v12.8.2**. You can check your version with `pnpm --version` and update if needed with `npm install -g pnpm@12.8.2`.
+
 ## Overview
 
 The sample consists of a simple application using CKEditor 5 [classic editor](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor) with [comments outside of editor](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments-outside-editor.html). This sample does not provide real-time collaboration, so if you are looking for such solution, check `comments-outside-of-editor` sample. There are also samples for comments outside of editor for React and Angular integrations.

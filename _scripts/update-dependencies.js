@@ -144,7 +144,7 @@ function isRepositoryClean( options ) {
 
 async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly, verbose, freshCache ) {
 	let cacheDirPath = null;
-	const updateParams = [ 'update', '--recursive', '--depth', 'Infinity', '--latest' ];
+	const updateParams = [ 'update', '--recursive', '--latest' ];
 
 	for ( const sample of pathsToSampleSourceDirectories ) {
 		updateParams.push( '--filter', `./${ sample }` );
@@ -158,7 +158,9 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 		cacheDirPath = `.tmp-pnpm-cache-${ Date.now() }`;
 
 		await fs.ensureDir( cacheDirPath );
-		updateParams.unshift( `--config.cache-dir=${ cacheDirPath }` );
+		// Some pnpm 12 releases ignore `--config.cache-dir` in `pnpm update`, so the cache directory is passed through
+		// the environment.
+		process.env.PNPM_CONFIG_CACHE_DIR = cacheDirPath;
 
 		if ( verbose ) {
 			console.log( `Using a fresh pnpm cache directory for dependency update: ${ cacheDirPath }` );
@@ -169,6 +171,8 @@ async function updateDependencies( pathsToSampleSourceDirectories, ckeditorOnly,
 		if ( !cacheDirPath ) {
 			return Promise.resolve();
 		}
+
+		delete process.env.PNPM_CONFIG_CACHE_DIR;
 
 		return fs.remove( cacheDirPath );
 	};
