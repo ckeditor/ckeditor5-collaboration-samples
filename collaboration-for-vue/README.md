@@ -38,6 +38,8 @@ To learn more about the integration and the `@ckeditor/ckeditor5-vue` package ch
 
 If you want to modify the editor setup, for instance to add more plugins, refer to the [Configuring features](https://ckeditor.com/docs/ckeditor5/latest/getting-started/setup/configuration.html) guide.
 
+CKEditor 5 does not restart a crashed editor, and does not save or restore its content. To be told when an error escapes an editor, and to decide what your application does about it, see the [error handling](https://ckeditor.com/docs/ckeditor5/latest/getting-started/setup/error-handling.html) guide — this sample does not register a handler.
+
 ## CKEditor 5 adapter and "load and save" integrations
 
 The sample implements 2 approaches of integrating `Comments`, `TrackChanges` and `RevisionHistory` plugins with CKEditor 5 - **adapter** and **load and save** integrations. The default one used is **adapter** integration.
