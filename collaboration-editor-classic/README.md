@@ -26,6 +26,8 @@ features.
    pnpm i && pnpm run dev
    ```
 
+   > This project requires **pnpm v12.8.2**. You can check your version with `pnpm --version` and update if needed with `npm install -g pnpm@12.8.2`.
+
 ## Overview
 
 The sample consists of a simple application using CKEditor 5 [classic editor](https://ckeditor.com/docs/ckeditor5/latest/examples/builds/classic-editor.html) with the `Comments`, `TrackChanges` and `RevisionHistory` plugins using a sidebar and a responsive [display mode](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/comments/comments-display-mode.html) integration which reacts to the screen width.

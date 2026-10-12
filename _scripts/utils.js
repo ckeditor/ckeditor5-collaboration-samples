@@ -26,11 +26,12 @@ module.exports = {
  * Executes install the dependencies command.
  *
  * @param {String} dir The source directory where `package.json` file is located, that contains the dependencies to be installed.
- * @param {Options} options Parsed CLI arguments.
+ * @param {Boolean} [verbose=false] Indicates whether to display the logs captured from the currently executed command.
+ * @param {Boolean} [frozenLockfile=true] Indicates whether the lockfile must stay unchanged.
  * @returns {Promise}
  */
-function installDependencies( dir, verbose = false ) {
-	return runCommandAsync( 'pnpm', [ 'install', '--frozen-lockfile' ], dir, verbose, true );
+function installDependencies( dir, verbose = false, frozenLockfile = true ) {
+	return runCommandAsync( 'pnpm', [ 'install', frozenLockfile ? '--frozen-lockfile' : '--no-frozen-lockfile' ], dir, verbose, true );
 }
 
 /**
@@ -41,7 +42,10 @@ function installDependencies( dir, verbose = false ) {
  * @returns {Promise.<void>}
  */
 function runBuildCommand( dir, verbose = false ) {
-	return runCommandAsync( 'pnpm', [ 'run', 'build' ], dir, verbose, true );
+	// The sample copies are outside the workspace, so the root `verifyDepsBeforeRun: false` does not apply to them.
+	// Without the flag, pnpm installs each copy on its own first whenever no pnpm parent passes the setting down,
+	// for example when the build starts with `npm run` or `yarn`.
+	return runCommandAsync( 'pnpm', [ '--config.verify-deps-before-run=false', 'run', 'build' ], dir, verbose, true );
 }
 
 /**
