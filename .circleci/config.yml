@@ -32,7 +32,7 @@ commands:
 jobs:
   lint:
     docker:
-      - image: cimg/node:24.11.0
+      - image: cimg/node:26.10.0
     steps:
       - checkout
       - bootstrap_repository_command
@@ -42,7 +42,7 @@ jobs:
 
   build_local:
     docker:
-      - image: cimg/node:24.11.0
+      - image: cimg/node:26.10.0
     steps:
       - checkout
       - bootstrap_repository_command
@@ -52,7 +52,7 @@ jobs:
 
   build:
     docker:
-      - image: cimg/node:24.11.0
+      - image: cimg/node:26.10.0
     steps:
       - checkout
       - bootstrap_repository_command
