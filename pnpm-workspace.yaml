@@ -21,12 +21,14 @@ overrides:
   # The `@modelcontextprotocol/sdk` (SDK) range is `^1.19.9 || ^2.0.5`, so pin the newer line explicitly -
   # otherwise pnpm keeps the already-resolved 1.x. The SDK is its only consumer.
   '@hono/node-server': '^2.0.5'
+  'zod@^4': '^4.6.6'
 
 minimumReleaseAge: 4320 # 3 days
 minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
   - '*ckeditor5*'
+  - 'fast-uri' # Remove after 2026-10-22.
 
 shellEmulator: true
 shamefullyHoist: true
