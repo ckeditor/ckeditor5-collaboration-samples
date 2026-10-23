@@ -28,7 +28,6 @@ minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
   - '*ckeditor5*'
-  - 'fast-uri' # Remove after 2026-10-22.
 
 shellEmulator: true
 shamefullyHoist: true
