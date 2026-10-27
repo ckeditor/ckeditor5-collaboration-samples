@@ -11,8 +11,8 @@
   "dependencies": {
     "@ckeditor/ckeditor5-react": "12.0.0",
     "ckbox": "2.13.1",
-    "ckeditor5": "49.0.0",
-    "ckeditor5-premium-features": "49.0.0",
+    "ckeditor5": "49.0.1",
+    "ckeditor5-premium-features": "49.0.1",
     "next": "16.4.1",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -20,7 +20,7 @@
   "devDependencies": {
     "eslint": "^9.39.2",
     "eslint-config-next": "16.2.11",
-    "eslint-plugin-ckeditor5-rules": "^21.0.0"
+    "eslint-plugin-ckeditor5-rules": "^22.0.0"
   },
   "engines": {
     "node": ">=26.10.0",

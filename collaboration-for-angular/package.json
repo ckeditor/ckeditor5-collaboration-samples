@@ -16,11 +16,11 @@
     "@angular/core": "^20.3.34",
     "@angular/forms": "^20.3.34",
     "@angular/platform-browser": "^20.3.34",
-    "@ckeditor/ckeditor5-angular": "12.0.0",
+    "@ckeditor/ckeditor5-angular": "13.0.0",
     "ckbox": "2.13.1",
-    "ckeditor5": "49.0.0",
+    "ckeditor5": "49.0.1",
     "ckeditor5-collaboration-samples-integrations": "workspace:*",
-    "ckeditor5-premium-features": "49.0.0",
+    "ckeditor5-premium-features": "49.0.1",
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
