@@ -19,7 +19,9 @@ overrides:
   'glob@^13': '^14.0.3'
   'js-yaml@^3': '^4.3.1'
 
-minimumReleaseAge: 4320 # 3 days
+minimumReleaseAge: 10080 # 7 days
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
 minimumReleaseAgeExclude:
   - '@ckeditor/*'
   - '@cksource/*'
