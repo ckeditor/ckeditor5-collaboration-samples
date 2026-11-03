@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.1",
-    "vite": "^7.3.6"
+    "vite": "^7.3.7"
   },
   "engines": {
     "node": ">=26.10.0",

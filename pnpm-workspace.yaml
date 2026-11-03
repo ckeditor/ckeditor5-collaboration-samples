@@ -16,12 +16,8 @@ allowBuilds:
   unrs-resolver: true
 
 overrides:
-  'postcss@^8': '^8.5.18'
+  'glob@^13': '^14.0.3'
   'js-yaml@^3': '^4.3.1'
-  # The `@modelcontextprotocol/sdk` (SDK) range is `^1.19.9 || ^2.0.5`, so pin the newer line explicitly -
-  # otherwise pnpm keeps the already-resolved 1.x. The SDK is its only consumer.
-  '@hono/node-server': '^2.0.5'
-  'zod@^4': '^4.6.6'
 
 minimumReleaseAge: 4320 # 3 days
 minimumReleaseAgeExclude:
