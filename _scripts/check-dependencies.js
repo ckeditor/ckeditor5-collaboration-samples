@@ -39,7 +39,7 @@ async function checkDependencies( pathsToSampleSourceDirectories, verbose ) {
 	for ( const sample of pathsToSampleSourceDirectories ) {
 		console.log( `Checking dependencies for the "${ sample }" sample...` );
 
-		await runCommandAsync( 'pnpm', [ 'dlx', 'depcheck' ], sample, verbose );
+		await runCommandAsync( 'pnpm', [ 'dlx', 'depcheck@1.4.7' ], sample, verbose );
 		await runCommandAsync( 'pnpm', [ 'outdated' ], sample, verbose );
 	}
 }
