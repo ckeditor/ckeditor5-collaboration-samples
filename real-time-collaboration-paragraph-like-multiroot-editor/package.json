@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "ckbox": "2.13.1",
+    "ckbox": "2.14.0",
     "ckeditor5": "49.1.0",
     "ckeditor5-premium-features": "49.1.0"
   },
