@@ -396,7 +396,7 @@ export class AppComponent {
 		domEvt.preventDefault();
 	}
 
-	@HostListener( 'window:resize', [ '$event' ] )
+	@HostListener( 'window:resize' )
 	public refreshDisplayMode(): void {
 		if ( !this.editorInstance || !this.editorAnnotations ) {
 			return;
