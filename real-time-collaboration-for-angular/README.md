@@ -2,7 +2,7 @@
 
 This sample presents an integration of CKEditor 5 WYSIWYG editor including [real-time collaboration features](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration.html), [revision history](https://ckeditor.com/docs/ckeditor5/latest/features/revision-history/revision-history.html) and [Angular](https://angular.io/).
 
-The integration supports Angular from version 5.0.0. The `package.json` file stores the higher version just to ensure that all dependencies are in compatible versions.
+The sample uses version 13 of the [CKEditor 5 Angular integration](https://www.npmjs.com/package/@ckeditor/ckeditor5-angular), which requires Angular 21.2.25 or later.
 
 ## Quick start
 
